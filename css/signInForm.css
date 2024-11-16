@@ -78,3 +78,11 @@
     80% { background-image: url('/assests/images/WelcomeImage5.jpg'); }
     100% { background-image: url('/assests/images/WelcomeImage5.jpg'); }
 }
+
+.carousel-container {
+    transition: transform 0.5s ease-in-out;
+}
+
+.swipe-left {
+    transform: translateX(-100%);
+}
