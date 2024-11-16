@@ -15,6 +15,7 @@
 	--Light: #3cff56;
 	--gray: #AEC3B0;
     --lightGray:#E3EED4;
+
 }
 
 body 
@@ -255,6 +256,7 @@ body
 	justify-content: space-between;
 	cursor: pointer;
 	transition: transform 0.3s ease;
+	box-shadow: 0 6px 7px -4px var(--DarkGreen);
 }
 
 .cardBox .card .numbers 
@@ -291,5 +293,33 @@ body
 	color: white;
 }
 
+/* charts */
+.charts{
+	display: grid;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 15px;
+	margin-top: 10px;
+	padding: 15px;
+}
+
+.charts-card {
+	background-color: var(--lightGray);
+	margin-bottom: 20px;
+	padding: 25px;
+	box-sizing: border-box;
+	-webkit-column-break-inside: avoid;
+	border-radius: 10px;
+	box-shadow: 0 6px 7px -4px var(--DarkGreen);
+}
+  
+.chart-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--Green);
+}
+
+  
 
 
