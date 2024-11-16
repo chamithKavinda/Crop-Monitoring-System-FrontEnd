@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+.staffHeader-section{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.staffHeader-section h2{
+    margin-left: 40px;
+    font-size: 35px;
+    color: #375534;
+}
+
+.staffHeader-section h2 span{
+    font-size: 25px;
+    color: #6B9071;
+}
+
+.add-staff-button{
+    margin-left: 55%;
+    margin-top: 5px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bolder;
+    border-radius: 20px;
+    color: white;
+    background: #6B9071;
+    border: 1px solid #6B9071;
+}
+
+.add-staff-button:hover{
+    cursor: pointer;
+    background: #AEC3B0;
+    color: #375534;
+}
