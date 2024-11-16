@@ -156,6 +156,92 @@
                     <button id="add-staff" class="add-staff-button">Add Staff Member</button>
                 </div>
                 
+                <!-- -------------- Add Customer Form -------------- -->
+                <div id="staffRegisterForm" class="staffRegisterForm">
+                    <div class="registerForm">
+                        <span id="staffRegisterForm-close" class="staff-close">&times;</span>
+                        <h2 id="registerTitle">Register Staff Member</h2>
+
+                        <form id="staff-form" class="staff-form">
+                            <div class="staff-form-row">
+                                <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+                            </div>
+                            
+                            <div class="staff-form-row">
+                                <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <input type="email" id="email" name="email" placeholder="Email" required>
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <input type="text" id="contact_no" name="contact_no" placeholder="Contact Number" required>
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" id="dob" name="dob" required>
+                            </div>
+                            
+                            <div class="staff-form-row">
+                                <label for="joined_date">Joined Date</label>
+                                <input type="date" id="joined_date" name="joined_date" required>
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <input type="text" id="address_line1" name="address_line1" placeholder="Address Line 1" required>
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <input type="text" id="address_line2" name="address_line2" placeholder="Address Line 2">
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <input type="text" id="address_line3" name="address_line3" placeholder="Address Line 3">
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <input type="text" id="address_line4" name="address_line4" placeholder="Address Line 4">
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <input type="text" id="address_line5" name="address_line5" placeholder="Address Line 5">
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <select id="designation" name="designation" required>
+                                    <option value="">Select Designation</option>
+                                    <option value="MANAGER">Manager</option>
+                                    <option value="SUPERVISOR">Supervisor</option>
+                                    <option value="TECHNICIAN">Technician</option>
+                                    <option value="WORKER">Worker</option>
+                                </select>
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="FEMALE">Female</option>
+                                    <option value="MALE">Male</option>
+                                    <option value="OTHER">Other</option>
+                                </select>
+                            </div>
+                
+                            <div class="staff-form-row">
+                                <select id="role" name="role" required>
+                                    <option value="">Select Role</option>
+                                    <option value="ADMINISTRATIVE">Administrative</option>
+                                    <option value="MANAGER">Manager</option>
+                                    <option value="OTHER">Other</option>
+                                    <option value="SCIENTIST">Scientist</option>
+                                </select>
+                            </div>
+
+                            <button id="staff-submit" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
              </section>
 
             <!-- ------------------------------------ Fields Form ------------------------------------ -->
