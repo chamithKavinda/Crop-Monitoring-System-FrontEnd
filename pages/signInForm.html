@@ -19,11 +19,25 @@
     </div>
 
     <!-- Login Form -->
-    <div id="loginForm" class="loginForm-container">
-        <img src="/assests/icons/BackButton.png" alt="backButton" class="back-btn" id="backToWelcomePage">
-    </div>
+     <section id="loginForm" class="loginForm-container">
+        <div class="back-btn" id="backToWelcomePage" >
+            <img src="/assests/icons/BackButton.png" alt="backButton" >
+        </div>
 
+        <div class="form-container signin-container">
+            <form id="login-form">
+                <h1 class="heading">Sign in</h1>
+                <input type="email" id="email-login" placeholder="Email" required>
+                <input type="password" id="password-login" placeholder="Password" required>
+                <a href="#">Forgot your password?</a>
+                <button type="button" id="log">Sign in</button>
+            </form>
+        </div>
+        
+     </section>
     
+
+
     <script src="/Navigation.js"></script>
 </body>
 </html>

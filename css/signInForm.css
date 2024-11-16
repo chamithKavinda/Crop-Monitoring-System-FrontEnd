@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:400,800");
+
 /* Welcome Page */
 .carousel-container {
     position: fixed;
@@ -86,3 +88,5 @@
 .swipe-left {
     transform: translateX(-100%);
 }
+
+/* login Form */
