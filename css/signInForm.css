@@ -96,7 +96,7 @@
 /* login Form */
 .loginForm-container{
     background: linear-gradient(
-        rgba(0, 0, 0, 0.4),  /* Top darker layer */
+        rgba(0, 0, 0, 0.2),  /* Top darker layer */
         rgba(0, 0, 0, 1)   /* Bottom darker layer */
     ), url(/assests/images/LoginPageImage.jpg) no-repeat center center;
     background-size: cover;
