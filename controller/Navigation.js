@@ -95,3 +95,25 @@ document.getElementById("UserForm-button").addEventListener("click", function() 
     document.getElementById("VehiclesForm").style.display = "none";
     document.getElementById("EquipmentsForm").style.display = "none";
 });
+
+document.getElementById("SignOutForm-button").addEventListener("click", function () {
+    // Confirm logout
+    const confirmLogout = confirm("Are you sure you want to log out?");
+    
+    // If the user confirms, proceed with logout
+    if (confirmLogout) {
+        document.getElementById("DashboardForm").style.display = "none";
+        document.getElementById("StaffForm").style.display = "none";
+        document.getElementById("CropsForm").style.display = "none";
+        document.getElementById("MonitoringForm").style.display = "none";
+        document.getElementById("VehiclesForm").style.display = "none";
+        document.getElementById("EquipmentsForm").style.display = "none";
+        document.getElementById("UserForm").style.display = "none";
+        
+        // Redirect to the login page
+        window.location.href = "signInForm.html";
+    } else {
+        // Optionally handle if the user cancels the logout
+        console.log("Logout canceled.");
+    }
+});
