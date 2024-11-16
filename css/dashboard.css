@@ -143,3 +143,24 @@ body
 	box-shadow: 35px -35px 0 10px white;
 	pointer-events: none;
 }
+
+/* main */ 
+.main
+{
+	position: absolute;
+	width: calc(100% - 300px);
+	left: 300px;
+	min-height: 100vh;
+	background: var(--white);
+	transition: 0.5s;
+    margin-top: 12px;
+}
+
+.main.active
+{
+	width: calc(100% - 80px);
+	left: 80px;
+}
+
+
+
