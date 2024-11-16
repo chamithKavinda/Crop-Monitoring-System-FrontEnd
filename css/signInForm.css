@@ -61,6 +61,10 @@
     font-weight: 500;
     border-radius: 20px;
     background: none;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
     color: white;
     border: 1px solid white;
     cursor: pointer;
@@ -90,3 +94,93 @@
 }
 
 /* login Form */
+.loginForm-container{
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.4),  /* Top darker layer */
+        rgba(0, 0, 0, 1)   /* Bottom darker layer */
+    ), url(/assests/images/LoginPageImage.jpg) no-repeat center center;
+    background-size: cover;
+    display: flex;;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Montserrat",sans-serif;
+    height: 110vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    margin: -20px 0 50px;
+}
+
+form h1{
+    color: white;
+    font-size: 30px;
+}
+
+a{
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+input{
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 11px;
+    padding: 12px 15px;
+    margin: 10px 0;
+    width: 130%;
+}
+
+input:focus{
+    border: none;
+    outline: 3px solid #6B9071;
+}
+
+
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+}
+
+button{
+    border-radius: 20px;
+    color: white;
+    background: #6B9071;
+    border: 1px solid white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    margin-top: 3px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+button:hover{
+    cursor: pointer;
+    background: #AEC3B0;
+    color: #0F2A1D;
+}
+
+button:active{
+    transform: scale(0.95);
+}
+
+button:focus{
+    outline: none;
+}
+
+/* back button */
+.back-btn{
+    margin-left: -1100px;
+    margin-top: -190px;
+    width: 40px
+}
