@@ -2,21 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Elements for the Field Registration Form
     const fieldRegisterForm = document.getElementById('field-register-form');
     const addFieldButton = document.getElementById('add-field');
-    const closeButton = document.getElementById('fieldRegisterForm-close');
+    const closeButton = document.getElementById('field-register-close');
 
     // Image input and preview mapping
     const imageHandlers = [
         {
-            input: document.getElementById('field_image1'),
-            previewContainer: document.getElementById('image-preview-container1'),
-            preview: document.getElementById('image-preview1'),
-            removeButton: document.getElementById('remove-image1'),
+            input: document.getElementById('field-image1'),
+            previewContainer: document.getElementById('field-image-preview-container1'),
+            preview: document.getElementById('field-image-preview1'),
+            removeButton: document.getElementById('field-remove-image1'),
         },
         {
-            input: document.getElementById('field_image2'),
-            previewContainer: document.getElementById('image-preview-container2'),
-            preview: document.getElementById('image-preview2'),
-            removeButton: document.getElementById('remove-image2'),
+            input: document.getElementById('field-image2'),
+            previewContainer: document.getElementById('field-image-preview-container2'),
+            preview: document.getElementById('field-image-preview2'),
+            removeButton: document.getElementById('field-remove-image2'),
         },
     ];
 
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeButton) {
         closeButton.addEventListener('click', closeForm);
     } else {
-        console.error("Close button (id: 'fieldRegisterForm-close') not found!");
+        console.error("Close button (id: 'field-register-close') not found!");
     }
 
     // Close the form when clicking outside it

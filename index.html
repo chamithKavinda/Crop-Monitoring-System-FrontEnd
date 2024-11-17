@@ -280,53 +280,54 @@
                 </div>
 
                 <!-- Field Registration Form -->
-                <div class="register-form" id="field-register-form">
-                    <div class="register-box">
-                        <span id="fieldRegisterForm-close" class="register-close">&times;</span>
+                <div class="field-register-form" id="field-register-form">
+                    <div class="field-register-box">
+                        <span id="field-register-close" class="field-register-close">&times;</span>
                         
-                        <h2 class="register-title">Register Field</h2>
+                        <h2 class="field-register-title">Register Field</h2>
                         
                         <form id="field-form">
                             <!-- Field Name and Extent Size -->
-                            <div class="form-row">
-                                <input type="text" id="field_name" name="field_name" placeholder="Field Name" required>
-                                <input type="number" id="extend_size" name="extend_size" placeholder="Extent Size" required>
+                            <div class="field-form-row">
+                                <input type="text" id="field-name" name="field-name" placeholder="Field Name" required>
+                                <input type="number" id="field-extent-size" name="field-extent-size" placeholder="Extent Size" required>
                             </div>
 
                             <!-- Field Location -->
-                            <div class="form-row full-width">
-                                <input type="text" id="field_location" name="field_location" placeholder="Location">
+                            <div class="field-form-row field-full-width">
+                                <input type="text" id="field-location" name="field-location" placeholder="Location">
                             </div>
 
                             <!-- Image Upload Fields in One Row -->
-                            <div class="form-row">
-                                <div class="image-upload-group">
-                                    <label for="field_image1">Field Image 1</label>
-                                    <input type="file" id="field_image1" name="field_image1" accept="image/*">
+                            <div class="field-form-row">
+                                <div class="field-image-upload-group">
+                                    <label for="field-image1">Field Image 1</label>
+                                    <input type="file" id="field-image1" name="field-image1" accept="image/*">
                                 </div>
-                                <div class="image-upload-group">
-                                    <label for="field_image2">Field Image 2</label>
-                                    <input type="file" id="field_image2" name="field_image2" accept="image/*">
+                                <div class="field-image-upload-group">
+                                    <label for="field-image2">Field Image 2</label>
+                                    <input type="file" id="field-image2" name="field-image2" accept="image/*">
                                 </div>
                             </div>
 
                             <!-- Image Preview 1 -->
-                            <div class="form-row">
-                                <div id="image-preview-container1" class="image-preview-container" style="display: none;">
-                                    <img id="image-preview1" class="image-preview" alt="Image Preview 1" />
-                                    <button type="button" id="remove-image1" class="remove-image-button">Remove</button>
+                            <div class="field-form-row">
+                                <div id="field-image-preview-container1" class="field-image-preview-container" style="display: none;">
+                                    <img id="field-image-preview1" class="field-image-preview" alt="Field Image Preview 1" />
+                                    <button type="button" id="field-remove-image1" class="field-remove-image-button">Remove</button>
                                 </div>
-                                <div id="image-preview-container2" class="image-preview-container" style="display: none;">
-                                    <img id="image-preview2" class="image-preview" alt="Image Preview 2" />
-                                    <button type="button" id="remove-image2" class="remove-image-button">Remove</button>
+                                <div id="field-image-preview-container2" class="field-image-preview-container" style="display: none;">
+                                    <img id="field-image-preview2" class="field-image-preview" alt="Field Image Preview 2" />
+                                    <button type="button" id="field-remove-image2" class="field-remove-image-button">Remove</button>
                                 </div>
                             </div>
 
                             <!-- Submit Button -->
-                            <button id="field-register-submit" type="submit" class="register-submit">Submit</button>
+                            <button id="field-register-submit" type="submit" class="field-register-submit">Submit</button>
                         </form>
                     </div>
                 </div>
+
                 
                 <!-- Field Table -->
                 <div class="table-container">
@@ -358,7 +359,70 @@
                     <button id="add-crop" class="add-crop-button">Add Crop Details</button>
                 </div>
 
-                
+                <!-- Crop Registration Form -->
+                <div class="register-form" id="crop-register-form">
+                    <div class="register-box">
+                        <span id="cropRegisterForm-close" class="register-close">&times;</span>
+
+                        <h2 class="register-title">Register Crop</h2>
+
+                        <form id="crop-form">
+                            <!-- Crop Code and Common Name -->
+                            <div class="form-row">
+                                <input type="text" id="crop_code" name="crop_code" placeholder="Crop Code" required>
+                                <input type="text" id="crop_common_name" name="crop_common_name" placeholder="Common Name" required>
+                            </div>
+
+                            <!-- Scientific Name and Season -->
+                            <div class="form-row">
+                                <input type="text" id="crop_scientific_name" name="crop_scientific_name" placeholder="Scientific Name" required>
+                                <input type="text" id="crop_season" name="crop_season" placeholder="Season" required>
+                            </div>
+
+                            <!-- Category -->
+                            <div class="form-row full-width">
+                                <input type="text" id="category" name="category" placeholder="Category">
+                            </div>
+
+                            <!-- Field Code Dropdown -->
+                            <div class="form-row full-width">
+                                <label for="field_code">Field Code</label>
+                                <select id="field_code" name="field_code" required>
+                                    <option value="">Select Field Code</option>
+                                    <!-- Add field code options dynamically here -->
+                                </select>
+                            </div>
+
+                            <!-- Image Upload Fields in One Row -->
+                            <div class="form-row">
+                                <div class="image-upload-group">
+                                    <label for="crop_image1">Crop Image 1</label>
+                                    <input type="file" id="crop_image1" name="crop_image1" accept="image/*">
+                                </div>
+                                <div class="image-upload-group">
+                                    <label for="crop_image2">Crop Image 2</label>
+                                    <input type="file" id="crop_image2" name="crop_image2" accept="image/*">
+                                </div>
+                            </div>
+
+                            <!-- Image Previews -->
+                            <div class="form-row">
+                                <div id="image-preview-container1" class="image-preview-container" style="display: none;">
+                                    <img id="image-preview1" class="image-preview" alt="Image Preview 1" />
+                                    <button type="button" id="remove-image1" class="remove-image-button">Remove</button>
+                                </div>
+                                <div id="image-preview-container2" class="image-preview-container" style="display: none;">
+                                    <img id="image-preview2" class="image-preview" alt="Image Preview 2" />
+                                    <button type="button" id="remove-image2" class="remove-image-button">Remove</button>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button id="crop-register-submit" type="submit" class="register-submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
                 
 
 

@@ -37,7 +37,8 @@
 }
 
 /* field registration form */
-.register-form {
+/* Field Registration Form */
+.field-register-form {
     display: none;
     position: fixed;
     top: 0;
@@ -50,11 +51,12 @@
     align-items: center;
 }
 
-.register-form.active {
+.field-register-form.active {
     display: flex;
 }
 
-.register-box {
+/* Field Register Box */
+.field-register-box {
     background: #fff;
     border-radius: 10px;
     width: 650px;
@@ -62,10 +64,11 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     max-height: 90%;
     overflow-y: auto;
+    position: relative; /* Ensure the close button is positioned relative to this */
 }
 
 /* Close Button */
-.register-close {
+.field-register-close {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -73,14 +76,15 @@
     font-weight: bold;
     color: #6B9071;
     cursor: pointer;
+    z-index: 1010; /* Ensure the close button is above other content */
 }
 
-.register-close:hover {
+.field-register-close:hover {
     color: #FF4A4A;
 }
 
 /* Form Title */
-.register-title {
+.field-register-title {
     text-align: center;
     font-size: 22px;
     font-weight: bold;
@@ -91,13 +95,13 @@
 }
 
 /* Form Rows */
-.form-row {
+.field-form-row {
     display: flex;
     gap: 20px;
     margin-bottom: 15px;
 }
 
-.form-row input {
+.field-form-row input {
     flex: 1;
     padding: 10px;
     border: 1px solid #AEC3B0;
@@ -107,39 +111,39 @@
     background-color: #f9f9f9;
 }
 
-.form-row input:focus {
+.field-form-row input:focus {
     outline: none;
     border-color: #6B9071;
     background-color: #E3EED4;
 }
 
 /* Full-Width Row */
-.form-row.full-width {
+.field-form-row.field-full-width {
     flex-direction: column;
 }
 
 /* Image Upload Group */
-.image-upload-group {
+.field-image-upload-group {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.image-upload-group label {
+.field-image-upload-group label {
     font-size: 14px;
     font-weight: bold;
     color: #6B9071;
 }
 
-.image-preview-container {
+.field-image-preview-container {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.image-preview {
+.field-image-preview {
     max-width: 100%;
     max-height: 150px;
     border: 1px solid #AEC3B0;
@@ -147,7 +151,7 @@
     margin-bottom: 10px;
 }
 
-.remove-image-button {
+.field-remove-image-button {
     background-color: #FF4A4A;
     color: #fff;
     padding: 5px 10px;
@@ -157,12 +161,12 @@
     cursor: pointer;
 }
 
-.remove-image-button:hover {
+.field-remove-image-button:hover {
     background-color: #FF7070;
 }
 
 /* Submit Button */
-.register-submit {
+.field-register-submit {
     width: 100%;
     padding: 12px;
     font-size: 16px;
@@ -175,9 +179,10 @@
     text-transform: uppercase;
 }
 
-.register-submit:hover {
+.field-register-submit:hover {
     background: #AEC3B0;
 }
+
 
 
 
