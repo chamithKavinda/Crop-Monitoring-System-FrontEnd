@@ -275,7 +275,7 @@
             <!-- ------------------------------------ Fields Form ------------------------------------ -->
              <section id="FieldsForm">
                 <div id="fieldHeaderSection" class="fieldHeader-section">
-                    <h2> Field <span>Manage</span></h2>
+                    <h2> Fields <span>Manage</span></h2>
                     <button id="add-field" class="add-field-button">Add Field Details</button>
                 </div>
 
@@ -355,7 +355,7 @@
             <!-- ------------------------------------ Crops Form ------------------------------------ -->
              <section id="CropsForm">
                 <div id="cropHeaderSection" class="cropHeader-section">
-                    <h2> Crop <span>Manage</span></h2>
+                    <h2> Crops <span>Manage</span></h2>
                     <button id="add-crop" class="add-crop-button">Add Crop Details</button>
                 </div>
 
@@ -418,6 +418,28 @@
                     </div>
                 </div>
 
+                <!-- Crop Table -->
+                <div class="table-container">
+                    <table class="crop-table">
+                        <thead>
+                            <tr>
+                                <th>Crop Code</th>
+                                <th>Common Name</th>
+                                <th>Scientific Name</th>
+                                <th>Category</th>
+                                <th>Season</th>
+                                <th>Field Code</th>
+                                <th>Crop Image</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows with crop data will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
 
 
              </section>
@@ -429,7 +451,10 @@
 
             <!-- ------------------------------------ Vehicles Form ------------------------------------ -->
              <section id="VehiclesForm">
-                <h1>Vehicles</h1>
+                <div id="vehicleHeaderSection" class="vehicleHeader-section">
+                    <h2> Vehicles <span>Manage</span></h2>
+                    <button id="add-vehicle" class="add-vehicle-button">Add Crop Details</button>
+                </div>
              </section>
             
             <!-- ------------------------------------ Equipments Form ------------------------------------ -->
@@ -448,8 +473,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.51.0/apexcharts.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="/controller/navigation.js"></script>
     <script src="/controller/dashboardForm.js"></script>
+    <script src="/controller/navigation.js"></script>
     <script src="/controller/staffForm.js"></script>
     <script src="/controller/fieldForm.js"></script>
     <script src="/controller/cropForm.js"></script>
