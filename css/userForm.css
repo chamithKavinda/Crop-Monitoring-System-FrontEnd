@@ -188,7 +188,6 @@
 }
 
 
-/* table */
 /* Table Container */
 .table-container {
     margin: 20px;
@@ -218,6 +217,28 @@
 
 .user-table tr:hover {
     background-color: #f5f5f5;
+}
+
+.user-table th:nth-child(1), 
+.user-table td:nth-child(1) {
+    width: 30%; 
+}
+
+.user-table th:nth-child(2),
+.user-table td:nth-child(2) {
+    width: 25%; 
+}
+
+.user-table th:nth-child(3), 
+.user-table td:nth-child(3) {
+    width: 22%;
+}
+
+.user-table th:nth-child(4), 
+.user-table td:nth-child(4),
+.user-table th:nth-child(5), 
+.user-table td:nth-child(5) {
+    width: 15%; 
 }
 
 /* Button Styling */
