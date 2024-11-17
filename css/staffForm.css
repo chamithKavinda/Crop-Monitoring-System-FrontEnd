@@ -98,8 +98,7 @@
 }
 
 .staff-form-row {
-    display: flex;
-    flex-direction: column;
+    
 }
 
 .staff-form-row label {
