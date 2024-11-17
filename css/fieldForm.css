@@ -64,7 +64,7 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     max-height: 90%;
     overflow-y: auto;
-    position: relative; /* Ensure the close button is positioned relative to this */
+    position: relative; 
 }
 
 /* Close Button */
@@ -76,7 +76,7 @@
     font-weight: bold;
     color: #6B9071;
     cursor: pointer;
-    z-index: 1010; /* Ensure the close button is above other content */
+    z-index: 1010;
 }
 
 .field-register-close:hover {
@@ -210,13 +210,13 @@
     padding: 10px;
     border: 1px solid white;
     text-align: center;
-    white-space: nowrap; /* Prevent wrapping */
+    white-space: nowrap;
 }
 
 .field-table th {
     background-color: #6B9071;
     color: white;
-    position: sticky; /* Keep the header fixed */
+    position: sticky;
     top: 0;
     z-index: 2;
 }

@@ -379,18 +379,21 @@
                                 <input type="text" id="crop-season" name="crop-season" placeholder="Season" required>
                             </div>
 
-                            <!-- Category -->
-                            <div class="crop-form-row full-width">
-                                <input type="text" id="crop-category" name="crop-category" placeholder="Category">
-                            </div>
+                            <!-- Category and Field Code Dropdown Fields in One Row -->
+                            <div class="crop-form-row category-field">
+                                <!-- Category Field -->
+                                <div class="crop-form-row">
+                                    <input type="text" id="crop-category" name="crop-category" placeholder="Category">
+                                </div>
 
-                            <!-- Field Code Dropdown -->
-                            <div class="crop-form-row full-width">
-                                <label for="crop-field-code">Field Code</label>
-                                <select id="crop-field-code" name="crop-field-code" required>
-                                    <option value="">Select Field Code</option>
-                                    <!-- Add field code options dynamically here -->
-                                </select>
+                                <!-- Field Code Dropdown -->
+                                <div class="crop-form-row">
+                                    <!-- <label for="crop-field-code">Field Code</label> -->
+                                    <select id="crop-field-code" name="crop-field-code" required>
+                                        <option value="">Select Field Code</option>
+                                        <!-- Add field code options dynamically here -->
+                                    </select>
+                                </div>
                             </div>
 
                             <!-- Image Upload Fields in One Row -->
@@ -398,10 +401,6 @@
                                 <div class="crop-image-upload-group">
                                     <label for="crop-image1">Crop Image 1</label>
                                     <input type="file" id="crop-image1" name="crop-image1" accept="image/*">
-                                </div>
-                                <div class="crop-image-upload-group">
-                                    <label for="crop-image2">Crop Image 2</label>
-                                    <input type="file" id="crop-image2" name="crop-image2" accept="image/*">
                                 </div>
                             </div>
 
@@ -411,10 +410,6 @@
                                     <img id="crop-image-preview1" class="crop-image-preview" alt="Image Preview 1" />
                                     <button type="button" id="crop-remove-image1" class="crop-remove-image-button">Remove</button>
                                 </div>
-                                <div id="crop-image-preview-container2" class="crop-image-preview-container" style="display: none;">
-                                    <img id="crop-image-preview2" class="crop-image-preview" alt="Image Preview 2" />
-                                    <button type="button" id="crop-remove-image2" class="crop-remove-image-button">Remove</button>
-                                </div>
                             </div>
 
                             <!-- Submit Button -->
@@ -423,8 +418,6 @@
                     </div>
                 </div>
 
-
-                
 
 
              </section>

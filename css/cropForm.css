@@ -37,4 +37,155 @@
 }
 
 /* Registration Form */
+/* Crop Register Form */
+/* Crop Register Form */
+/* Crop Registration Form */
+.crop-register-form {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.crop-register-form.active {
+    display: flex;
+}
+
+.crop-register-box {
+    background: #fff;
+    border-radius: 10px;
+    width: 650px;
+    padding: 20px 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Close Button */
+.crop-register-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #6B9071;
+    cursor: pointer;
+    z-index: 1010;
+}
+
+.crop-register-close:hover {
+    color: #FF4A4A;
+}
+
+/* Form Title */
+.crop-register-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #6B9071;
+    border-bottom: 2px solid #6B9071;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Form Rows */
+.crop-form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.crop-form-row input,
+.crop-form-row select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #AEC3B0;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #6B9071;
+    background-color: #f9f9f9;
+}
+
+.crop-form-row input:focus,
+.crop-form-row select:focus {
+    outline: none;
+    border-color: #6B9071;
+    background-color: #E3EED4;
+}
+
+/* Category and Field Code in One Row */
+.crop-form-row.category-field {
+    display: flex;
+    gap: 93px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+/* Image Upload Group */
+.crop-image-upload-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.crop-image-upload-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6B9071;
+}
+
+.crop-image-preview-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.crop-image-preview {
+    max-width: 100%;
+    max-height: 150px;
+    border: 1px solid #AEC3B0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.crop-remove-image-button {
+    background-color: #FF4A4A;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.crop-remove-image-button:hover {
+    background-color: #D63737;
+}
+
+/* Submit Button */
+.crop-register-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #6B9071;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.crop-register-submit:hover {
+    background-color: #55725b;
+}
+
+
+
 
