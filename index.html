@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/vehicleForm.css">
     <link rel="stylesheet" href="/css/equipmentForm.css">
     <link rel="stylesheet" href="/css/userForm.css">
-    <link rel="stylesheet" href="/css/monitoringForm.css">
+    <link rel="stylesheet" href="/css/cropDetailsForm.css">
 </head>
 <body>
     <div id="container" class="container">
@@ -53,7 +53,7 @@
                 <li>
 					<a href="#" id="MonitoringForm-button">
 						<span class="icon"><ion-icon name="stats-chart-outline"></ion-icon></span>
-						<span class="title">Monitoring</span>
+						<span class="title">Crop Details</span>
 					</a>
 				</li>
                 <li>
@@ -443,9 +443,12 @@
 
              </section>
 
-            <!-- ------------------------------------ Monitoring Form ------------------------------------ -->
-             <section id="MonitoringForm">
-                <h1>Monitoring</h1>
+            <!-- ------------------------------------ Crop Details Form ------------------------------------ -->
+             <section id="CropDetailsForm">
+                <div id="cropdetailsHeaderSection" class="cropdetailsHeader-section">
+                    <h2> Crop Details <span> Manage </span></h2>
+                    <button id="add-cropdetails" class="add-cropdetails-button">Add Crop Details</button>
+                </div>
              </section>
 
             <!-- ------------------------------------ Vehicles Form ------------------------------------ -->
@@ -714,6 +717,6 @@
     <script src="/controller/vehicleForm.js"></script>
     <script src="/controller/equipment.js"></script>
     <script src="/controller/userForm.js"></script>
-    <script src="/controller/monitoringForm.js"></script>
+    <script src="/controller/cropDetailsForm.js"></script>
 </body>
 </html>
