@@ -1,9 +1,9 @@
-// Function to show and close registration form
 document.addEventListener('DOMContentLoaded', () => {
     const addStaffButton = document.getElementById('add-staff');
     const staffRegisterForm = document.getElementById('staffRegisterForm');
     const closeButton = document.getElementById('staffRegisterForm-close');
 
+    // Function to show and close registration form
     const openForm = () => {
         staffRegisterForm.style.display = 'flex'; 
     };
@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     closeForm();
+
+    
+
 });
 
 
