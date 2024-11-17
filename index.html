@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/staffForm.css">
     <link rel="stylesheet" href="/css/fieldForm.css">
     <link rel="stylesheet" href="/css/cropForm.css">
+    <link rel="stylesheet" href="/css/vehicleForm.css">
 </head>
 <body>
     <div id="container" class="container">
@@ -367,12 +368,6 @@
                         <h2 class="crop-register-title">Register Crop</h2>
 
                         <form id="crop-form">
-                            <!-- Crop Code and Common Name -->
-                            <div class="crop-form-row">
-                                <input type="text" id="crop-code" name="crop-code" placeholder="Crop Code" required>
-                                <input type="text" id="crop-common-name" name="crop-common-name" placeholder="Common Name" required>
-                            </div>
-
                             <!-- Scientific Name and Season -->
                             <div class="crop-form-row">
                                 <input type="text" id="crop-scientific-name" name="crop-scientific-name" placeholder="Scientific Name" required>
@@ -453,8 +448,58 @@
              <section id="VehiclesForm">
                 <div id="vehicleHeaderSection" class="vehicleHeader-section">
                     <h2> Vehicles <span>Manage</span></h2>
-                    <button id="add-vehicle" class="add-vehicle-button">Add Crop Details</button>
+                    <button id="add-vehicle" class="add-vehicle-button">Add Vehicles</button>
                 </div>
+
+                <!-- Vehicle Registration Form -->
+                <div class="vehicle-register-form" id="vehicle-register-form">
+                    <div class="vehicle-register-box">
+                        <span id="vehicle-register-close" class="vehicle-register-close">&times;</span>
+
+                        <h2 class="vehicle-register-title">Register Vehicle</h2>
+
+                        <form id="vehicle-form">
+                            <!-- Vehicle Code and License Plate Number -->
+                            <div class="vehicle-form-row">
+                                <input type="text" id="license-plate-number" name="license-plate-number" placeholder="License Plate Number" required>
+                            </div>
+
+                            <!-- Fuel Type and Status -->
+                            <div class="vehicle-form-row">
+                                <select id="fuel-type" name="fuel-type" required>
+                                    <option value="">Select Fuel Type</option>
+                                    <option value="Petrol">Petrol</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Electric">Electric</option>
+                                    <!-- Add more options if needed -->
+                                </select>
+                                <select id="status" name="status" required>
+                                    <option value="">Select Status</option>
+                                    <option value="Active">ACTIVE</option>
+                                    <option value="Inactive">INACTIVE</option>
+                                </select>
+                            </div>
+
+                            <!-- Vehicle Category and Staff ID -->
+                            <div class="vehicle-form-row category-staff">
+                                <input type="text" id="vehicle-category" name="vehicle-category" placeholder="Vehicle Category" required>
+                                <select id="staff-id" name="staff-id" required>
+                                    <option value="">Select Staff ID</option>
+                                    <!-- Populate staff IDs dynamically -->
+                                </select>
+                            </div>
+
+                            <!-- Remarks -->
+                            <div class="vehicle-form-row full-width">
+                                <textarea id="remarks" name="remarks" placeholder="Remarks" rows="3"></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button id="vehicle-register-submit" type="submit" class="vehicle-register-submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
              </section>
             
             <!-- ------------------------------------ Equipments Form ------------------------------------ -->
@@ -478,5 +523,6 @@
     <script src="/controller/staffForm.js"></script>
     <script src="/controller/fieldForm.js"></script>
     <script src="/controller/cropForm.js"></script>
+    <script src="/controller/vehicleForm.js"></script>
 </body>
 </html>
