@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crop Monitoring System</title>
     <link rel="icon" href="/assests/icons/logo-icon.png">
-    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/dashboardForm.css">
     <link rel="stylesheet" href="/css/staffForm.css">
+    <link rel="stylesheet" href="/css/fieldForm.css">
 </head>
 <body>
     <div id="container" class="container">
@@ -272,7 +273,10 @@
 
             <!-- ------------------------------------ Fields Form ------------------------------------ -->
              <section id="FieldsForm">
-                <h1>Fields</h1>
+                <div id="fieldHeaderSection" class="fieldHeader-section">
+                    <h2> Field <span>Manage</span></h2>
+                    <button id="add-field" class="add-field-button">Add Field Details</button>
+                </div>
              </section>
 
             <!-- ------------------------------------ Crops Form ------------------------------------ -->
@@ -306,8 +310,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.51.0/apexcharts.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="/controller/Navigation.js"></script>
-    <script src="/controller/Dashboard.js"></script>
-    <script src="/controller/Staff.js"></script>
+    <script src="/controller/navigation.js"></script>
+    <script src="/controller/dashboardForm.js"></script>
+    <script src="/controller/staffForm.js"></script>
+    <script src="/controller/fieldForm.js"></script>
 </body>
 </html>
