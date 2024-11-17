@@ -37,3 +37,116 @@
     background: #AEC3B0;
     color: #375534;
 }
+
+/* Registration form */
+.equipment-register-form {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.equipment-register-form.active {
+    display: flex;
+}
+
+.equipment-register-box {
+    background: #fff;
+    border-radius: 10px;
+    width: 650px;
+    padding: 20px 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Close Button */
+.equipment-register-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #6B9071;
+    cursor: pointer;
+    z-index: 1010;
+}
+
+.equipment-register-close:hover {
+    color: #FF4A4A;
+}
+
+/* Form Title */
+.equipment-register-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #6B9071;
+    border-bottom: 2px solid #6B9071;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Form Rows */
+.equipment-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.equipment-form-row input,
+.equipment-form-row select,
+.equipment-form-row textarea {
+    flex: 1;
+    padding: 10px;
+    width: 290px;
+    border: 1px solid #AEC3B0;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #6B9071;
+    background-color: #f9f9f9;
+}
+
+.equipment-form-row input:focus,
+.equipment-form-row select:focus,
+.equipment-form-row textarea:focus {
+    outline: none;
+    border-color: #6B9071;
+    background-color: #E3EED4;
+}
+
+/* Full-Width Row */
+.equipment-form-row.full-width {
+    flex-direction: column;
+}
+
+/* Submit Button */
+.equipment-register-submit {
+    width: 150px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #6B9071;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+}
+
+.equipment-register-submit:hover {
+    background-color: #55725b;
+}
+

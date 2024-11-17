@@ -531,6 +531,70 @@
                     <h2> Equipments <span>Manage</span></h2>
                     <button id="add-equipment" class="add-equipment-button">Add Equipments</button>
                 </div>
+
+                <!-- Equipment Registration Form -->
+                <div class="equipment-register-form" id="equipment-register-form">
+                    <div class="equipment-register-box">
+                        <span id="equipment-register-close" class="equipment-register-close">&times;</span>
+
+                        <h2 class="equipment-register-title">Register Equipment</h2>
+
+                        <form id="equipment-form">
+                            <!-- Equipment ID and Name -->
+                            <div class="equipment-form-row">
+                                <input type="text" id="equipment-name" name="equipment-name" placeholder="Equipment Name" required>
+                            </div>
+
+                            <!-- Type Dropdown and Status Dropdown -->
+                            <div class="equipment-form-row">
+                                <!-- Type Dropdown -->
+                                <div class="equipment-dropdown-group">
+                                    <label for="equipment-type"></label>
+                                    <select id="equipment-type" name="equipment-type" required>
+                                        <option value="">Select Type</option>
+                                        <option value="ELECTRICAL">ELECTRICAL</option>
+                                        <option value="MECHANICAL">MECHANICAL</option>
+                                    </select>
+                                </div>
+
+                                <!-- Status Dropdown -->
+                                <div class="equipment-dropdown-group">
+                                    <label for="equipment-status"></label>
+                                    <select id="equipment-status" name="equipment-status" required>
+                                        <option value="">Select Status</option>
+                                        <option value="ACTIVE">ACTIVE</option>
+                                        <option value="INACTIVE">INACTIVE</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Field Code and Staff ID Dropdowns -->
+                            <div class="equipment-form-row">
+                                <!-- Field Code Dropdown -->
+                                <div class="equipment-dropdown-group">
+                                    <label for="equipment-field-code"></label>
+                                    <select id="equipment-field-code" name="equipment-field-code">
+                                        <option value="">Select Field Code</option>
+                                        <!-- Add field code options dynamically here -->
+                                    </select>
+                                </div>
+
+                                <!-- Staff ID Dropdown -->
+                                <div class="equipment-dropdown-group">
+                                    <label for="equipment-staff-id"></label>
+                                    <select id="equipment-staff-id" name="equipment-staff-id">
+                                        <option value="">Select Staff ID</option>
+                                        <!-- Add staff ID options dynamically here -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button id="equipment-register-submit" type="submit" class="equipment-register-submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
              </section> 
 
             <!-- ------------------------------------ User Form ------------------------------------ -->
