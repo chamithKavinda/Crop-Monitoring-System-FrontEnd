@@ -37,9 +37,6 @@
 }
 
 /* Registration Form */
-/* Crop Register Form */
-/* Crop Register Form */
-/* Crop Registration Form */
 .crop-register-form {
     display: none;
     position: fixed;
@@ -172,14 +169,30 @@
 
 /* Submit Button */
 .crop-register-submit {
-    width: 100%;
+    /* width: 100%;
     padding: 12px;
     background-color: #6B9071;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
+    cursor: pointer; */
+    width: 150px; 
+    padding: 10px; 
+    font-size: 14px;
+    /* margin-left: 600px; */
+    font-weight: bold;
+    background-color: #6B9071;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 220px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    grid-column: span 3; 
+    justify-self: center;
 }
 
 .crop-register-submit:hover {

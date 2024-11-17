@@ -166,7 +166,7 @@
 
 /* Submit Button */
 .field-register-submit {
-    width: 100%;
+    /* width: 100%;
     padding: 12px;
     font-size: 16px;
     font-weight: bold;
@@ -175,7 +175,23 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-transform: uppercase; */
+    width: 150px; 
+    padding: 10px; 
+    font-size: 14px;
+    /* margin-left: 600px; */
+    font-weight: bold;
+    background-color: #6B9071;
+    color: white;
+    border: none;
+    margin-left: 230px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    grid-column: span 3; 
+    justify-self: center;
 }
 
 .field-register-submit:hover {
