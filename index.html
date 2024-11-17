@@ -625,6 +625,45 @@
                     <h2> Users <span>Manage</span></h2>
                     <button id="add-user" class="add-user-button">Add Users</button>
                 </div>
+
+                <!-- User Registration Form -->
+                <div class="user-register-form" id="user-register-form">
+                    <div class="user-register-box">
+                        <span id="user-register-close" class="user-register-close">&times;</span>
+
+                        <h2 class="user-register-title">Register User</h2>
+
+                        <form id="user-form">
+                            <!-- Email -->
+                            <div class="user-form-row">
+                                <input type="email" id="user-email" name="user-email" placeholder="Email" required>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="user-form-row">
+                                <input type="password" id="user-password" name="user-password" placeholder="Password" required>
+                            </div>
+
+                            <!-- Role Dropdown -->
+                            <div class="user-form-row">
+                                <div class="user-dropdown-group">
+                                    <label for="user-role"></label>
+                                    <select id="user-role" name="user-role" required>
+                                        <option value="">Select Role</option>
+                                        <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+                                        <option value="MANAGER">MANAGER</option>
+                                        <option value="OTHER">OTHER</option>
+                                        <option value="SCIENTIST">SCIENTIST</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button id="user-register-submit" type="submit" class="user-register-submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
              </section>  
         </div>
     </div>
