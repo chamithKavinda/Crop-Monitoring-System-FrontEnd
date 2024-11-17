@@ -1,78 +1,93 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Elements for the Field Registration Form
-    const fieldRegisterForm = document.getElementById('fieldRegisterForm');
+    const fieldRegisterForm = document.getElementById('field-register-form');
     const addFieldButton = document.getElementById('add-field');
     const closeButton = document.getElementById('fieldRegisterForm-close');
 
-    // Image 1 Elements
-    const fieldImageInput1 = document.getElementById('field_image1');
-    const imagePreviewContainer1 = document.getElementById('image-preview-container1');
-    const imagePreview1 = document.getElementById('image-preview1');
-    const removeImageButton1 = document.getElementById('remove-image1');
+    // Image input and preview mapping
+    const imageHandlers = [
+        {
+            input: document.getElementById('field_image1'),
+            previewContainer: document.getElementById('image-preview-container1'),
+            preview: document.getElementById('image-preview1'),
+            removeButton: document.getElementById('remove-image1'),
+        },
+        {
+            input: document.getElementById('field_image2'),
+            previewContainer: document.getElementById('image-preview-container2'),
+            preview: document.getElementById('image-preview2'),
+            removeButton: document.getElementById('remove-image2'),
+        },
+    ];
 
-    // Image 2 Elements
-    const fieldImageInput2 = document.getElementById('field_image2');
-    const imagePreviewContainer2 = document.getElementById('image-preview-container2');
-    const imagePreview2 = document.getElementById('image-preview2');
-    const removeImageButton2 = document.getElementById('remove-image2');
-
-    // Open the registration form
+    // Function to open the registration form
     const openForm = () => {
+        console.log('Opening form...');
         fieldRegisterForm.classList.add('active');
     };
 
-    // Close the registration form
+    // Function to close the registration form
     const closeForm = () => {
+        console.log('Closing form...');
         fieldRegisterForm.classList.remove('active');
     };
 
-    addFieldButton.addEventListener('click', openForm);
+    // Initialize image preview and removal functionality
+    const initializeImageHandlers = ({ input, previewContainer, preview, removeButton }) => {
+        // Handle image preview
+        input.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                console.log(`Selected file for ${input.id}:`, file);
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
 
-    closeButton.addEventListener('click', closeForm);
+        // Handle image removal
+        removeButton.addEventListener('click', () => {
+            console.log(`Removing image for ${input.id}`);
+            input.value = '';
+            preview.src = '';
+            previewContainer.style.display = 'none';
+        });
+    };
 
+    // Add event listeners for opening and closing the form
+    if (addFieldButton) {
+        addFieldButton.addEventListener('click', openForm);
+    } else {
+        console.error("Add Field button (id: 'add-field') not found!");
+    }
+
+    if (closeButton) {
+        closeButton.addEventListener('click', closeForm);
+    } else {
+        console.error("Close button (id: 'fieldRegisterForm-close') not found!");
+    }
+
+    // Close the form when clicking outside it
     window.addEventListener('click', (event) => {
         if (event.target === fieldRegisterForm) {
             closeForm();
         }
     });
 
-    // Image Preview for Image 1
-    fieldImageInput1.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                imagePreview1.src = e.target.result;
-                imagePreviewContainer1.style.display = 'block';
-            };
-            reader.readAsDataURL(file);
+    // Initialize all image handlers
+    imageHandlers.forEach(handler => {
+        if (
+            handler.input &&
+            handler.previewContainer &&
+            handler.preview &&
+            handler.removeButton
+        ) {
+            initializeImageHandlers(handler);
+        } else {
+            console.error('Missing one or more elements in an image handler:', handler);
         }
-    });
-
-    // Image Preview for Image 2
-    fieldImageInput2.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                imagePreview2.src = e.target.result;
-                imagePreviewContainer2.style.display = 'block';
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // Remove Image 1
-    removeImageButton1.addEventListener('click', () => {
-        fieldImageInput1.value = '';
-        imagePreview1.src = '';
-        imagePreviewContainer1.style.display = 'none';
-    });
-
-    // Remove Image 2
-    removeImageButton2.addEventListener('click', () => {
-        fieldImageInput2.value = '';
-        imagePreview2.src = '';
-        imagePreviewContainer2.style.display = 'none';
     });
 });

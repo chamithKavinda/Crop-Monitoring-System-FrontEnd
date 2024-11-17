@@ -37,8 +37,8 @@
 }
 
 /* field registration form */
-.field-register-form {
-    display: none; 
+.register-form {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -50,37 +50,22 @@
     align-items: center;
 }
 
-/* Show the form when active */
-.field-register-form.active {
-    display: flex; 
-}    
+.register-form.active {
+    display: flex;
+}
 
-/* Field Registration Form Styling */
-.field-register-box {
+.register-box {
     background: #fff;
     border-radius: 10px;
-    width: 400px;
-    padding: 20px;
+    width: 650px;
+    padding: 20px 30px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-    animation: scaleUp 0.3s ease-in-out;
-    max-height: 500px;
+    max-height: 90%;
     overflow-y: auto;
 }
 
-@keyframes scaleUp {
-    0% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* Form Close Button */
-.field-register-close {
+/* Close Button */
+.register-close {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -88,109 +73,113 @@
     font-weight: bold;
     color: #6B9071;
     cursor: pointer;
-    transition: color 0.3s ease;
 }
 
-.field-register-close:hover {
-    color: #ff4a4a;
+.register-close:hover {
+    color: #FF4A4A;
 }
 
 /* Form Title */
-#field-register-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #6B9071;
+.register-title {
     text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #6B9071;
     border-bottom: 2px solid #6B9071;
     padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-/* Field Form Rows */
-.field-form-row {
+/* Form Rows */
+.form-row {
+    display: flex;
+    gap: 20px;
     margin-bottom: 15px;
 }
 
-.field-form-row label {
-    display: block;
-    font-weight: 500;
-    color: #6B9071;
-    margin-bottom: 5px;
-}
-
-.field-form-row input,
-.field-form-row select {
-    width: 100%;
+.form-row input {
+    flex: 1;
     padding: 10px;
-    font-size: 14px;
     border: 1px solid #AEC3B0;
     border-radius: 5px;
-    box-sizing: border-box;
+    font-size: 14px;
+    color: #6B9071;
     background-color: #f9f9f9;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.field-form-row input:focus,
-.field-form-row select:focus {
-    border-color: #AEC3B0;
-    background-color: #E3EED4;
+.form-row input:focus {
     outline: none;
+    border-color: #6B9071;
+    background-color: #E3EED4;
 }
 
-/* Submit Button */
-#field-register-submit {
-    width: 100%;
-    padding: 10px;
-    background-color: #6B9071;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
+/* Full-Width Row */
+.form-row.full-width {
+    flex-direction: column;
 }
 
-#field-register-submit:hover {
-    cursor: pointer;
-    background: #AEC3B0;
-    color: #375534;
-}
-
-/* Image Preview Container */
-.image-preview-container {
+/* Image Upload Group */
+.image-upload-group {
+    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    position: relative;
+    flex-direction: column;
+    gap: 5px;
 }
 
-/* Image Preview */
+.image-upload-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6B9071;
+}
+
+.image-preview-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .image-preview {
     max-width: 100%;
-    height: auto;
     max-height: 150px;
+    border: 1px solid #AEC3B0;
+    border-radius: 5px;
     margin-bottom: 10px;
 }
 
-/* Remove Image Button */
 .remove-image-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgba(255, 0, 0, 0.7);
+    background-color: #FF4A4A;
     color: #fff;
-    font-size: 12px;
     padding: 5px 10px;
+    font-size: 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .remove-image-button:hover {
-    background-color: rgba(255, 0, 0, 1);
+    background-color: #FF7070;
 }
+
+/* Submit Button */
+.register-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #6B9071;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.register-submit:hover {
+    background: #AEC3B0;
+}
+
+
 
 /* for Field Table */
 /* ------------------ Field Details Table ------------------ */
