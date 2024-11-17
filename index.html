@@ -157,7 +157,7 @@
                     <button id="add-staff" class="add-staff-button">Add Staff Member</button>
                 </div>
                 
-                <!-- -------------- Add Customer Form -------------- -->
+                <!-- -------------- Add Staff Member Form -------------- -->
                 <div id="staffRegisterForm" class="staffRegisterForm">
                     <div class="registerForm">
                         <span id="staffRegisterForm-close" class="staff-close">&times;</span>
@@ -277,6 +277,44 @@
                     <h2> Field <span>Manage</span></h2>
                     <button id="add-field" class="add-field-button">Add Field Details</button>
                 </div>
+
+                <!-- Add Field Details Form -->
+                <div id="fieldRegisterForm" class="field-register-form">
+                    <div class="field-register-box">
+                        <span id="fieldRegisterForm-close" class="field-register-close">&times;</span>
+                        <h2 id="field-register-title">Register Field</h2>
+                
+                        <form id="field-form">
+                            <div class="field-form-row">
+                                <label for="field_name">Field Name</label>
+                                <input type="text" id="field_name" name="field_name" placeholder="Field Name" required>
+                            </div>
+                
+                            <div class="field-form-row">
+                                <label for="extend_size">Extent Size</label>
+                                <input type="number" id="extend_size" name="extend_size" placeholder="Extent Size" required>
+                            </div>
+                
+                            <div class="field-form-row">
+                                <label for="field_image1">Field Image 1</label>
+                                <input type="file" id="field_image1" name="field_image1" accept="image/*">
+                            </div>
+                
+                            <div class="field-form-row">
+                                <label for="field_image2">Field Image 2</label>
+                                <input type="file" id="field_image2" name="field_image2" accept="image/*">
+                            </div>
+                
+                            <div class="field-form-row">
+                                <label for="field_location">Field Location</label>
+                                <input type="text" id="field_location" name="field_location" placeholder="Location">
+                            </div>
+                
+                            <button id="field-register-submit" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>                
+                
              </section>
 
             <!-- ------------------------------------ Crops Form ------------------------------------ -->
