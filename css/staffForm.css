@@ -182,3 +182,43 @@
     background-color: #E3EED4;
 }
 
+/* ------------------ customer Details Table ------------------ */
+.customer-table{
+    width: 95%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-left: 22px;
+    margin-top: 60px;
+    color: #6B9071;
+}
+
+.customer-table th,
+.customer-table td{
+    padding: 10px;
+    border: 1px solid #375534;
+    text-align: center;
+
+}
+
+.customer-table th{
+    background-color: #0F2A1D;
+}
+
+.action-button{
+    height: 32px;
+    width: 90px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 9px;
+    color: white;
+    background: #6B9071;
+    border: 1px solid #375534;
+}
+
+.action-button:hover{
+    cursor: pointer;
+    background: #AEC3B0;
+    color: #375534;
+}
+
