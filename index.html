@@ -446,9 +446,47 @@
             <!-- ------------------------------------ Crop Details Form ------------------------------------ -->
              <section id="CropDetailsForm">
                 <div id="cropdetailsHeaderSection" class="cropdetailsHeader-section">
-                    <h2> Crop Details <span> Manage </span></h2>
+                    <h2> Crop  <span> Details </span></h2>
                     <button id="add-cropdetails" class="add-cropdetails-button">Add Crop Details</button>
                 </div>
+
+                <!-- Crop Details Registration Form -->
+                <div class="crop-details-register-form" id="crop-details-register-form">
+                    <div class="crop-details-register-box">
+                        <span id="crop-details-register-close" class="crop-details-register-close">&times;</span>
+
+                        <h2 class="crop-details-register-title">Register Crop Details</h2>
+
+                        <form id="crop-details-form">
+                            <!-- Log Date and Log Details -->
+                            <div class="crop-details-form-row">
+                                <input type="date" id="crop-log-date" name="crop-log-date" placeholder="Log Date" required>
+                                <input type="text" id="crop-log-details" name="crop-log-details" placeholder="Log Details" required>
+                            </div>
+
+                            <!-- Image Upload Field -->
+                            <div class="crop-details-form-row">
+                                <div class="crop-image-upload-group">
+                                    <label for="crop-observed-image">Observed Image</label>
+                                    <input type="file" id="crop-observed-image" name="crop-observed-image" accept="image/*">
+                                </div>
+                            </div>
+
+                            <!-- Image Previews -->
+                            <div class="crop-details-form-row">
+                                <div id="crop-observed-image-preview-container" class="crop-image-preview-container" style="display: none;">
+                                    <img id="crop-observed-image-preview" class="crop-image-preview" alt="Observed Image Preview" />
+                                    <button type="button" id="crop-remove-observed-image" class="crop-remove-image-button">Remove</button>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button id="crop-details-register-submit" type="submit" class="crop-details-register-submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+
              </section>
 
             <!-- ------------------------------------ Vehicles Form ------------------------------------ -->

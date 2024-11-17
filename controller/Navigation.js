@@ -2,7 +2,7 @@ document.getElementById("DashboardForm").style.display = "block";
 document.getElementById("StaffForm").style.display = "none";
 document.getElementById("FieldsForm").style.display = "none";
 document.getElementById("CropsForm").style.display = "none";
-document.getElementById("MonitoringForm").style.display = "none";
+document.getElementById("CropDetailsForm").style.display = "none";
 document.getElementById("VehiclesForm").style.display = "none";
 document.getElementById("EquipmentsForm").style.display = "none";
 document.getElementById("UserForm").style.display = "none";
@@ -13,7 +13,7 @@ document.getElementById("Dashboard-button").addEventListener("click", function()
     document.getElementById("StaffForm").style.display = "none";
     document.getElementById("FieldsForm").style.display = "none";
     document.getElementById("CropsForm").style.display = "none";
-    document.getElementById("MonitoringForm").style.display = "none";
+    document.getElementById("CropDetailsForm").style.display = "none";
     document.getElementById("VehiclesForm").style.display = "none";
     document.getElementById("EquipmentsForm").style.display = "none";
     document.getElementById("UserForm").style.display = "none";
@@ -24,7 +24,7 @@ document.getElementById("StaffForm-button").addEventListener("click", function()
     document.getElementById("DashboardForm").style.display = "none";
     document.getElementById("FieldsForm").style.display = "none";
     document.getElementById("CropsForm").style.display = "none";
-    document.getElementById("MonitoringForm").style.display = "none";
+    document.getElementById("CropDetailsForm").style.display = "none";
     document.getElementById("VehiclesForm").style.display = "none";
     document.getElementById("EquipmentsForm").style.display = "none";
     document.getElementById("UserForm").style.display = "none";
@@ -35,7 +35,7 @@ document.getElementById("FieldsForm-button").addEventListener("click", function(
     document.getElementById("DashboardForm").style.display = "none";
     document.getElementById("StaffForm").style.display = "none";
     document.getElementById("CropsForm").style.display = "none";
-    document.getElementById("MonitoringForm").style.display = "none";
+    document.getElementById("CropDetailsForm").style.display = "none";
     document.getElementById("VehiclesForm").style.display = "none";
     document.getElementById("EquipmentsForm").style.display = "none";
     document.getElementById("UserForm").style.display = "none";
@@ -46,14 +46,14 @@ document.getElementById("CropsForm-button").addEventListener("click", function()
     document.getElementById("DashboardForm").style.display = "none";
     document.getElementById("StaffForm").style.display = "none";
     document.getElementById("FieldsForm").style.display = "none";
-    document.getElementById("MonitoringForm").style.display = "none";
+    document.getElementById("CropDetailsForm").style.display = "none";
     document.getElementById("VehiclesForm").style.display = "none";
     document.getElementById("EquipmentsForm").style.display = "none";
     document.getElementById("UserForm").style.display = "none";
 });
 
 document.getElementById("MonitoringForm-button").addEventListener("click", function() {
-    document.getElementById("MonitoringForm").style.display = "block";
+    document.getElementById("CropDetailsForm").style.display = "block";
     document.getElementById("DashboardForm").style.display = "none";
     document.getElementById("StaffForm").style.display = "none";
     document.getElementById("FieldsForm").style.display = "none";
@@ -69,7 +69,7 @@ document.getElementById("VehiclesForm-button").addEventListener("click", functio
     document.getElementById("StaffForm").style.display = "none";
     document.getElementById("FieldsForm").style.display = "none";
     document.getElementById("CropsForm").style.display = "none";
-    document.getElementById("MonitoringForm").style.display = "none";
+    document.getElementById("CropDetailsForm").style.display = "none";
     document.getElementById("EquipmentsForm").style.display = "none";
     document.getElementById("UserForm").style.display = "none";
 });
@@ -80,7 +80,7 @@ document.getElementById("EquipmentsForm-button").addEventListener("click", funct
     document.getElementById("StaffForm").style.display = "none";
     document.getElementById("FieldsForm").style.display = "none";
     document.getElementById("CropsForm").style.display = "none";
-    document.getElementById("MonitoringForm").style.display = "none";
+    document.getElementById("CropDetailsForm").style.display = "none";
     document.getElementById("VehiclesForm").style.display = "none";
     document.getElementById("UserForm").style.display = "none";
 });
@@ -91,7 +91,7 @@ document.getElementById("UserForm-button").addEventListener("click", function() 
     document.getElementById("StaffForm").style.display = "none";
     document.getElementById("FieldsForm").style.display = "none";
     document.getElementById("CropsForm").style.display = "none";
-    document.getElementById("MonitoringForm").style.display = "none";
+    document.getElementById("CropDetailsForm").style.display = "none";
     document.getElementById("VehiclesForm").style.display = "none";
     document.getElementById("EquipmentsForm").style.display = "none";
 });

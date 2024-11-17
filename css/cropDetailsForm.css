@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+/* Header section */
+.cropdetailsHeader-section {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.cropdetailsHeader-section h2 {
+    margin-left: 40px;
+    font-size: 35px;
+    color: #375534;
+}
+
+.cropdetailsHeader-section h2 span {
+    font-size: 25px;
+    color: #6B9071;
+}
+
+.add-cropdetails-button {
+    margin-left: 55%;
+    margin-top: 5px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bolder;
+    border-radius: 5px;
+    color: white;
+    background: #6B9071;
+    border: 1px solid #6B9071;
+}
+
+.add-cropdetails-button:hover {
+    cursor: pointer;
+    background: #AEC3B0;
+    color: #375534;
+}
+
+/* Crop Details Register Form */
+.crop-details-register-form {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Crop Details Register Box */
+.crop-details-register-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Close Button */
+.crop-details-register-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Form Title */
+.crop-details-register-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #375534;
+}
+
+/* Form Row Styling */
+.crop-details-form-row {
+    margin-bottom: 15px;
+}
+
+/* Input Fields Styling */
+.crop-details-register-form input[type="text"],
+.crop-details-register-form input[type="date"],
+.crop-details-register-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #AEC3B0;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #6B9071;
+    background-color: #f9f9f9;
+}
+
+/* Hover/Focus Effects */
+.crop-details-register-form input:focus {
+    outline: none;
+    border-color: #6B9071;
+    background-color: #E3EED4;
+}
+
+/* Image Preview Container */
+.crop-image-preview-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.crop-image-preview {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Remove Image Button */
+.crop-remove-image-button {
+    background-color: #FF4A4A;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.crop-remove-image-button:hover {
+    background-color: #f44336;
+}
+
+/* Submit Button */
+.crop-details-register-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #6B9071;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.crop-details-register-submit:hover {
+    background-color: #375534;
+}
+
