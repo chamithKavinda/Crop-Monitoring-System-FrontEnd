@@ -37,4 +37,105 @@
 }
 
 /* registration form */
+.vehicle-register-form {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
 
+.vehicle-register-form.active {
+    display: flex;
+}
+
+.vehicle-register-box {
+    background: #fff;
+    border-radius: 10px;
+    width: 650px;
+    padding: 20px 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Close Button */
+.vehicle-register-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #6B9071;
+    cursor: pointer;
+    z-index: 1010;
+}
+
+.vehicle-register-close:hover {
+    color: #FF4A4A;
+}
+
+/* Form Title */
+.vehicle-register-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #6B9071;
+    border-bottom: 2px solid #6B9071;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Form Rows */
+.vehicle-form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.vehicle-form-row input,
+.vehicle-form-row select,
+.vehicle-form-row textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #AEC3B0;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #6B9071;
+    background-color: #f9f9f9;
+}
+
+.vehicle-form-row input:focus,
+.vehicle-form-row select:focus,
+.vehicle-form-row textarea:focus {
+    outline: none;
+    border-color: #6B9071;
+    background-color: #E3EED4;
+}
+
+/* Full-Width Row */
+.vehicle-form-row.full-width {
+    flex-direction: column;
+}
+
+/* Submit Button */
+.vehicle-register-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #6B9071;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.vehicle-register-submit:hover {
+    background-color: #55725b;
+}
