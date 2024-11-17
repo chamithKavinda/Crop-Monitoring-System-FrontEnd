@@ -360,68 +360,69 @@
                 </div>
 
                 <!-- Crop Registration Form -->
-                <div class="register-form" id="crop-register-form">
-                    <div class="register-box">
-                        <span id="cropRegisterForm-close" class="register-close">&times;</span>
+                <div class="crop-register-form" id="crop-register-form">
+                    <div class="crop-register-box">
+                        <span id="crop-register-close" class="crop-register-close">&times;</span>
 
-                        <h2 class="register-title">Register Crop</h2>
+                        <h2 class="crop-register-title">Register Crop</h2>
 
                         <form id="crop-form">
                             <!-- Crop Code and Common Name -->
-                            <div class="form-row">
-                                <input type="text" id="crop_code" name="crop_code" placeholder="Crop Code" required>
-                                <input type="text" id="crop_common_name" name="crop_common_name" placeholder="Common Name" required>
+                            <div class="crop-form-row">
+                                <input type="text" id="crop-code" name="crop-code" placeholder="Crop Code" required>
+                                <input type="text" id="crop-common-name" name="crop-common-name" placeholder="Common Name" required>
                             </div>
 
                             <!-- Scientific Name and Season -->
-                            <div class="form-row">
-                                <input type="text" id="crop_scientific_name" name="crop_scientific_name" placeholder="Scientific Name" required>
-                                <input type="text" id="crop_season" name="crop_season" placeholder="Season" required>
+                            <div class="crop-form-row">
+                                <input type="text" id="crop-scientific-name" name="crop-scientific-name" placeholder="Scientific Name" required>
+                                <input type="text" id="crop-season" name="crop-season" placeholder="Season" required>
                             </div>
 
                             <!-- Category -->
-                            <div class="form-row full-width">
-                                <input type="text" id="category" name="category" placeholder="Category">
+                            <div class="crop-form-row full-width">
+                                <input type="text" id="crop-category" name="crop-category" placeholder="Category">
                             </div>
 
                             <!-- Field Code Dropdown -->
-                            <div class="form-row full-width">
-                                <label for="field_code">Field Code</label>
-                                <select id="field_code" name="field_code" required>
+                            <div class="crop-form-row full-width">
+                                <label for="crop-field-code">Field Code</label>
+                                <select id="crop-field-code" name="crop-field-code" required>
                                     <option value="">Select Field Code</option>
                                     <!-- Add field code options dynamically here -->
                                 </select>
                             </div>
 
                             <!-- Image Upload Fields in One Row -->
-                            <div class="form-row">
-                                <div class="image-upload-group">
-                                    <label for="crop_image1">Crop Image 1</label>
-                                    <input type="file" id="crop_image1" name="crop_image1" accept="image/*">
+                            <div class="crop-form-row">
+                                <div class="crop-image-upload-group">
+                                    <label for="crop-image1">Crop Image 1</label>
+                                    <input type="file" id="crop-image1" name="crop-image1" accept="image/*">
                                 </div>
-                                <div class="image-upload-group">
-                                    <label for="crop_image2">Crop Image 2</label>
-                                    <input type="file" id="crop_image2" name="crop_image2" accept="image/*">
+                                <div class="crop-image-upload-group">
+                                    <label for="crop-image2">Crop Image 2</label>
+                                    <input type="file" id="crop-image2" name="crop-image2" accept="image/*">
                                 </div>
                             </div>
 
                             <!-- Image Previews -->
-                            <div class="form-row">
-                                <div id="image-preview-container1" class="image-preview-container" style="display: none;">
-                                    <img id="image-preview1" class="image-preview" alt="Image Preview 1" />
-                                    <button type="button" id="remove-image1" class="remove-image-button">Remove</button>
+                            <div class="crop-form-row">
+                                <div id="crop-image-preview-container1" class="crop-image-preview-container" style="display: none;">
+                                    <img id="crop-image-preview1" class="crop-image-preview" alt="Image Preview 1" />
+                                    <button type="button" id="crop-remove-image1" class="crop-remove-image-button">Remove</button>
                                 </div>
-                                <div id="image-preview-container2" class="image-preview-container" style="display: none;">
-                                    <img id="image-preview2" class="image-preview" alt="Image Preview 2" />
-                                    <button type="button" id="remove-image2" class="remove-image-button">Remove</button>
+                                <div id="crop-image-preview-container2" class="crop-image-preview-container" style="display: none;">
+                                    <img id="crop-image-preview2" class="crop-image-preview" alt="Image Preview 2" />
+                                    <button type="button" id="crop-remove-image2" class="crop-remove-image-button">Remove</button>
                                 </div>
                             </div>
 
                             <!-- Submit Button -->
-                            <button id="crop-register-submit" type="submit" class="register-submit">Submit</button>
+                            <button id="crop-register-submit" type="submit" class="crop-register-submit">Submit</button>
                         </form>
                     </div>
                 </div>
+
 
                 
 
