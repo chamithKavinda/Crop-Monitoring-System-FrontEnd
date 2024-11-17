@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+/* Header section */
+.userHeader-section {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.userHeader-section h2 {
+    margin-left: 40px;
+    font-size: 35px;
+    color: #375534;
+}
+
+.userHeader-section h2 span {
+    font-size: 25px;
+    color: #6B9071;
+}
+
+.add-user-button {
+    margin-left: 60%;
+    margin-top: 5px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bolder;
+    border-radius: 5px;
+    color: white;
+    background: #6B9071;
+    border: 1px solid #6B9071;
+}
+
+.add-user-button:hover {
+    cursor: pointer;
+    background: #AEC3B0;
+    color: #375534;
+}
