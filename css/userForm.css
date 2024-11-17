@@ -138,3 +138,53 @@
 .user-register-submit:hover {
     background-color: #55725b;
 }
+
+/* Password Container */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Password Input Field */
+.password-container input[type="password"],
+.password-container input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #AEC3B0;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #6B9071;
+    background-color: #f9f9f9;
+}
+
+/* Focus State */
+.password-container input:focus {
+    outline: none;
+    border-color: #6B9071;
+    background-color: #E3EED4;
+}
+
+/* Toggle Password Icon Button */
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 15px;
+    color: #6B9071;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect for Icon */
+.password-container .toggle-password:hover {
+    color: #FF4A4A;
+}
+
+
