@@ -99,6 +99,10 @@
     margin-bottom: 15px;
 }
 
+.user-dropdown-group{
+    margin-top: -16px;
+}
+
 .user-form-row input,
 .user-form-row select {
     flex: 1;
