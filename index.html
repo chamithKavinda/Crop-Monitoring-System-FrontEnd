@@ -357,91 +357,86 @@
                 
              </section>
 
-            <!-- ------------------------------------ Crops Form ------------------------------------ -->
-             <section id="CropsForm">
-                <div id="cropHeaderSection" class="cropHeader-section">
-                    <h2> Crops <span>Manage</span></h2>
-                    <button id="add-crop" class="add-crop-button">Add Crop Details</button>
+<!-- ------------------------------------ Crops Form ------------------------------------ -->
+<section id="CropsForm">
+    <div id="cropHeaderSection" class="cropHeader-section">
+        <h2> Crops <span>Manage</span></h2>
+        <button id="add-crop" class="add-crop-button">Add Crop Details</button>
+    </div>
+
+    <!-- Crop Registration Form -->
+    <div class="crop-register-form" id="crop-register-form">
+        <div class="crop-register-box">
+            <span id="crop-register-close" class="crop-register-close">&times;</span>
+
+            <h2 class="crop-register-title">Register Crop</h2>
+
+            <form id="crop-form">
+                <!-- Common and Scientific Name -->
+                <div class="crop-form-row">
+                    <input type="text" id="crop-common-name" name="crop-common-name" placeholder="Common Name" required>
+                    <input type="text" id="crop-scientific-name" name="crop-scientific-name" placeholder="Scientific Name" required>
                 </div>
 
-                <!-- Crop Registration Form -->
-                <div class="crop-register-form" id="crop-register-form">
-                    <div class="crop-register-box">
-                        <span id="crop-register-close" class="crop-register-close">&times;</span>
+                <!-- Season and Category -->
+                <div class="crop-form-row">
+                    <input type="text" id="crop-season" name="crop-season" placeholder="Season">
+                    <input type="text" id="crop-category" name="crop-category" placeholder="Category">
+                </div>
 
-                        <h2 class="crop-register-title">Register Crop</h2>
+                <!-- Field Code Dropdown -->
+                <div class="crop-form-row field-dropdown-row">
+                    <select id="crop-field-code" name="crop-field-code" required>
+                        <option value="">Select Field Code</option>
+                        <!-- Dynamic options for field codes -->
+                    </select>
+                </div>
 
-                        <form id="crop-form">
-                            <!-- Scientific Name and Season -->
-                            <div class="crop-form-row">
-                                <input type="text" id="crop-scientific-name" name="crop-scientific-name" placeholder="Scientific Name" required>
-                                <input type="text" id="crop-season" name="crop-season" placeholder="Season" required>
-                            </div>
-
-                            <!-- Category and Field Code Dropdown Fields in One Row -->
-                            <div class="crop-form-row category-field">
-                                <!-- Category Field -->
-                                <div class="crop-form-row">
-                                    <input type="text" id="crop-category" name="crop-category" placeholder="Category">
-                                </div>
-
-                                <!-- Field Code Dropdown -->
-                                <div class="crop-form-row">
-                                    <!-- <label for="crop-field-code">Field Code</label> -->
-                                    <select id="crop-field-code" name="crop-field-code" required>
-                                        <option value="">Select Field Code</option>
-                                        <!-- Add field code options dynamically here -->
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Image Upload Fields in One Row -->
-                            <div class="crop-form-row">
-                                <div class="crop-image-upload-group">
-                                    <label for="crop-image1">Crop Image 1</label>
-                                    <input type="file" id="crop-image1" name="crop-image1" accept="image/*">
-                                </div>
-                            </div>
-
-                            <!-- Image Previews -->
-                            <div class="crop-form-row">
-                                <div id="crop-image-preview-container1" class="crop-image-preview-container" style="display: none;">
-                                    <img id="crop-image-preview1" class="crop-image-preview" alt="Image Preview 1" />
-                                    <button type="button" id="crop-remove-image1" class="crop-remove-image-button">Remove</button>
-                                </div>
-                            </div>
-
-                            <!-- Submit Button -->
-                            <button id="crop-register-submit" type="submit" class="crop-register-submit">Submit</button>
-                        </form>
+                <!-- Image Upload Field -->
+                <div class="crop-form-row">
+                    <div class="crop-image-upload-group">
+                        <label for="crop-image1">Crop Image</label>
+                        <input type="file" id="crop-image1" name="crop-image1" accept="image/*">
                     </div>
                 </div>
 
-                <!-- Crop Table -->
-                <div class="table-container">
-                    <table class="crop-table">
-                        <thead>
-                            <tr>
-                                <th>Crop Code</th>
-                                <th>Common Name</th>
-                                <th>Scientific Name</th>
-                                <th>Category</th>
-                                <th>Season</th>
-                                <th>Field Code</th>
-                                <th>Crop Image</th>
-                                <th>Update</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Rows with crop data will be dynamically inserted here -->
-                        </tbody>
-                    </table>
+                <!-- Image Preview -->
+                <div class="crop-form-row">
+                    <div id="crop-image-preview-container1" class="crop-image-preview-container" style="display: none;">
+                        <img id="crop-image-preview1" class="crop-image-preview" alt="Crop Image Preview" />
+                        <button type="button" id="crop-remove-image1" class="crop-remove-image-button">Remove</button>
+                    </div>
                 </div>
 
+                <!-- Submit Button -->
+                <button id="crop-register-submit" type="submit" class="crop-register-submit">Submit</button>
+            </form>
+        </div>
+    </div>
 
+    <!-- Crop Table -->
+    <div class="table-container">
+        <table class="crop-table">
+            <thead>
+                <tr>
+                    <th>Crop Code</th>
+                    <th>Common Name</th>
+                    <th>Scientific Name</th>
+                    <th>Category</th>
+                    <th>Season</th>
+                    <th>Field Code</th>
+                    <th>Crop Image</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows with crop data will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+</section>
 
-             </section>
 
             <!-- ------------------------------------ Crop Details Form ------------------------------------ -->
              <section id="CropDetailsForm">
@@ -751,7 +746,7 @@
     <script src="/controller/navigation.js"></script>
     <script src="/controller/staffForm.js"></script>
     <script src="/controller/fieldForm.js"></script>
-    <script src="/controller/cropForm.js"></script>
+    <script src="/controller/cropForm.js" defer></script>
     <script src="/controller/vehicleForm.js"></script>
     <script src="/controller/equipment.js"></script>
     <script src="/controller/userForm.js"></script>

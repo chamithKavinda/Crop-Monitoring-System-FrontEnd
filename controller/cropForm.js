@@ -4,31 +4,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const addCropButton = document.getElementById('add-crop');
     const closeButton = document.getElementById('crop-register-close');
 
-    // Image input and preview mapping for crops
+    // Image input and preview mapping
     const imageHandlers = [
         {
-            input: document.getElementById('crop-image1'),
-            previewContainer: document.getElementById('crop-image-preview-container1'),
-            preview: document.getElementById('crop-image-preview1'),
-            removeButton: document.getElementById('crop-remove-image1'),
-        },
-        {
-            input: document.getElementById('crop-image2'),
-            previewContainer: document.getElementById('crop-image-preview-container2'),
-            preview: document.getElementById('crop-image-preview2'),
-            removeButton: document.getElementById('crop-remove-image2'),
+            input: document.getElementById('crop-image'),
+            previewContainer: document.getElementById('crop-image-preview-container'),
+            preview: document.getElementById('crop-image-preview'),
+            removeButton: document.getElementById('crop-remove-image'),
         },
     ];
 
     // Function to open the registration form
     const openForm = () => {
-        console.log('Opening form...');
+        console.log('Opening crop registration form...');
         cropRegisterForm.classList.add('active');
     };
 
     // Function to close the registration form
     const closeForm = () => {
-        console.log('Closing form...');
+        console.log('Closing crop registration form...');
         cropRegisterForm.classList.remove('active');
     };
 

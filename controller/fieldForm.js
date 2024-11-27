@@ -90,4 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Missing one or more elements in an image handler:', handler);
         }
     });
+
+
+    
 });
