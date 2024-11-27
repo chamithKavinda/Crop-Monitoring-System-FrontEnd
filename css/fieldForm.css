@@ -96,18 +96,19 @@
 /* Form Rows */
 .field-form-row {
     display: flex;
+    justify-content: space-between;
     gap: 20px;
     margin-bottom: 15px;
 }
 
 .field-form-row input {
-    flex: 1;
+    width: 100%;
     padding: 10px;
-    border: 1px solid #AEC3B0;
+    font-size: 16px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 14px;
-    color: #6B9071;
     background-color: #f9f9f9;
+    color: #6B9071;
 }
 
 .field-form-row input:focus {
@@ -116,7 +117,7 @@
     background-color: #E3EED4;
 }
 
-/* Full-Width Row */
+/* Full-Width Fields */
 .field-form-row.field-full-width {
     flex-direction: column;
 }
@@ -125,22 +126,32 @@
 .field-image-upload-group {
     flex: 1;
     display: flex;
-    width: 40px;
     flex-direction: column;
     gap: 5px;
 }
 
 .field-image-upload-group label {
-    font-size: 14px;
     font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
     color: #6B9071;
 }
 
+.field-image-upload-group input {
+    padding: 5px;
+}
+
+/* Image Preview Container */
 .field-image-preview-container {
-    margin-top: 10px;
+    position: relative;
+    width: 48%;
+    height: 150px;
+    border: 1px dashed #ccc;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    overflow: hidden;
+    background-color: #f9f9f9;
 }
 
 .field-image-preview {
@@ -148,44 +159,37 @@
     max-height: 150px;
     border: 1px solid #AEC3B0;
     border-radius: 5px;
-    margin-bottom: 10px;
+    object-fit: cover;
 }
 
+/* Remove Button */
 .field-remove-image-button {
-    background-color: #FF4A4A;
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 12px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
     border: none;
-    border-radius: 5px;
+    padding: 5px;
     cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px;
 }
 
 .field-remove-image-button:hover {
-    background-color: #FF7070;
+    background-color: darkred;
 }
 
 /* Submit Button */
 .field-register-submit {
-    /* width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    background: #6B9071;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase; */
     width: 150px; 
     padding: 10px; 
     font-size: 14px;
-    /* margin-left: 600px; */
+    margin-left: 220px;
     font-weight: bold;
     background-color: #6B9071;
     color: white;
     border: none;
-    margin-left: 230px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -196,11 +200,10 @@
 }
 
 .field-register-submit:hover {
+    cursor: pointer;
     background: #AEC3B0;
+    color: #375534;
 }
-
-
-
 
 /* for Field Table */
 /* ------------------ Field Details Table ------------------ */

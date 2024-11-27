@@ -197,51 +197,51 @@
                             </div>
                 
                             <div class="staff-form-row">
-                                <input type="text" id="address_line1" name="address_line1" placeholder="Address Line 1" required>
+                                <input type="text" id="address_line1" name="address_line1" placeholder="Address Number" required>
                             </div>
                 
                             <div class="staff-form-row">
-                                <input type="text" id="address_line2" name="address_line2" placeholder="Address Line 2">
+                                <input type="text" id="address_line2" name="address_line2" placeholder="Lane">
                             </div>
                 
                             <div class="staff-form-row">
-                                <input type="text" id="address_line3" name="address_line3" placeholder="Address Line 3">
+                                <input type="text" id="address_line3" name="address_line3" placeholder="City">
                             </div>
                 
                             <div class="staff-form-row">
-                                <input type="text" id="address_line4" name="address_line4" placeholder="Address Line 4">
+                                <input type="text" id="address_line4" name="address_line4" placeholder="Province">
                             </div>
                 
                             <div class="staff-form-row">
-                                <input type="text" id="address_line5" name="address_line5" placeholder="Address Line 5">
+                                <input type="text" id="address_line5" name="address_line5" placeholder="Country">
                             </div>
                 
                             <div class="staff-form-row">
                                 <select id="designation" name="designation" required>
                                     <option value="">Select Designation</option>
-                                    <option value="MANAGER">Manager</option>
-                                    <option value="SUPERVISOR">Supervisor</option>
-                                    <option value="TECHNICIAN">Technician</option>
-                                    <option value="WORKER">Worker</option>
+                                    <option value="MANAGER">MANAGER</option>
+                                    <option value="SUPERVISOR">SUPERVISOR</option>
+                                    <option value="TECHNICIAN">TECHNICIAN</option>
+                                    <option value="WORKER">WORKER</option>
                                 </select>
                             </div>
                 
                             <div class="staff-form-row">
                                 <select id="gender" name="gender" required>
                                     <option value="">Select Gender</option>
-                                    <option value="FEMALE">Female</option>
-                                    <option value="MALE">Male</option>
-                                    <option value="OTHER">Other</option>
+                                    <option value="FEMALE">FEMALE</option>
+                                    <option value="MALE">MALE</option>
+                                    <option value="OTHER">OTHER</option>
                                 </select>
                             </div>
                 
                             <div class="staff-form-row">
                                 <select id="role" name="role" required>
                                     <option value="">Select Role</option>
-                                    <option value="ADMINISTRATIVE">Administrative</option>
-                                    <option value="MANAGER">Manager</option>
-                                    <option value="OTHER">Other</option>
-                                    <option value="SCIENTIST">Scientist</option>
+                                    <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+                                    <option value="MANAGER">MANAGER</option>
+                                    <option value="SCIENTIST">SCIENTIST</option>
+                                    <option value="OTHER">OTHER</option>
                                 </select>
                             </div>
 
@@ -262,7 +262,11 @@
                                 <th>Contact Number</th>
                                 <th>Date of Birth</th>
                                 <th>Joined Date</th>
-                                <th>Address</th>
+                                <th>Address Number</th>
+                                <th>Lane</th>
+                                <th>City</th>
+                                <th>Province</th>
+                                <th>Country</th>
                                 <th>Designation</th>
                                 <th>Gender</th>
                                 <th>Role</th>
@@ -294,28 +298,29 @@
                         <form id="field-form">
                             <!-- Field Name and Extent Size -->
                             <div class="field-form-row">
-                                <input type="text" id="field-name" name="field-name" placeholder="Field Name" required>
-                                <input type="number" id="field-extent-size" name="field-extent-size" placeholder="Extent Size" required>
+                                <input type="text" id="field-name" name="fieldName" placeholder="Field Name" required>
+                                <input type="number" id="field-extent-size" name="extentSize" placeholder="Extent Size" step="0.1" required>
                             </div>
-
-                            <!-- Field Location -->
-                            <div class="field-form-row field-full-width">
-                                <input type="text" id="field-location" name="field-location" placeholder="Location">
+                        
+                            <!-- Latitude and Longitude -->
+                            <div class="field-form-row">
+                                <input type="number" id="latitude" name="latitude" placeholder="Latitude" step="0.000001" required>
+                                <input type="number" id="longitude" name="longitude" placeholder="Longitude" step="0.000001" required>
                             </div>
-
-                            <!-- Image Upload Fields in One Row -->
+                        
+                            <!-- Image Upload Fields -->
                             <div class="field-form-row">
                                 <div class="field-image-upload-group">
                                     <label for="field-image1">Field Image 1</label>
-                                    <input type="file" id="field-image1" name="field-image1" accept="image/*">
+                                    <input type="file" id="field-image1" name="fieldImage1" accept="image/*" required>
                                 </div>
                                 <div class="field-image-upload-group">
                                     <label for="field-image2">Field Image 2</label>
-                                    <input type="file" id="field-image2" name="field-image2" accept="image/*">
+                                    <input type="file" id="field-image2" name="fieldImage2" accept="image/*" required>
                                 </div>
                             </div>
-
-                            <!-- Image Preview 1 -->
+                        
+                            <!-- Image Previews -->
                             <div class="field-form-row">
                                 <div id="field-image-preview-container1" class="field-image-preview-container" style="display: none;">
                                     <img id="field-image-preview1" class="field-image-preview" alt="Field Image Preview 1" />
@@ -326,10 +331,15 @@
                                     <button type="button" id="field-remove-image2" class="field-remove-image-button">Remove</button>
                                 </div>
                             </div>
-
+                        
+                            <!-- Staff IDs -->
+                            <div class="field-form-row field-full-width">
+                                <input type="text" id="staff-ids" name="staffIds" placeholder="Staff IDs (comma-separated)" required>
+                            </div>
+                        
                             <!-- Submit Button -->
                             <button id="field-register-submit" type="submit" class="field-register-submit">Submit</button>
-                        </form>
+                        </form>                        
                     </div>
                 </div>
 
@@ -357,86 +367,85 @@
                 
              </section>
 
-<!-- ------------------------------------ Crops Form ------------------------------------ -->
-<section id="CropsForm">
-    <div id="cropHeaderSection" class="cropHeader-section">
-        <h2> Crops <span>Manage</span></h2>
-        <button id="add-crop" class="add-crop-button">Add Crop Details</button>
-    </div>
-
-    <!-- Crop Registration Form -->
-    <div class="crop-register-form" id="crop-register-form">
-        <div class="crop-register-box">
-            <span id="crop-register-close" class="crop-register-close">&times;</span>
-
-            <h2 class="crop-register-title">Register Crop</h2>
-
-            <form id="crop-form">
-                <!-- Common and Scientific Name -->
-                <div class="crop-form-row">
-                    <input type="text" id="crop-common-name" name="crop-common-name" placeholder="Common Name" required>
-                    <input type="text" id="crop-scientific-name" name="crop-scientific-name" placeholder="Scientific Name" required>
+            <!-- ------------------------------------ Crops Form ------------------------------------ -->
+            <section id="CropsForm">
+                <div id="cropHeaderSection" class="cropHeader-section">
+                    <h2> Crops <span>Manage</span></h2>
+                    <button id="add-crop" class="add-crop-button">Add Crop Details</button>
                 </div>
 
-                <!-- Season and Category -->
-                <div class="crop-form-row">
-                    <input type="text" id="crop-season" name="crop-season" placeholder="Season">
-                    <input type="text" id="crop-category" name="crop-category" placeholder="Category">
-                </div>
+                <!-- Crop Registration Form -->
+                <div class="crop-register-form" id="crop-register-form">
+                    <div class="crop-register-box">
+                        <span id="crop-register-close" class="crop-register-close">&times;</span>
 
-                <!-- Field Code Dropdown -->
-                <div class="crop-form-row field-dropdown-row">
-                    <select id="crop-field-code" name="crop-field-code" required>
-                        <option value="">Select Field Code</option>
-                        <!-- Dynamic options for field codes -->
-                    </select>
-                </div>
+                        <h2 class="crop-register-title">Register Crop</h2>
 
-                <!-- Image Upload Field -->
-                <div class="crop-form-row">
-                    <div class="crop-image-upload-group">
-                        <label for="crop-image1">Crop Image</label>
-                        <input type="file" id="crop-image1" name="crop-image1" accept="image/*">
+                        <form id="crop-form">
+                            <!-- Common and Scientific Name -->
+                            <div class="crop-form-row">
+                                <input type="text" id="crop-common-name" name="crop-common-name" placeholder="Common Name" required>
+                                <input type="text" id="crop-scientific-name" name="crop-scientific-name" placeholder="Scientific Name" required>
+                            </div>
+
+                            <!-- Season and Category -->
+                            <div class="crop-form-row">
+                                <input type="text" id="crop-season" name="crop-season" placeholder="Season">
+                                <input type="text" id="crop-category" name="crop-category" placeholder="Category">
+                            </div>
+
+                            <!-- Field Code Dropdown -->
+                            <div class="crop-form-row field-dropdown-row">
+                                <select id="crop-field-code" name="crop-field-code" required>
+                                    <option value="">Select Field Code</option>
+                                    <!-- Dynamic options for field codes -->
+                                </select>
+                            </div>
+
+                            <!-- Image Upload Field -->
+                            <div class="crop-form-row">
+                                <div class="crop-image-upload-group">
+                                    <label for="crop-image1">Crop Image</label>
+                                    <input type="file" id="crop-image1" name="crop-image1" accept="image/*">
+                                </div>
+                            </div>
+
+                            <!-- Image Preview -->
+                            <div class="crop-form-row">
+                                <div id="crop-image-preview-container1" class="crop-image-preview-container" style="display: none;">
+                                    <img id="crop-image-preview1" class="crop-image-preview" alt="Crop Image Preview" />
+                                    <button type="button" id="crop-remove-image1" class="crop-remove-image-button">Remove</button>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button id="crop-register-submit" type="submit" class="crop-register-submit">Submit</button>
+                        </form>
                     </div>
                 </div>
 
-                <!-- Image Preview -->
-                <div class="crop-form-row">
-                    <div id="crop-image-preview-container1" class="crop-image-preview-container" style="display: none;">
-                        <img id="crop-image-preview1" class="crop-image-preview" alt="Crop Image Preview" />
-                        <button type="button" id="crop-remove-image1" class="crop-remove-image-button">Remove</button>
-                    </div>
+                <!-- Crop Table -->
+                <div class="table-container">
+                    <table class="crop-table">
+                        <thead>
+                            <tr>
+                                <th>Crop Code</th>
+                                <th>Common Name</th>
+                                <th>Scientific Name</th>
+                                <th>Category</th>
+                                <th>Season</th>
+                                <th>Field Code</th>
+                                <th>Crop Image</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows with crop data will be dynamically inserted here -->
+                        </tbody>
+                    </table>
                 </div>
-
-                <!-- Submit Button -->
-                <button id="crop-register-submit" type="submit" class="crop-register-submit">Submit</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Crop Table -->
-    <div class="table-container">
-        <table class="crop-table">
-            <thead>
-                <tr>
-                    <th>Crop Code</th>
-                    <th>Common Name</th>
-                    <th>Scientific Name</th>
-                    <th>Category</th>
-                    <th>Season</th>
-                    <th>Field Code</th>
-                    <th>Crop Image</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Rows with crop data will be dynamically inserted here -->
-            </tbody>
-        </table>
-    </div>
-</section>
-
+            </section>
 
             <!-- ------------------------------------ Crop Details Form ------------------------------------ -->
              <section id="CropDetailsForm">
