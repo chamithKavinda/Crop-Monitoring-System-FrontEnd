@@ -147,18 +147,22 @@
     margin-bottom: 10px;
 }
 
+/* Remove Button */
 .crop-remove-image-button {
-    background-color: #FF4A4A;
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 12px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
     border: none;
-    border-radius: 5px;
+    padding: 5px;
     cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px;
 }
 
 .crop-remove-image-button:hover {
-    background-color: #FF7070;
+    background-color: darkred;
 }
 
 /* Submit Button */

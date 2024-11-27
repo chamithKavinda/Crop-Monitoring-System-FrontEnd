@@ -101,17 +101,19 @@
     margin-bottom: 15px;
 }
 
-.field-form-row input {
-    width: 100%;
+.field-form-row input,
+.field-form-row select {
+    flex: 1;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #AEC3B0;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    font-size: 14px;
     color: #6B9071;
+    background-color: #f9f9f9;
 }
 
-.field-form-row input:focus {
+.field-form-row input:focus,
+.field-form-row select:focus{
     outline: none;
     border-color: #6B9071;
     background-color: #E3EED4;
@@ -131,9 +133,8 @@
 }
 
 .field-image-upload-group label {
+    font-size: 14px;
     font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
     color: #6B9071;
 }
 
@@ -159,7 +160,7 @@
     max-height: 150px;
     border: 1px solid #AEC3B0;
     border-radius: 5px;
-    object-fit: cover;
+    margin-bottom: 10px;
 }
 
 /* Remove Button */

@@ -332,9 +332,12 @@
                                 </div>
                             </div>
                         
-                            <!-- Staff IDs -->
-                            <div class="field-form-row field-full-width">
-                                <input type="text" id="staff-ids" name="staffIds" placeholder="Staff IDs (comma-separated)" required>
+                            <!-- Staff IDs Dropdown -->
+                            <div class="crop-form-row field-dropdown-row">
+                                <select id="crop-field-code" name="crop-field-code" required>
+                                    <option value="">Select Staff IDs</option>
+                                    <!-- Dynamic options for field codes -->
+                                </select>
                             </div>
                         
                             <!-- Submit Button -->
@@ -342,8 +345,8 @@
                         </form>                        
                     </div>
                 </div>
-
                 
+
                 <!-- Field Table -->
                 <div class="table-container">
                     <table class="field-table">
@@ -364,8 +367,8 @@
                         </tbody>
                     </table>
                 </div>
-                
-             </section>
+            </section>
+
 
             <!-- ------------------------------------ Crops Form ------------------------------------ -->
             <section id="CropsForm">
@@ -755,7 +758,7 @@
     <script src="/controller/navigation.js"></script>
     <script src="/controller/staffForm.js"></script>
     <script src="/controller/fieldForm.js"></script>
-    <script src="/controller/cropForm.js" defer></script>
+    <script src="/controller/cropForm.js"></script>
     <script src="/controller/vehicleForm.js"></script>
     <script src="/controller/equipment.js"></script>
     <script src="/controller/userForm.js"></script>
