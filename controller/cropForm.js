@@ -7,36 +7,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Image input and preview mapping
     const imageHandlers = [
         {
-            input: document.getElementById('crop-image'),
-            previewContainer: document.getElementById('crop-image-preview-container'),
-            preview: document.getElementById('crop-image-preview'),
-            removeButton: document.getElementById('crop-remove-image'),
+            input: document.getElementById('crop-image1'),
+            previewContainer: document.getElementById('crop-image-preview-container1'),
+            preview: document.getElementById('crop-image-preview1'),
+            removeButton: document.getElementById('crop-remove-image1'),
         },
     ];
 
     // Function to open the registration form
     const openForm = () => {
-        console.log('Opening crop registration form...');
-        cropRegisterForm.classList.add('active');
+        cropRegisterForm?.classList.add('active');
     };
 
     // Function to close the registration form
     const closeForm = () => {
-        console.log('Closing crop registration form...');
-        cropRegisterForm.classList.remove('active');
+        cropRegisterForm?.classList.remove('active');
     };
 
     // Initialize image preview and removal functionality
     const initializeImageHandlers = ({ input, previewContainer, preview, removeButton }) => {
+        if (!input || !previewContainer || !preview || !removeButton) {
+            console.error('Missing elements for image handling.');
+            return;
+        }
+
         // Handle image preview
         input.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
-                console.log(`Selected file for ${input.id}:`, file);
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     preview.src = e.target.result;
-                    previewContainer.style.display = 'block';
+                    previewContainer.style.display = 'flex'; // Show the preview container
                 };
                 reader.readAsDataURL(file);
             }
@@ -44,25 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Handle image removal
         removeButton.addEventListener('click', () => {
-            console.log(`Removing image for ${input.id}`);
-            input.value = '';
-            preview.src = '';
-            previewContainer.style.display = 'none';
+            input.value = ''; 
+            preview.src = ''; 
+            previewContainer.style.display = 'none'; 
         });
     };
 
     // Add event listeners for opening and closing the form
-    if (addCropButton) {
-        addCropButton.addEventListener('click', openForm);
-    } else {
-        console.error("Add Crop button (id: 'add-crop') not found!");
-    }
-
-    if (closeButton) {
-        closeButton.addEventListener('click', closeForm);
-    } else {
-        console.error("Close button (id: 'crop-register-close') not found!");
-    }
+    addCropButton?.addEventListener('click', openForm);
+    closeButton?.addEventListener('click', closeForm);
 
     // Close the form when clicking outside it
     window.addEventListener('click', (event) => {
@@ -72,16 +64,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initialize all image handlers
-    imageHandlers.forEach(handler => {
-        if (
-            handler.input &&
-            handler.previewContainer &&
-            handler.preview &&
-            handler.removeButton
-        ) {
-            initializeImageHandlers(handler);
-        } else {
-            console.error('Missing one or more elements in an image handler:', handler);
-        }
-    });
+    imageHandlers.forEach(handler => initializeImageHandlers(handler));
 });
