@@ -1,8 +1,7 @@
 const navigateBtn = document.getElementById('navigateLoginPage');
-    const backBtn = document.getElementById('backToWelcomePage');
-    const carousel = document.getElementById('carousel');
-    const loginForm = document.getElementById('loginForm');
-   
+const backBtn = document.getElementById('backToWelcomePage');
+const carousel = document.getElementById('carousel');
+const loginForm = document.getElementById('loginForm');
 
 // Navigate to Login Form
 navigateBtn.addEventListener('click', () => {
@@ -11,7 +10,7 @@ navigateBtn.addEventListener('click', () => {
 });
 
 // Navigate back to Carousel
- backBtn.addEventListener('click', () => {
+backBtn.addEventListener('click', () => {
     carousel.classList.remove('swipe-left');
     loginForm.classList.remove('active');
 });
@@ -28,6 +27,7 @@ loginBtn.addEventListener('click', async () => {
         existingErrorMsg.remove();
     }
 
+    // Make the API request to login
     const response = await fetch('http://localhost:8080/api/v1/auth/signin', {
         method: 'POST',
         headers: {
@@ -37,12 +37,21 @@ loginBtn.addEventListener('click', async () => {
     });
 
     if (response.ok) {
+        // Parse the response to extract the token (assuming the token is sent in the response)
+        const data = await response.json();
+
+        // Store the JWT token in localStorage
+        const token = data.token; // Assuming the token is returned in 'data.token'
+        localStorage.setItem('jwtToken', token);
+
+        // Redirect to the home page or dashboard
         window.location.href = '/index.html';
     } else {
+        // Show error message
         const errorMsg = document.createElement('p');
         errorMsg.textContent = 'Invalid email or password';
         errorMsg.style.color = 'red';
-        errorMsg.id = 'error-message';  // Set an ID for the error message element
+        errorMsg.id = 'error-message'; // Set an ID for the error message element
         document.getElementById('login-form').appendChild(errorMsg);
 
         // Clear the input fields
@@ -58,5 +67,9 @@ loginBtn.addEventListener('click', async () => {
         }, 2000); // 2 seconds
     }
 });
+
+
+
+
 
 
