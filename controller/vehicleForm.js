@@ -136,9 +136,43 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${vehicle.status || 'N/A'}</td>
             <td>${vehicle.staffId || 'N/A'}</td>
             <td>${vehicle.remarks || 'N/A'}</td>
-            <td><button class="update-button">Update</button></td>
-            <td><button class="delete-button">Delete</button></td>
+            <td><span class="update-button"><i class="fas fa-edit"></i></span></td>
+            <td><span class="delete-button"><i class="fas fa-trash"></i></span></td>
         `;
+
+        // Add event listener to delete button
+        const deleteButton = row.querySelector('.delete-button');
+        if (deleteButton) {
+            deleteButton.addEventListener('click', async () => {
+                // Confirm the deletion
+                if (confirm('Are you sure you want to delete this vehicle?')) {
+                    try {
+                        const token = localStorage.getItem('jwtToken');
+                        const response = await fetch(`http://localhost:8080/api/v1/vehicles/${vehicle.vehicleCode}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Authorization': `Bearer ${token}`,
+                            },
+                        });
+
+                        if (response.ok) {
+                            // Remove the row from the table
+                            row.remove();
+                            alert('Vehicle deleted successfully');
+                        } else {
+                            const errorText = await response.text();
+                            console.error('Failed to delete vehicle:', errorText);
+                            alert(`Failed to delete vehicle: ${errorText}`);
+                        }
+                    } catch (error) {
+                        console.error('Error deleting vehicle:', error);
+                        alert('An error occurred while deleting the vehicle.');
+                    }
+                }
+            });
+        }
+
+        // Append the row to the table body
         tableBody.appendChild(row);
     };
 
