@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeButton = document.getElementById('vehicle-register-close');
     const vehicleForm = document.getElementById('vehicle-form');
     const tableBody = document.querySelector('.vehicle-table tbody');
+    const formTitle = document.querySelector('.vehicle-register-title');
+    let currentVehicleId = null;  // To store the ID of the vehicle being updated
 
     // Function to open the registration form
     const openForm = () => {
@@ -17,7 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add event listeners for opening and closing the form
     if (addVehicleButton) {
-        addVehicleButton.addEventListener('click', openForm);
+        addVehicleButton.addEventListener('click', () => {
+            openForm();
+            formTitle.textContent = 'Register Vehicle'; // Reset title to "Register"
+            clearForm(); // Clear the form for new registration
+        });
     }
 
     if (closeButton) {
@@ -49,11 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const vehicles = await response.json();
-
-                // Clear existing table rows
                 tableBody.innerHTML = '';
-
-                // Populate the table with the latest data
                 vehicles.forEach(addVehicleToTable);
             } else if (response.status === 401) {
                 alert('Authentication failed. Please log in again.');
@@ -73,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         if (!isAuthenticated()) {
-            alert('You must be logged in to register a vehicle');
+            alert('You must be logged in to register or update a vehicle');
             return;
         }
 
@@ -96,24 +98,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const token = localStorage.getItem('jwtToken');
-            const response = await fetch('http://localhost:8080/api/v1/vehicles', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify(vehicleData),
-            });
+            let response;
+
+            if (currentVehicleId) {
+                // Update vehicle if an ID is present
+                response = await fetch(`http://localhost:8080/api/v1/vehicles/${currentVehicleId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                    body: JSON.stringify(vehicleData),
+                });
+            } else {
+                // Register a new vehicle
+                response = await fetch('http://localhost:8080/api/v1/vehicles', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                    body: JSON.stringify(vehicleData),
+                });
+            }
 
             if (response.ok || response.status === 201) {
-                // Vehicle saved successfully, now fetch the updated list
                 await fetchVehicles();
-
-                // Clear the form fields
                 clearForm();
-
-                // Close the registration form
                 closeForm();
+                currentVehicleId = null;  // Reset the vehicle ID after submission
             } else {
                 const errorText = await response.text();
                 console.error('Failed to save vehicle. Response text:', errorText);
@@ -139,46 +152,34 @@ document.addEventListener('DOMContentLoaded', () => {
             <td><span class="update-button"><i class="fas fa-edit"></i></span></td>
             <td><span class="delete-button"><i class="fas fa-trash"></i></span></td>
         `;
+        row.querySelector('.update-button').addEventListener('click', () => {
+            openForm();
+            formTitle.textContent = 'Update Vehicle'; // Change title to "Update"
+            populateUpdateForm(vehicle);
+        });
+        row.querySelector('.delete-button').addEventListener('click', () => {
+            deleteVehicle(vehicle.vehicleCode);
+        });
 
-        // Add event listener to delete button
-        const deleteButton = row.querySelector('.delete-button');
-        if (deleteButton) {
-            deleteButton.addEventListener('click', async () => {
-                // Confirm the deletion
-                if (confirm('Are you sure you want to delete this vehicle?')) {
-                    try {
-                        const token = localStorage.getItem('jwtToken');
-                        const response = await fetch(`http://localhost:8080/api/v1/vehicles/${vehicle.vehicleCode}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'Authorization': `Bearer ${token}`,
-                            },
-                        });
-
-                        if (response.ok) {
-                            // Remove the row from the table
-                            row.remove();
-                            alert('Vehicle deleted successfully');
-                        } else {
-                            const errorText = await response.text();
-                            console.error('Failed to delete vehicle:', errorText);
-                            alert(`Failed to delete vehicle: ${errorText}`);
-                        }
-                    } catch (error) {
-                        console.error('Error deleting vehicle:', error);
-                        alert('An error occurred while deleting the vehicle.');
-                    }
-                }
-            });
-        }
-
-        // Append the row to the table body
         tableBody.appendChild(row);
+    };
+
+    // Populate the form with vehicle data for update
+    const populateUpdateForm = (vehicle) => {
+        document.getElementById('license-plate-number').value = vehicle.licensePlateNumber || '';
+        document.getElementById('fuel-type').value = vehicle.fuelType || '';
+        document.getElementById('status').value = vehicle.status || '';
+        document.getElementById('vehicle-category').value = vehicle.vehicleCategory || '';
+        document.getElementById('staff-id').value = vehicle.staffId || '';
+        document.getElementById('remarks').value = vehicle.remarks || '';
+
+        currentVehicleId = vehicle.vehicleCode;  // Set the ID of the vehicle being updated
     };
 
     // Function to clear the form fields
     const clearForm = () => {
         vehicleForm.reset();
+        currentVehicleId = null;  // Reset the vehicle ID after submission
     };
 
     // Fetch vehicles on page load
