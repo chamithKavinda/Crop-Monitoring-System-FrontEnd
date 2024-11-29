@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addVehicleButton = document.getElementById('add-vehicle');
     const closeButton = document.getElementById('vehicle-register-close');
     const vehicleForm = document.getElementById('vehicle-form');
+    const tableBody = document.querySelector('.vehicle-table tbody');
 
     // Function to open the registration form
     const openForm = () => {
@@ -30,15 +31,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    //---------------------------------------------------------------------------------------------------------------
-
     // Check if the user is authenticated
     const isAuthenticated = () => {
-        const token = localStorage.getItem('jwtToken');  // Use 'jwtToken' key to retrieve the token
+        const token = localStorage.getItem('jwtToken');
         return token && token !== null;
     };
 
-    // Save Vehicle ---------------------------------------------------------------------------------------------
+    // Fetch and display vehicle data from the backend
+    const fetchVehicles = async () => {
+        try {
+            const token = localStorage.getItem('jwtToken');
+            const response = await fetch('http://localhost:8080/api/v1/vehicles', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                const vehicles = await response.json();
+
+                // Clear existing table rows
+                tableBody.innerHTML = '';
+
+                // Populate the table with the latest data
+                vehicles.forEach(addVehicleToTable);
+            } else if (response.status === 401) {
+                alert('Authentication failed. Please log in again.');
+            } else {
+                const errorText = await response.text();
+                console.error('Failed to fetch vehicles:', errorText);
+                alert('Failed to fetch vehicles. Please try again later.');
+            }
+        } catch (error) {
+            console.error('Error fetching vehicles:', error);
+            alert('An error occurred while fetching vehicles.');
+        }
+    };
+
+    // Save vehicle data
     vehicleForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -48,14 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Get form data
-        const licensePlateNumber = document.getElementById('license-plate-number').value;
-        const fuelType = document.getElementById('fuel-type').value;
-        const status = document.getElementById('status').value;
-        const vehicleCategory = document.getElementById('vehicle-category').value;
-        const staffId = document.getElementById('staff-id').value;
-        const remarks = document.getElementById('remarks').value;
+        const licensePlateNumber = document.getElementById('license-plate-number').value.trim();
+        const fuelType = document.getElementById('fuel-type').value.trim();
+        const status = document.getElementById('status').value.trim();
+        const vehicleCategory = document.getElementById('vehicle-category').value.trim();
+        const staffId = document.getElementById('staff-id').value.trim();
+        const remarks = document.getElementById('remarks').value.trim();
 
-        // Prepare the data to send
         const vehicleData = {
             licensePlateNumber,
             fuelType,
@@ -66,36 +95,27 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            // Get JWT token from localStorage
-            const token = localStorage.getItem('jwtToken');  // Use 'jwtToken' from localStorage
-            
-            // Send the data to the backend using fetch with authentication
+            const token = localStorage.getItem('jwtToken');
             const response = await fetch('http://localhost:8080/api/v1/vehicles', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,  // Add the JWT token to the Authorization header
+                    'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify(vehicleData),
             });
 
-            // Log the raw response for debugging
-            console.log('Response status:', response.status);
-            console.log('Response headers:', response.headers);
+            if (response.ok || response.status === 201) {
+                // Vehicle saved successfully, now fetch the updated list
+                await fetchVehicles();
 
-            if (response.ok) {
-                // Parse the response only if it's not empty
-                const savedVehicle = response.headers.get('Content-Length') === '0' ? {} : await response.json();
-                console.log('Vehicle saved successfully:', savedVehicle);
+                // Clear the form fields
+                clearForm();
 
-                // Optionally, you can update the vehicle table with the new data
-                addVehicleToTable(savedVehicle);
-
+                // Close the registration form
                 closeForm();
-            } else if (response.status === 401) {
-                alert('Authentication failed. Please log in again.');
             } else {
-                const errorText = await response.text(); // Read the raw response for debugging
+                const errorText = await response.text();
                 console.error('Failed to save vehicle. Response text:', errorText);
                 alert(`Failed to save vehicle: ${errorText}`);
             }
@@ -107,10 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to dynamically add vehicle to the table
     const addVehicleToTable = (vehicle) => {
-        console.log(vehicle)
-        const tableBody = document.querySelector('.vehicle-table tbody');
         const row = document.createElement('tr');
-        
         row.innerHTML = `
             <td>${vehicle.vehicleCode || 'N/A'}</td>
             <td>${vehicle.vehicleCategory || 'N/A'}</td>
@@ -122,7 +139,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <td><button class="update-button">Update</button></td>
             <td><button class="delete-button">Delete</button></td>
         `;
-        
         tableBody.appendChild(row);
     };
+
+    // Function to clear the form fields
+    const clearForm = () => {
+        vehicleForm.reset();
+    };
+
+    // Fetch vehicles on page load
+    fetchVehicles();
 });
