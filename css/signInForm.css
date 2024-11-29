@@ -96,11 +96,11 @@
 /* login Form */
 .loginForm-container{
     background: linear-gradient(
-        rgba(0, 0, 0, 0.2),  /* Top darker layer */
-        rgba(0, 0, 0, 1)   /* Bottom darker layer */
+        rgba(0, 0, 0, 0.2), 
+        rgba(0, 0, 0, 1)   
     ), url(/assests/images/LoginPageImage.jpg) no-repeat center center;
     background-size: cover;
-    display: flex;;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -138,8 +138,6 @@ input:focus{
     border: none;
     outline: 3px solid #6B9071;
 }
-
-
 
 form{
     display: flex;
