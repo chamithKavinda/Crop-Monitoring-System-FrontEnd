@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const staffForm = document.getElementById('staff-form');
     const tableBody = document.querySelector('.staff-table tbody');
     const formTitle = document.getElementById('registerTitle');
-    let currentStaffId = null;  // To store the ID of the staff being updated
 
     // Function to open the registration form
     const openForm = () => {
@@ -77,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Get form data
+        const staffId = staffForm.dataset.staffId || null; // Retrieve staffId if updating
         const firstName = document.getElementById('first_name').value.trim();
         const lastName = document.getElementById('last_name').value.trim();
         const email = document.getElementById('email').value.trim();
@@ -113,9 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const token = localStorage.getItem('jwtToken');
             let response;
 
-            if (currentStaffId) {
+            if (staffId) {
                 // Update staff if an ID is present
-                response = await fetch(`http://localhost:8080/api/v1/staff/${currentStaffId}`, {
+                response = await fetch(`http://localhost:8080/api/v1/staff/${staffId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
@@ -139,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 await fetchStaff(); // Reload the staff table
                 clearForm();
                 closeForm();
-                currentStaffId = null;  // Reset the ID after submission
             } else {
                 const errorText = await response.text();
                 console.error('Failed to save staff. Response text:', errorText);
@@ -155,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addStaffToTable = (staff) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${staff.id || 'N/A'}</td>
+            <td>${staff.staffId || 'N/A'}</td>
             <td>${staff.firstName || 'N/A'}</td>
             <td>${staff.lastName || 'N/A'}</td>
             <td>${staff.email || 'N/A'}</td>
@@ -179,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             populateUpdateForm(staff);
         });
         row.querySelector('.delete-button').addEventListener('click', () => {
-            deleteStaff(staff.id);
+            deleteStaff(staff.staffId);
         });
 
         tableBody.appendChild(row);
@@ -202,25 +201,29 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('gender').value = staff.gender || '';
         document.getElementById('role').value = staff.role || '';
 
-        currentStaffId = staff.id;  // Set the ID of the staff being updated
+        staffForm.dataset.staffId = staff.staffId; // Set the ID as a dataset attribute
     };
 
     // Function to clear the form fields
     const clearForm = () => {
         staffForm.reset();
-        currentStaffId = null;  // Reset the ID after submission
+        delete staffForm.dataset.staffId; // Clear the dataset attribute
     };
 
     // Delete staff
-    const deleteStaff = async (id) => {
+    const deleteStaff = async (staffId) => {
         if (!isAuthenticated()) {
             alert('You must be logged in to delete staff');
             return;
         }
 
+        // Show confirmation before proceeding with deletion
+        const isConfirmed = window.confirm('Are you sure you want to delete this staff member?');
+        if (!isConfirmed) return; // Exit if not confirmed
+
         try {
             const token = localStorage.getItem('jwtToken');
-            const response = await fetch(`http://localhost:8080/api/v1/staff/${id}`, {
+            const response = await fetch(`http://localhost:8080/api/v1/staff/${staffId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -228,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                fetchStaff();  // Reload the staff table
+                await fetchStaff(); // Reload the staff table
             } else {
                 const errorText = await response.text();
                 console.error('Failed to delete staff:', errorText);
@@ -240,6 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initial fetch of staff data
+    // Fetch and display staff data when the page loads
     fetchStaff();
 });

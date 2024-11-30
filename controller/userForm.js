@@ -5,14 +5,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const userForm = document.getElementById('user-form');
     const tableBody = document.querySelector('.user-table tbody');
     const formTitle = document.querySelector('.user-register-title');
-    let currentUserEmail = null;  // To store the email of the user being updated
+    const togglePasswordIcon = document.getElementById('toggle-password');
+    const passwordField = document.getElementById('user-password');
 
-    // Function to open the registration form
+    let currentUserEmail = null; // To store the email of the user being updated
+
+    // Toggle password visibility
+    if (togglePasswordIcon && passwordField) {
+        togglePasswordIcon.addEventListener('click', () => {
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+            togglePasswordIcon.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+    }
+
+    // Open the registration form
     const openForm = () => {
         userRegisterForm.classList.add('active');
     };
 
-    // Function to close the registration form
+    // Close the registration form
     const closeForm = () => {
         userRegisterForm.classList.remove('active');
     };
@@ -21,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (addUserButton) {
         addUserButton.addEventListener('click', () => {
             openForm();
-            formTitle.textContent = 'Register User'; // Reset title to "Register"
-            clearForm(); // Clear the form for new registration
+            formTitle.textContent = 'Register User';
+            clearForm();
         });
     }
 
@@ -43,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return token && token !== null;
     };
 
-    // Fetch and display user data from the backend
+    // Fetch and display user data
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem('jwtToken');
@@ -79,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Get form data
         const email = document.getElementById('user-email').value.trim();
         const password = document.getElementById('user-password').value.trim();
         const role = document.getElementById('user-role').value.trim();
@@ -95,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let response;
 
             if (currentUserEmail) {
-                // Update user if an email is present
+                // Update user
                 response = await fetch(`http://localhost:8080/api/v1/user/${currentUserEmail}`, {
                     method: 'PATCH',
                     headers: {
@@ -105,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(userData),
                 });
             } else {
-                // Register a new user
+                // Register new user
                 response = await fetch('http://localhost:8080/api/v1/user', {
                     method: 'POST',
                     headers: {
@@ -120,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 await fetchUsers();
                 clearForm();
                 closeForm();
-                currentUserEmail = null;  // Reset the email after submission
+                currentUserEmail = null;
             } else {
                 const errorText = await response.text();
                 console.error('Failed to save user. Response text:', errorText);
@@ -132,13 +143,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Function to dynamically add user to the table
+    // Add user to the table
     const addUserToTable = (user) => {
         const row = document.createElement('tr');
-        
-        // Shorten the password (showing only the first 10 characters)
+
         const shortPassword = user.password ? user.password.substring(0, 10) : 'N/A';
-        
+
         row.innerHTML = `
             <td>${user.email || 'N/A'}</td>
             <td>${shortPassword || 'N/A'}</td>
@@ -146,13 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
             <td><span class="update-button"><i class="fas fa-edit"></i></span></td>
             <td><span class="delete-button"><i class="fas fa-trash"></i></span></td>
         `;
-        
+
         row.querySelector('.update-button').addEventListener('click', () => {
             openForm();
-            formTitle.textContent = 'Update User'; // Change title to "Update"
+            formTitle.textContent = 'Update User';
             populateUpdateForm(user);
         });
-        
+
         row.querySelector('.delete-button').addEventListener('click', () => {
             deleteUser(user.email);
         });
@@ -160,49 +170,19 @@ document.addEventListener('DOMContentLoaded', () => {
         tableBody.appendChild(row);
     };
 
-
-    // Populate the form with user data for update
+    // Populate form for updating a user
     const populateUpdateForm = (user) => {
         document.getElementById('user-email').value = user.email || '';
         document.getElementById('user-password').value = user.password || '';
         document.getElementById('user-role').value = user.role || '';
 
-        currentUserEmail = user.email;  // Set the email of the user being updated
+        currentUserEmail = user.email;
     };
 
-    // Function to clear the form fields
+    // Clear form
     const clearForm = () => {
         userForm.reset();
-        currentUserEmail = null;  // Reset the email after submission
-    };
-
-    // Delete user
-    const deleteUser = async (email) => {
-        if (!isAuthenticated()) {
-            alert('You must be logged in to delete a user');
-            return;
-        }
-
-        try {
-            const token = localStorage.getItem('jwtToken');
-            const response = await fetch(`http://localhost:8080/api/v1/user/${email}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                },
-            });
-
-            if (response.ok) {
-                await fetchUsers();
-            } else {
-                const errorText = await response.text();
-                console.error('Failed to delete user. Response text:', errorText);
-                alert(`Failed to delete user: ${errorText}`);
-            }
-        } catch (error) {
-            console.error('Error deleting user:', error);
-            alert(`An error occurred: ${error.message}`);
-        }
+        currentUserEmail = null;
     };
 
     // Fetch users on page load
