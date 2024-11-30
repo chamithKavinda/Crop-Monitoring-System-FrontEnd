@@ -10,12 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentUserEmail = null; // To store the email of the user being updated
 
-    // Toggle password visibility
+    // Toggle password visibility with Font Awesome icons
     if (togglePasswordIcon && passwordField) {
         togglePasswordIcon.addEventListener('click', () => {
             const type = passwordField.type === 'password' ? 'text' : 'password';
             passwordField.type = type;
-            togglePasswordIcon.textContent = type === 'password' ? '👁️' : '🙈';
+            // Change the icon based on the password type
+            togglePasswordIcon.innerHTML = type === 'password' ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
         });
     }
 
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             } else {
                 // Register new user
-                response = await fetch('http://localhost:8080/api/v1/user', {
+                response = await fetch('http://localhost:8080/api/v1/user/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -184,6 +185,43 @@ document.addEventListener('DOMContentLoaded', () => {
         userForm.reset();
         currentUserEmail = null;
     };
+
+   // Delete a user with confirmation
+    const deleteUser = async (email) => {
+        if (!isAuthenticated()) {
+            alert('You must be logged in to delete a user');
+            return;
+        }
+
+        // Ask for confirmation before deleting the user
+        const isConfirmed = confirm('Are you sure you want to delete this user?');
+        if (!isConfirmed) {
+            return; // Stop if the user cancels the action
+        }
+
+        const token = localStorage.getItem('jwtToken');
+        try {
+            const response = await fetch(`http://localhost:8080/api/v1/user/${email}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                alert('User deleted successfully');
+                await fetchUsers();  // Re-fetch the users after deletion
+            } else {
+                const errorText = await response.text();
+                console.error('Failed to delete user:', errorText);
+                alert(`Failed to delete user: ${errorText}`);
+            }
+        } catch (error) {
+            console.error('Error deleting user:', error);
+            alert(`An error occurred: ${error.message}`);
+        }
+    };
+
 
     // Fetch users on page load
     fetchUsers();
