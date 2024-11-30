@@ -216,32 +216,35 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('You must be logged in to delete staff');
             return;
         }
-
-        // Show confirmation before proceeding with deletion
+    
+        // Show a confirmation dialog
         const isConfirmed = window.confirm('Are you sure you want to delete this staff member?');
-        if (!isConfirmed) return; // Exit if not confirmed
-
+        if (!isConfirmed) return;
+    
         try {
             const token = localStorage.getItem('jwtToken');
+            console.log('Deleting staff with ID:', staffId); // Debugging
             const response = await fetch(`http://localhost:8080/api/v1/staff/${staffId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-
+    
             if (response.ok) {
-                await fetchStaff(); // Reload the staff table
+                await fetchStaff();
             } else {
                 const errorText = await response.text();
-                console.error('Failed to delete staff:', errorText);
-                alert('Failed to delete staff. Please try again later.');
+                console.error('Failed to delete staff. Response:', errorText);
+                alert(`Failed to delete staff: ${errorText}`);
             }
         } catch (error) {
             console.error('Error deleting staff:', error);
             alert('An error occurred while deleting staff.');
         }
     };
+    
+    
 
     // Fetch and display staff data when the page loads
     fetchStaff();
