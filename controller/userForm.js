@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             } else {
                 // Register new user
-                response = await fetch('http://localhost:8080/api/v1/user/', {
+                response = await fetch('http://localhost:8080/api/v1/user', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -221,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alert(`An error occurred: ${error.message}`);
         }
     };
-
 
     // Fetch users on page load
     fetchUsers();

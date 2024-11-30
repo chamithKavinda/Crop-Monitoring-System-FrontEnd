@@ -182,6 +182,44 @@ document.addEventListener('DOMContentLoaded', () => {
         currentVehicleId = null;  // Reset the vehicle ID after submission
     };
 
+    // Function to delete vehicle with confirmation
+    const deleteVehicle = async (vehicleCode) => {
+        if (!isAuthenticated()) {
+            alert('You must be logged in to delete a vehicle');
+            return;
+        }
+
+        // Create a custom confirmation prompt
+        const isConfirmed = confirm("Are you sure you want to delete this vehicle?");
+
+        if (isConfirmed) {
+            const token = localStorage.getItem('jwtToken');
+            try {
+                const response = await fetch(`http://localhost:8080/api/v1/vehicles/${vehicleCode}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
+
+                if (response.ok) {
+                    alert('Vehicle deleted successfully');
+                    await fetchVehicles();  // Re-fetch the vehicles after deletion
+                } else {
+                    const errorText = await response.text();
+                    console.error('Failed to delete vehicle:', errorText);
+                    alert(`Failed to delete vehicle: ${errorText}`);
+                }
+            } catch (error) {
+                console.error('Error deleting vehicle:', error);
+                alert(`An error occurred: ${error.message}`);
+            }
+        } else {
+            console.log('Vehicle deletion canceled');
+        }
+    };
+
+
     // Fetch vehicles on page load
     fetchVehicles();
 });
