@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const equipmentForm = document.getElementById('equipment-form');
     const tableBody = document.querySelector('.equipment-table tbody');
     const formTitle = document.querySelector('.equipment-register-title');
-    let currentEquipmentId = null;  // To store the ID of the equipment being updated
+    let currentEquipmentId = null; // To store the ID of the equipment being updated
 
     // Function to open the registration form
     const openForm = () => {
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 await fetchEquipments(); // Reload the equipment table
                 clearForm();
                 closeForm();
-                currentEquipmentId = null;  // Reset the ID after submission
+                currentEquipmentId = null; // Reset the ID after submission
             } else {
                 const errorText = await response.text();
                 console.error('Failed to save equipment. Response text:', errorText);
@@ -139,27 +139,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to dynamically add equipment to the table
     const addEquipmentToTable = (equipment) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${equipment.id || 'N/A'}</td>
-            <td>${equipment.fieldCode || 'N/A'}</td>
-            <td>${equipment.name || 'N/A'}</td>
-            <td>${equipment.staffId || 'N/A'}</td>
-            <td>${equipment.status || 'N/A'}</td>
-            <td>${equipment.type || 'N/A'}</td>
-            <td><span class="update-button"><i class="fas fa-edit"></i></span></td>
-            <td><span class="delete-button"><i class="fas fa-trash"></i></span></td>
-        `;
-        row.querySelector('.update-button').addEventListener('click', () => {
-            openForm();
-            formTitle.textContent = 'Update Equipment'; // Change title to "Update"
-            populateUpdateForm(equipment);
-        });
-        row.querySelector('.delete-button').addEventListener('click', () => {
-            deleteEquipment(equipment.id);
-        });
+        // Check if a row for this equipment already exists
+        const existingRow = document.querySelector(`tr[data-id="${equipment.equipmentId}"]`);
 
-        tableBody.appendChild(row);
+        if (existingRow) {
+            // Update the existing row
+            existingRow.innerHTML = `
+                <td>${equipment.equipmentId}</td>
+                <td>${equipment.fieldCode || 'N/A'}</td>
+                <td>${equipment.name || 'N/A'}</td>
+                <td>${equipment.staffId || 'N/A'}</td>
+                <td>${equipment.status || 'N/A'}</td>
+                <td>${equipment.type || 'N/A'}</td>
+                <td><span class="update-button"><i class="fas fa-edit"></i></span></td>
+                <td><span class="delete-button"><i class="fas fa-trash"></i></span></td>
+            `;
+
+            // Reattach event listeners to updated buttons
+            existingRow.querySelector('.update-button').addEventListener('click', () => {
+                openForm();
+                formTitle.textContent = 'Update Equipment';
+                populateUpdateForm(equipment);
+            });
+            existingRow.querySelector('.delete-button').addEventListener('click', () => {
+                deleteEquipment(equipment.equipmentId);
+            });
+        } else {
+            // Add a new row if no existing row is found
+            const row = document.createElement('tr');
+            row.setAttribute('data-id', equipment.equipmentId); // Associate the row with the equipment ID
+            row.innerHTML = `
+                <td>${equipment.equipmentId}</td>
+                <td>${equipment.fieldCode || 'N/A'}</td>
+                <td>${equipment.name || 'N/A'}</td>
+                <td>${equipment.staffId || 'N/A'}</td>
+                <td>${equipment.status || 'N/A'}</td>
+                <td>${equipment.type || 'N/A'}</td>
+                <td><span class="update-button"><i class="fas fa-edit"></i></span></td>
+                <td><span class="delete-button"><i class="fas fa-trash"></i></span></td>
+            `;
+
+            // Add event listeners
+            row.querySelector('.update-button').addEventListener('click', () => {
+                openForm();
+                formTitle.textContent = 'Update Equipment';
+                populateUpdateForm(equipment);
+            });
+            row.querySelector('.delete-button').addEventListener('click', () => {
+                deleteEquipment(equipment.equipmentId);
+            });
+
+            tableBody.appendChild(row);
+        }
     };
 
     // Populate the form with equipment data for update
@@ -170,13 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('equipment-field-code').value = equipment.fieldCode || '';
         document.getElementById('equipment-staff-id').value = equipment.staffId || '';
 
-        currentEquipmentId = equipment.id;  // Set the ID of the equipment being updated
+        currentEquipmentId = equipment.equipmentId; // Set the ID of the equipment being updated
     };
 
     // Function to clear the form fields
     const clearForm = () => {
         equipmentForm.reset();
-        currentEquipmentId = null;  // Reset the ID after submission
+        currentEquipmentId = null; // Reset the ID after submission
     };
 
     // Delete equipment
@@ -184,6 +215,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isAuthenticated()) {
             alert('You must be logged in to delete equipment');
             return;
+        }
+
+        // Show a confirmation dialog before proceeding with deletion
+        const isConfirmed = window.confirm('Are you sure you want to delete this equipment?');
+
+        if (!isConfirmed) {
+            return; // If user cancels, do nothing
         }
 
         try {
@@ -196,7 +234,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                await fetchEquipments();
+                // Remove the row from the table
+                const row = document.querySelector(`tr[data-id="${id}"]`);
+                if (row) {
+                    row.remove();
+                }
             } else {
                 const errorText = await response.text();
                 console.error('Failed to delete equipment. Response text:', errorText);
@@ -207,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert(`An error occurred: ${error.message}`);
         }
     };
+
 
     // Fetch equipment on page load
     fetchEquipments();
