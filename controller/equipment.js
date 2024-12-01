@@ -97,21 +97,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Fetch field codes
-            const fieldResponse = await fetch('http://localhost:8080/api/v1/fields', {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                },
-            });
-            if (fieldResponse.ok) {
-                const fieldList = await fieldResponse.json();
-                fieldDropdown.innerHTML = `<option value="">Select Field Code</option>`;
-                fieldList.forEach(field => {
-                    const option = document.createElement('option');
-                    option.value = field.fieldCode;
-                    option.textContent = field.fieldCode;
-                    fieldDropdown.appendChild(option);
-                });
-            }
+            // const fieldResponse = await fetch('http://localhost:8080/api/v1/fields', {
+            //     headers: {
+            //         'Authorization': `Bearer ${token}`,
+            //     },
+            // });
+            // if (fieldResponse.ok) {
+            //     const fieldList = await fieldResponse.json();
+            //     fieldDropdown.innerHTML = `<option value="">Select Field Code</option>`;
+            //     fieldList.forEach(field => {
+            //         const option = document.createElement('option');
+            //         option.value = field.fieldCode;
+            //         option.textContent = field.fieldCode;
+            //         fieldDropdown.appendChild(option);
+            //     });
+            // }
         } catch (error) {
             console.error('Error populating dropdowns:', error);
         }

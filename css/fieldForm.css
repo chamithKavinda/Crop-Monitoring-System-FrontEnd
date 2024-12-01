@@ -206,12 +206,14 @@
     color: #375534;
 }
 
-/* for Field Table */
+
 /* ------------------ Field Details Table ------------------ */
 .table-container {
-    width: 95%;
+    width: 100%; /* Make container width 100% to be responsive */
+    max-width: 95%; /* Limit maximum width to 95% */
     height: 500px; 
-    overflow: auto;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Disable vertical scrolling */
     margin: 20px auto;
     border: 1px solid #0F2A1D;
     border-radius: 5px;
@@ -220,9 +222,12 @@
 
 .field-table {
     width: 100%;
+    min-width: 800px; /* Set a minimum width to prevent table from shrinking too much */
     border-collapse: collapse;
     color: #375534;
     background-color: #375534;
+    table-layout: auto; /* Let table adjust column widths based on content */
+    border-spacing: 0;
 }
 
 .field-table th,
@@ -231,6 +236,52 @@
     border: 1px solid white;
     text-align: center;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds ellipsis for text overflow */
+}
+
+/* Styling for table columns */
+.field-table th:nth-child(1),
+.field-table td:nth-child(1) {
+    width: 40%; /* Decrease the width of the Field Code column */
+}
+
+.field-table th:nth-child(2),
+.field-table td:nth-child(2) {
+    width: 18%; /* Field Name column */
+}
+
+.field-table th:nth-child(3),
+.field-table td:nth-child(3) {
+    width: 12%; /* Extent Size column */
+}
+
+.field-table th:nth-child(4),
+.field-table td:nth-child(4),
+.field-table th:nth-child(5),
+.field-table td:nth-child(5) {
+    width: 15%; /* Image columns */
+}
+
+.field-table th:nth-child(6),
+.field-table td:nth-child(6) {
+    width: 18%; /* Coordinates column */
+}
+
+.field-table th:nth-child(7),
+.field-table td:nth-child(7),
+.field-table th:nth-child(8),
+.field-table td:nth-child(8) {
+    width: 20%; /* Action buttons and Location column */
+}
+
+/* Styling for images in the field table */
+.field-image-table {
+    max-width: 80px; /* Set a maximum width */
+    max-height: 80px; /* Set a maximum height */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Rounded corners */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visual separation */
 }
 
 .field-table th {
@@ -238,7 +289,8 @@
     color: white;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 1; /* Ensure the header is on top of the table body */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow below header */
 }
 
 .field-table tr:nth-child(even) {
@@ -249,13 +301,14 @@
     background-color: #6B9071;
 }
 
+
 /* Action Button Styling */
 .update-button,
 .delete-button {
-    height: 32px;
-    width: 90px;
+    height: 36px; /* Increase button height */
+    width: 120px; /* Increase button width */
     text-align: center;
-    font-size: 12px;
+    font-size: 14px; /* Increase font size */
     font-weight: 600;
     border-radius: 9px;
     color: white;
@@ -269,3 +322,4 @@
     background: #AEC3B0;
     color: #375534;
 }
+

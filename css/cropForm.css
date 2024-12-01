@@ -200,11 +200,13 @@
     color: #375534;
 }
 
-/* Crop Table */
+/* ------------------ Crop Table ------------------ */
 .table-container {
-    width: 95%;
+    width: 100%; /* Full width for responsiveness */
+    max-width: 95%; /* Limit max width to 95% */
     height: 500px; 
-    overflow: auto;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Prevent vertical overflow */
     margin: 20px auto;
     border: 1px solid #0F2A1D;
     border-radius: 5px;
@@ -213,9 +215,12 @@
 
 .crop-table {
     width: 100%;
+    min-width: 900px; /* Minimum width to prevent excessive shrinkage */
     border-collapse: collapse;
     color: #375534;
     background-color: #375534;
+    table-layout: auto; /* Automatically adjust column widths */
+    border-spacing: 0;
 }
 
 .crop-table th,
@@ -224,22 +229,126 @@
     border: 1px solid white;
     text-align: center;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds ellipsis for overflowed text */
 }
 
+/* Column Widths */
+.crop-table th:nth-child(1),
+.crop-table td:nth-child(1) {
+    width: 15%; /* Crop Code */
+}
+
+.crop-table th:nth-child(2),
+.crop-table td:nth-child(2) {
+    width: 20%; /* Crop Name */
+}
+
+.crop-table th:nth-child(3),
+.crop-table td:nth-child(3) {
+    width: 25%; /* Scientific Name */
+}
+
+.crop-table th:nth-child(4),
+.crop-table td:nth-child(4) {
+    width: 15%; /* Category */
+}
+
+.crop-table th:nth-child(5),
+.crop-table td:nth-child(5) {
+    width: 10%; /* Image */
+}
+
+.crop-table th:nth-child(6),
+.crop-table td:nth-child(6) {
+    width: 15%; /* Actions */
+}
+
+/* Image Styling */
+.crop-image-table {
+    max-width: 80px; /* Limit maximum width */
+    max-height: 80px; /* Limit maximum height */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Rounded corners */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for emphasis */
+}
+
+/* Header Styling */
 .crop-table th {
     background-color: #6B9071;
     color: white;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 1; /* Ensure headers stay on top */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Shadow below header */
 }
 
+/* Row Styling */
 .crop-table tr:nth-child(even) {
     background-color: #E3EED4;
 }
 
 .crop-table tr:hover {
     background-color: #6B9071;
+    color: white; /* Optional: Highlight text color */
+    cursor: pointer;
+}
+
+/* Action Button Styling */
+.update-button,
+.delete-button {
+    height: 32px;
+    width: 90px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: white;
+    background: #4CAF50;
+    border: 1px solid #375534;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.update-button:hover {
+    background: #45a049;
+}
+
+.delete-button {
+    background: #f44336;
+}
+
+.delete-button:hover {
+    background: #d32f2f;
+}
+
+
+/* Action Button Styling */
+.update-button,
+.delete-button {
+    height: 32px;
+    width: 90px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: white;
+    background: #4CAF50;
+    border: 1px solid #375534;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.update-button:hover {
+    background: #45a049;
+}
+
+.delete-button {
+    background: #f44336;
+}
+
+.delete-button:hover {
+    background: #d32f2f;
 }
 
 /* Action Button Styling */
