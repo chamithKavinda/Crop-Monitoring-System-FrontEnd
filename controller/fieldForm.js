@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formTitle = document.querySelector('.field-register-title');
     const staffDropdown = document.getElementById('crop-field-code');  // Dropdown for staff IDs
     let currentFieldId = null; // To store the ID of the field being updated
+    
 
     const tags = document.querySelectorAll(".tag");
     const selectedIdsInput = document.getElementById("selected-staff-ids");
@@ -183,7 +184,24 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const formData = new FormData(fieldForm);
+       const fieldName = document.getElementById('field-name').value ;
+       const latitude = document.getElementById('latitude').value;
+       const longitude =  document.getElementById('longitude').value;
+       const extendSize =  document.getElementById('field-extent-size').value;
+       const fieldImage1 = document.getElementById('field-image1');
+       const fieldImage2 =  document.getElementById('field-image2');
+       const staffIds = document.getElementById('crop-field-code').value;
+
+       console.log(staffIds);
+        const formData = new FormData();
+        
+        formData.append("fieldName", fieldName);
+        formData.append("latitude", latitude);
+        formData.append("longitude", longitude);
+        formData.append("extentSize", extendSize);
+        formData.append("fieldImage1", fieldImage1.files[0],fieldImage1.files[0].name);
+        formData.append("fieldImage2", fieldImage2.files[0],fieldImage2.files[0].name);
+        formData.append("staffIds", staffIds);
 
         try {
             const token = localStorage.getItem('jwtToken');
@@ -217,10 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
         row.innerHTML = `
             <td>${field.fieldCode || 'N/A'}</td>
             <td>${field.fieldName || 'N/A'}</td>
-            <td>${field.extentSize || 'N/A'}</td>
+            <td>${field.extendSize || 'N/A'}</td>
             <td><img src="data:image/png;base64,${field.fieldImage1 || ''}" alt="Image 1" class="field-image-table" /></td>
             <td><img src="data:image/png;base64,${field.fieldImage2 || ''}" alt="Image 2" class="field-image-table" /></td>
-            <td>${field.latitude !== undefined && field.longitude !== undefined ? `(${field.latitude}, ${field.longitude})` : 'N/A'}</td>
+            <td>${field.fieldLocation.x !== undefined && field.fieldLocation.y !== undefined ? `(${field.fieldLocation.x}, ${field.fieldLocation.y})` : 'N/A'}</td>
             <td><span class="update-button"><i class="fas fa-edit"></i></span></td>
             <td><span class="delete-button"><i class="fas fa-trash"></i></span></td>
         `;

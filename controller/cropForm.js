@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cropForm = document.getElementById('crop-form');
     const tableBody = document.querySelector('.crop-table tbody');
     const formTitle = document.querySelector('.crop-register-title');
-    const fieldDropdown = document.getElementById('crop-field-code'); // Field dropdown
+    const fieldDropdown = document.getElementById('crop-field-code-1'); // Field dropdown
     let currentCropId = null; // To store the ID of the crop being updated
 
     // Image input and preview mapping
@@ -108,11 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Fetch field codes and populate dropdown
+    console.log("hello");
     const fetchFieldCodes = async () => {
         if (!isAuthenticated()) {
             alert('You must be logged in to view field codes.');
             return;
         }
+
+        console.log("hello 1");
 
         try {
             const token = localStorage.getItem('jwtToken');
@@ -122,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
             });
 
+            console.log("hello 2");
             if (!response.ok) {
                 console.error('Failed to fetch field codes with status:', response.status);
                 const errorText = await response.text();
@@ -130,16 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            console.log("hello 3");
             const fields = await response.json();
-            console.log('Fetched fields:', fields); // Log the data to verify structure
-
-            fieldDropdown.innerHTML = '<option value="">Select Field Code</option>';
+            
 
             if (fields.length === 0) {
                 console.log('No field codes available.');
                 return;
             }
 
+            console.log(fields)
             fields.forEach((field) => {
                 const option = document.createElement('option');
                 option.value = field.fieldCode;

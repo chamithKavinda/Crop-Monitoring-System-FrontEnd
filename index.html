@@ -397,7 +397,7 @@
 
                             <!-- Field Code Dropdown -->
                             <div class="crop-form-row field-dropdown-row">
-                                <select id="crop-field-code" name="crop-field-code" required>
+                                <select id="crop-field-code-1" name="crop-field-code" required>
                                     <option value="">Select Field Code</option>
                                     <!-- Dynamic options for field codes -->
                                 </select>
@@ -449,26 +449,53 @@
             </section>
 
             <!-- ------------------------------------ Crop Details Form ------------------------------------ -->
-             <section id="CropDetailsForm">
+            <section id="CropDetailsForm">
                 <div id="cropdetailsHeaderSection" class="cropdetailsHeader-section">
                     <h2> Crop  <span> Details </span></h2>
                     <button id="add-cropdetails" class="add-cropdetails-button">Add Crop Details</button>
                 </div>
-
+            
                 <!-- Crop Details Registration Form -->
                 <div class="crop-details-register-form" id="crop-details-register-form">
                     <div class="crop-details-register-box">
                         <span id="crop-details-register-close" class="crop-details-register-close">&times;</span>
-
+            
                         <h2 class="crop-details-register-title">Register Crop Details</h2>
-
+            
                         <form id="crop-details-form">
                             <!-- Log Date and Log Details -->
                             <div class="crop-details-form-row">
                                 <input type="date" id="crop-log-date" name="crop-log-date" placeholder="Log Date" required>
                                 <input type="text" id="crop-log-details" name="crop-log-details" placeholder="Log Details" required>
                             </div>
-
+            
+                            <!-- Field Codes Dropdown (Allow Multiple Selection) -->
+                            <div class="crop-form-row field-dropdown-row">
+                                <label for="crop-field-codes">Select Field Codes</label>
+                                <select id="crop-field-codes" name="crop-field-codes" multiple required>
+                                    <option value="">Select Field Codes</option>
+                                    <!-- Dynamic options for field codes will be populated here -->
+                                </select>
+                            </div>
+            
+                            <!-- Crop Codes Dropdown (Allow Multiple Selection) -->
+                            <div class="crop-form-row field-dropdown-row">
+                                <label for="crop-codes">Select Crop Codes</label>
+                                <select id="crop-codes" name="crop-codes" multiple required>
+                                    <option value="">Select Crop Codes</option>
+                                    <!-- Dynamic options for crop codes will be populated here -->
+                                </select>
+                            </div>
+            
+                            <!-- Staff IDs Dropdown (Allow Multiple Selection) -->
+                            <div class="crop-form-row field-dropdown-row">
+                                <label for="crop-staff-ids">Select Staff IDs</label>
+                                <select id="crop-staff-ids" name="crop-staff-ids" multiple required>
+                                    <option value="">Select Staff IDs</option>
+                                    <!-- Dynamic options for staff IDs will be populated here -->
+                                </select>
+                            </div>
+            
                             <!-- Image Upload Field -->
                             <div class="crop-details-form-row">
                                 <div class="crop-image-upload-group">
@@ -476,7 +503,7 @@
                                     <input type="file" id="crop-observed-image" name="crop-observed-image" accept="image/*">
                                 </div>
                             </div>
-
+            
                             <!-- Image Previews -->
                             <div class="crop-details-form-row">
                                 <div id="crop-observed-image-preview-container" class="crop-image-preview-container" style="display: none;">
@@ -484,16 +511,14 @@
                                     <button type="button" id="crop-remove-observed-image" class="crop-remove-image-button">Remove</button>
                                 </div>
                             </div>
-
+            
                             <!-- Submit Button -->
                             <button id="crop-details-register-submit" type="submit" class="crop-details-register-submit">Submit</button>
                         </form>
                     </div>
                 </div>
-
-
-             </section>
-
+            </section>
+            
             <!-- ------------------------------------ Vehicles Form ------------------------------------ -->
              <section id="VehiclesForm">
                 <div id="vehicleHeaderSection" class="vehicleHeader-section">
@@ -758,7 +783,7 @@
     <script src="/controller/cropForm.js"></script>
     <script src="/controller/vehicleForm.js"></script>
     <script src="/controller/equipment.js"></script>
-    <script src="/controller/userForm.js"></script>
+    <script src="/controller/userForm.js"></script> 
     <script src="/controller/cropDetailsForm.js"></script>
 </body>
 </html>

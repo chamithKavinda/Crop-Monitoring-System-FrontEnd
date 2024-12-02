@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Elements for the Crop Details Registration Form
     const cropDetailsRegisterForm = document.getElementById('crop-details-register-form');
-    const addCropDetailsButton = document.getElementById('add-cropdetails'); // Ensure this button exists in the HTML
+    const addCropDetailsButton = document.getElementById('add-cropdetails');
     const closeButton = document.getElementById('crop-details-register-close');
 
     // Image input and preview mapping for crop details
@@ -14,74 +14,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // Function to open the registration form
-    const openForm = () => {
-        console.log('Opening crop details form...');
-        cropDetailsRegisterForm.style.display = 'flex'; // Make form visible
+    // Dropdown Elements
+    const fieldCodesDropdown = document.getElementById('crop-field-codes');
+    const cropCodesDropdown = document.getElementById('crop-codes');
+    const staffIdsDropdown = document.getElementById('crop-staff-ids');
+
+    // Fetch data for field codes, crop codes, and staff IDs
+    const fetchData = async (endpoint, dropdownElement, placeholderText) => {
+        try {
+            const token = localStorage.getItem('jwtToken');
+            const response = await fetch(endpoint, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                populateDropdown(dropdownElement, data, placeholderText);
+            } else {
+                alert('Failed to fetch data.');
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     };
 
-    // Function to close the registration form
-    const closeForm = () => {
-        console.log('Closing crop details form...');
-        cropDetailsRegisterForm.style.display = 'none'; // Hide form
+    const populateDropdown = (dropdownElement, data, placeholderText) => {
+        dropdownElement.innerHTML = `<option value="">${placeholderText}</option>`;
+        data.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.code || item.staffId; // Adjust based on the object
+            option.textContent = item.code || item.staffId; // Adjust based on the object
+            dropdownElement.appendChild(option);
+        });
     };
 
-    // Initialize image preview and removal functionality
-    const initializeImageHandlers = ({ input, previewContainer, preview, removeButton }) => {
-        // Handle image preview
-        input.addEventListener('change', (event) => {
-            const file = event.target.files[0];
+    // Event listeners
+    addCropDetailsButton.addEventListener('click', () => {
+        cropDetailsRegisterForm.style.display = 'flex';
+        fetchData('http://localhost:8080/api/v1/field', fieldCodesDropdown, 'Select Field Codes');
+        fetchData('http://localhost:8080/api/v1/crop', cropCodesDropdown, 'Select Crop Codes');
+        fetchData('http://localhost:8080/api/v1/staff', staffIdsDropdown, 'Select Staff IDs');
+    });
+
+    closeButton.addEventListener('click', () => {
+        cropDetailsRegisterForm.style.display = 'none';
+    });
+
+    imageHandlers.forEach(handler => {
+        handler.input.addEventListener('change', () => {
+            const file = handler.input.files[0];
             if (file) {
-                console.log(`Selected file for ${input.id}:`, file);
                 const reader = new FileReader();
-                reader.onload = (e) => {
-                    preview.src = e.target.result;
-                    previewContainer.style.display = 'flex'; // Show the preview
+                reader.onload = () => {
+                    handler.preview.src = reader.result;
+                    handler.previewContainer.style.display = 'flex';
                 };
                 reader.readAsDataURL(file);
             }
         });
 
-        // Handle image removal
-        removeButton.addEventListener('click', () => {
-            console.log(`Removing image for ${input.id}`);
-            input.value = ''; // Clear the file input
-            preview.src = ''; // Clear the image preview
-            previewContainer.style.display = 'none'; // Hide the preview
+        handler.removeButton.addEventListener('click', () => {
+            handler.input.value = '';
+            handler.previewContainer.style.display = 'none';
         });
-    };
-
-    // Add event listeners for opening and closing the form
-    if (addCropDetailsButton) {
-        addCropDetailsButton.addEventListener('click', openForm);
-    } else {
-        console.error("Add Crop Details button (id: 'add-cropdetails') not found!");
-    }
-
-    if (closeButton) {
-        closeButton.addEventListener('click', closeForm);
-    } else {
-        console.error("Close button (id: 'crop-details-register-close') not found!");
-    }
-
-    // Close the form when clicking outside it
-    window.addEventListener('click', (event) => {
-        if (event.target === cropDetailsRegisterForm) {
-            closeForm();
-        }
-    });
-
-    // Initialize image handlers
-    imageHandlers.forEach(handler => {
-        if (
-            handler.input &&
-            handler.previewContainer &&
-            handler.preview &&
-            handler.removeButton
-        ) {
-            initializeImageHandlers(handler);
-        } else {
-            console.error('Missing one or more elements in an image handler:', handler);
-        }
     });
 });
