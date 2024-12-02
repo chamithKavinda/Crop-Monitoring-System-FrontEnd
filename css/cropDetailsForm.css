@@ -235,3 +235,118 @@
     margin-bottom: 5px;
 }
 
+/* ------------------ Crop Details Table ------------------ */
+.table-container {
+    width: 100%;
+    max-width: 95%; 
+    height: 500px; 
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 20px auto;
+    border: none; /* Removed the border */
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.crop-details-table {
+    width: 100%;
+    min-width: 900px; 
+    border-collapse: collapse;
+    color: #375534;
+    background-color: #fff;
+    table-layout: auto; 
+    border-spacing: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.crop-details-table th,
+.crop-details-table td {
+    padding: 10px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+/* Column Widths */
+.crop-details-table th:nth-child(1),
+.crop-details-table td:nth-child(1) {
+    width: 15%; 
+}
+
+.crop-details-table th:nth-child(2),
+.crop-details-table td:nth-child(2) {
+    width: 15%; 
+}
+
+.crop-details-table th:nth-child(3),
+.crop-details-table td:nth-child(3) {
+    width: 25%; 
+}
+
+.crop-details-table th:nth-child(4),
+.crop-details-table td:nth-child(4) {
+    width: 25%; 
+}
+
+.crop-details-table th:nth-child(5),
+.crop-details-table td:nth-child(5) {
+    width: 10%;
+}
+
+.crop-details-table th:nth-child(6),
+.crop-details-table td:nth-child(6) {
+    width: 10%; 
+}
+
+/* Image Styling */
+.crop-image-preview {
+    max-width: 80px; 
+    max-height: 80px;
+    object-fit: cover; 
+    border-radius: 5px; 
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Header Styling */
+.crop-details-table th {
+    background-color: #6B9071;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Even Row Background Color */
+.crop-details-table tr:nth-child(even) {
+    background-color: #E3EED4;
+}
+
+/* Hover Effect for Rows */
+.crop-details-table tr:hover {
+    background-color: #98bb9d;
+}
+
+/* Button Styling */
+.update-button,
+.delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.update-button {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}

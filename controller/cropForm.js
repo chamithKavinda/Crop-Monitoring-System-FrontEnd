@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 crops.forEach(addCropToTable);
             } else {
                 const errorText = await response.text();
-                console.error('Failed to fetch crops:', errorText);
+                console.error('Failed to fetch crops:', response.status, errorText);
                 alert('Failed to fetch crops. Please try again later.');
             }
         } catch (error) {
@@ -108,14 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Fetch field codes and populate dropdown
-    console.log("hello");
     const fetchFieldCodes = async () => {
         if (!isAuthenticated()) {
             alert('You must be logged in to view field codes.');
             return;
         }
-
-        console.log("hello 1");
 
         try {
             const token = localStorage.getItem('jwtToken');
@@ -125,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
             });
 
-            console.log("hello 2");
             if (!response.ok) {
                 console.error('Failed to fetch field codes with status:', response.status);
                 const errorText = await response.text();
@@ -134,16 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            console.log("hello 3");
             const fields = await response.json();
-            
-
             if (fields.length === 0) {
                 console.log('No field codes available.');
                 return;
             }
 
-            console.log(fields)
             fields.forEach((field) => {
                 const option = document.createElement('option');
                 option.value = field.fieldCode;
@@ -182,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeForm();
             } else {
                 const errorText = await response.text();
-                console.error('Failed to save crop:', response.status, errorText);
                 alert(`Failed to save crop: ${response.statusText} (${response.status})`);
             }
         } catch (error) {
