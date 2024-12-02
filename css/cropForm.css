@@ -200,14 +200,13 @@
     color: #375534;
 }
 
-
 /* ------------------ Crop Table ------------------ */
 .table-container {
-    width: 100%; /* Full width for responsiveness */
-    max-width: 95%; /* Limit max width to 95% */
+    width: 100%;
+    max-width: 95%; 
     height: 500px; 
-    overflow-x: auto; /* Enable horizontal scrolling */
-    overflow-y: hidden; /* Prevent vertical overflow */
+    overflow-x: auto;
+    overflow-y: hidden;
     margin: 20px auto;
     border: 1px solid #0F2A1D;
     border-radius: 5px;
@@ -216,11 +215,11 @@
 
 .crop-table {
     width: 100%;
-    min-width: 900px; /* Minimum width to prevent excessive shrinkage */
+    min-width: 900px; 
     border-collapse: collapse;
     color: #375534;
     background-color: #fff;
-    table-layout: auto; /* Automatically adjust column widths */
+    table-layout: auto; 
     border-spacing: 0;
     box-shadow: none;
     border: none;
@@ -229,51 +228,51 @@
 .crop-table th,
 .crop-table td {
     padding: 10px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Adds ellipsis for overflowed text */
+    text-overflow: ellipsis; 
 }
 
 /* Column Widths */
 .crop-table th:nth-child(1),
 .crop-table td:nth-child(1) {
-    width: 15%; /* Crop Code */
+    width: 15%; 
 }
 
 .crop-table th:nth-child(2),
 .crop-table td:nth-child(2) {
-    width: 20%; /* Crop Name */
+    width: 20%; 
 }
 
 .crop-table th:nth-child(3),
 .crop-table td:nth-child(3) {
-    width: 25%; /* Scientific Name */
+    width: 25%; 
 }
 
 .crop-table th:nth-child(4),
 .crop-table td:nth-child(4) {
-    width: 15%; /* Category */
+    width: 15%; 
 }
 
 .crop-table th:nth-child(5),
 .crop-table td:nth-child(5) {
-    width: 10%; /* Image */
+    width: 10%;
 }
 
 .crop-table th:nth-child(6),
 .crop-table td:nth-child(6) {
-    width: 15%; /* Actions */
+    width: 15%; 
 }
 
 /* Image Styling */
 .crop-image-table {
-    max-width: 80px; /* Limit maximum width */
-    max-height: 80px; /* Limit maximum height */
-    object-fit: cover; /* Maintain aspect ratio */
-    border-radius: 5px; /* Optional: Rounded corners */
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for emphasis */
+    max-width: 80px; 
+    max-height: 80px;
+    object-fit: cover; 
+    border-radius: 5px; 
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); 
 }
 
 /* Header Styling */
@@ -282,8 +281,8 @@
     color: white;
     position: sticky;
     top: 0;
-    z-index: 1; /* Ensure headers stay on top */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Shadow below header */
+    z-index: 1; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Even Row Background Color */
@@ -297,7 +296,7 @@
 }
 
 /* Action Button Styling */
-.update-button,
+/* .update-button,
 .delete-button {
     height: 32px;
     width: 90px;
@@ -322,10 +321,10 @@
 
 .delete-button:hover {
     background: #d32f2f;
-}
+} */
 
 /* Action Button Styling */
-.update-button,
+/* .update-button,
 .delete-button {
     height: 32px;
     width: 90px;
@@ -343,4 +342,4 @@
     cursor: pointer;
     background: #AEC3B0;
     color: #375534;
-}
+} */

@@ -196,15 +196,17 @@
     margin: 20px;
     padding: 10px;
     overflow-x: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 /* Table Styling */
 .user-table {
     width: 100%;
     border-collapse: collapse;
-    box-shadow: none;
     color: #375534;
-    border: none;
+    border: none; 
+    box-shadow: none; 
+    justify-content: center;
 }
 
 .user-table th,
@@ -219,49 +221,30 @@
     color: white;
 }
 
-.user-table th:nth-child(1), 
-.user-table td:nth-child(1) {
-    width: 30%; 
-}
-
-.user-table th:nth-child(2),
-.user-table td:nth-child(2) {
-    width: 25%; 
-}
-
-.user-table th:nth-child(3), 
-.user-table td:nth-child(3) {
-    width: 22%;
-}
-
-.user-table th:nth-child(4), 
-.user-table td:nth-child(4),
-.user-table th:nth-child(5), 
-.user-table td:nth-child(5) {
-    width: 15%; 
-}
-
-/* Even Row Background Color */
 .user-table tr:nth-child(even) {
     background-color: #E3EED4;
 }
 
-/* Hover Effect for Rows */
 .user-table tr:hover {
     background-color: #98bb9d;
 }
 
 /* Button Styling */
 .update-button, .delete-button {
-    padding: 5px 10px;
-    font-size: 14px;
-    color: #375534;
-    border: none;
-    border-radius: 5px;
+    background: none;
+    border: none; 
     cursor: pointer;
+    color: #375534; 
+    font-size: 18px; 
+    padding: 0; 
 }
 
+/* Ensure icons are styled appropriately */
+.update-button i, .delete-button i {
+    color: #375534; 
+    font-size: 20px;
+}
 
-
-
-
+.update-button:hover i, .delete-button:hover i {
+    color: #6B9071; 
+}
