@@ -236,58 +236,64 @@
 }
 
 /* ------------------ Crop Details Table ------------------ */
+
+/* Table Container */
 .table-container {
     width: 100%;
-    max-width: 95%; 
-    height: 500px; 
-    overflow-x: auto;
-    overflow-y: hidden;
+    max-width: 95%;  /* You can adjust this to a fixed value like 900px if needed */
+    height: 500px;   /* Define a height for the vertical scroll */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    overflow-y: auto; /* Enables vertical scrolling */
     margin: 20px auto;
-    border: none; /* Removed the border */
+    border: 1px solid #0F2A1D;
     border-radius: 5px;
+    border: none;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
 }
 
+/* Crop Details Table */
 .crop-details-table {
     width: 100%;
-    min-width: 900px; 
+    table-layout: fixed; /* Ensures the table is rendered with fixed column widths */
     border-collapse: collapse;
     color: #375534;
     background-color: #fff;
-    table-layout: auto; 
+    table-layout: auto; /* Set this to auto if you want column widths to adjust dynamically */
     border-spacing: 0;
     box-shadow: none;
     border: none;
 }
 
+/* Make sure you have the table layout correct, and that the table itself is wider than the container */
 .crop-details-table th,
 .crop-details-table td {
     padding: 10px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
 }
 
 /* Column Widths */
 .crop-details-table th:nth-child(1),
 .crop-details-table td:nth-child(1) {
-    width: 15%; 
+    width: 15%;
 }
 
 .crop-details-table th:nth-child(2),
 .crop-details-table td:nth-child(2) {
-    width: 15%; 
+    width: 20%;
 }
 
 .crop-details-table th:nth-child(3),
 .crop-details-table td:nth-child(3) {
-    width: 25%; 
+    width: 25%;
 }
 
 .crop-details-table th:nth-child(4),
 .crop-details-table td:nth-child(4) {
-    width: 25%; 
+    width: 15%;
 }
 
 .crop-details-table th:nth-child(5),
@@ -297,7 +303,7 @@
 
 .crop-details-table th:nth-child(6),
 .crop-details-table td:nth-child(6) {
-    width: 10%; 
+    width: 15%;
 }
 
 /* Image Styling */
@@ -329,24 +335,22 @@
     background-color: #98bb9d;
 }
 
-/* Button Styling */
 .update-button,
 .delete-button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
     cursor: pointer;
-    font-size: 14px;
+    display: inline-block;
+    padding: 5px;
+    color: #333;
 }
 
-.update-button {
-    background-color: #4CAF50;
-    color: white;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+.update-button:hover,
+.delete-button:hover {
+    color: white; /* Or any color you prefer */
 }
 
-.delete-button {
-    background-color: #f44336;
-    color: white;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+.update-button i,
+.delete-button i {
+    font-size: 16px;
 }
+
+
