@@ -225,9 +225,11 @@
     min-width: 800px; /* Set a minimum width to prevent table from shrinking too much */
     border-collapse: collapse;
     color: #375534;
-    background-color: #375534;
+    background-color: #fff;
     table-layout: auto; /* Let table adjust column widths based on content */
     border-spacing: 0;
+    box-shadow: none;
+    border: none;
 }
 
 .field-table th,
@@ -293,12 +295,14 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow below header */
 }
 
+/* Even Row Background Color */
 .field-table tr:nth-child(even) {
     background-color: #E3EED4;
 }
 
+/* Hover Effect for Rows */
 .field-table tr:hover {
-    background-color: #6B9071;
+    background-color: #98bb9d;
 }
 
 

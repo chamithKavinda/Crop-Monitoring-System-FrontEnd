@@ -175,6 +175,8 @@
     border-collapse: collapse;
     color: #375534;
     background-color: #AEC3B0;
+    box-shadow: none;
+    border: none;
 }
 
 /* Table Header and Data Cells */
@@ -202,7 +204,7 @@
 
 /* Hover Effect for Rows */
 .vehicle-table tr:hover {
-    background-color: #6B9071;
+    background-color: #98bb9d;
 }
 
 

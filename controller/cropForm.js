@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Elements for the Crop Registration Form
     const cropRegisterForm = document.getElementById('crop-register-form');
     const addCropButton = document.getElementById('add-crop');
     const closeButton = document.getElementById('crop-register-close');
@@ -19,14 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     ];
 
-    // Function to open the registration form
+    // Open the registration form
     const openForm = () => {
         cropRegisterForm?.classList.add('active');
         formTitle.textContent = currentCropId ? 'Update Crop' : 'Register Crop';
         fetchFieldCodes(); // Fetch field codes when opening the form
     };
 
-    // Function to close the registration form
+    // Close the registration form
     const closeForm = () => {
         cropRegisterForm?.classList.remove('active');
         clearForm();
@@ -39,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Handle image preview
         input.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
@@ -52,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Handle image removal
         removeButton.addEventListener('click', () => {
             input.value = '';
             preview.src = '';
@@ -97,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const crops = await response.json();
-                console.log(crops); // Log the crops data to inspect its structure
                 tableBody.innerHTML = '';
                 crops.forEach(addCropToTable);
             } else {
@@ -126,20 +122,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
             });
 
-            if (response.ok) {
-                const fields = await response.json();
-                fieldDropdown.innerHTML = ''; // Clear existing options
-                fields.forEach((field) => {
-                    const option = document.createElement('option');
-                    option.value = field.fieldCode;
-                    option.textContent = field.fieldName; // Display field name
-                    fieldDropdown.appendChild(option);
-                });
-            } else {
+            if (!response.ok) {
+                console.error('Failed to fetch field codes with status:', response.status);
                 const errorText = await response.text();
-                console.error('Failed to fetch field codes:', errorText);
+                console.error('Error response:', errorText);
                 alert('Failed to fetch field codes. Please try again later.');
+                return;
             }
+
+            const fields = await response.json();
+            console.log('Fetched fields:', fields); // Log the data to verify structure
+
+            fieldDropdown.innerHTML = '<option value="">Select Field Code</option>';
+
+            if (fields.length === 0) {
+                console.log('No field codes available.');
+                return;
+            }
+
+            fields.forEach((field) => {
+                const option = document.createElement('option');
+                option.value = field.fieldCode;
+                option.textContent = field.fieldCode;
+                fieldDropdown.appendChild(option);
+            });
         } catch (error) {
             console.error('Error fetching field codes:', error);
             alert('An error occurred while fetching field codes.');
@@ -232,7 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (confirm('Are you sure you want to delete this crop?')) {
+        const confirmDelete = confirm('Are you sure you want to delete this crop?');
+        if (confirmDelete) {
             try {
                 const token = localStorage.getItem('jwtToken');
                 const response = await fetch(`http://localhost:8080/api/v1/crop/${cropCode}`, {
@@ -246,8 +253,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     fetchCrops();
                 } else {
                     const errorText = await response.text();
-                    console.error('Failed to delete crop:', response.status, errorText);
-                    alert(`Failed to delete crop: ${response.statusText} (${response.status})`);
+                    console.error('Failed to delete crop:', errorText);
+                    alert('Failed to delete crop. Please try again later.');
                 }
             } catch (error) {
                 console.error('Error deleting crop:', error);
@@ -256,6 +263,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initial fetch of crops
-    fetchCrops();
+    fetchCrops(); // Initial fetch of crops on page load
 });

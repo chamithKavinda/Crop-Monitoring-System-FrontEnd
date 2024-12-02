@@ -166,7 +166,9 @@
     width: 100%;
     border-collapse: collapse;
     color: #375534;
-    background-color: #375534;
+    background-color: #fff;
+    box-shadow: none;
+    border: none;
 }
 
 /* Table Header and Data Styling */
@@ -187,13 +189,14 @@
     z-index: 2;
 }
 
-/* Alternating Row Colors */
+/* Even Row Background Color */
 .equipment-table tr:nth-child(even) {
     background-color: #E3EED4;
 }
 
+/* Hover Effect for Rows */
 .equipment-table tr:hover {
-    background-color: #6B9071;
+    background-color: #98bb9d;
 }
 
 /* Action Button Styling */

@@ -200,6 +200,7 @@
     color: #375534;
 }
 
+
 /* ------------------ Crop Table ------------------ */
 .table-container {
     width: 100%; /* Full width for responsiveness */
@@ -218,9 +219,11 @@
     min-width: 900px; /* Minimum width to prevent excessive shrinkage */
     border-collapse: collapse;
     color: #375534;
-    background-color: #375534;
+    background-color: #fff;
     table-layout: auto; /* Automatically adjust column widths */
     border-spacing: 0;
+    box-shadow: none;
+    border: none;
 }
 
 .crop-table th,
@@ -283,45 +286,15 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Shadow below header */
 }
 
-/* Row Styling */
+/* Even Row Background Color */
 .crop-table tr:nth-child(even) {
     background-color: #E3EED4;
 }
 
+/* Hover Effect for Rows */
 .crop-table tr:hover {
-    background-color: #6B9071;
-    color: white; /* Optional: Highlight text color */
-    cursor: pointer;
+    background-color: #98bb9d;
 }
-
-/* Action Button Styling */
-.update-button,
-.delete-button {
-    height: 32px;
-    width: 90px;
-    text-align: center;
-    font-size: 12px;
-    font-weight: 600;
-    border-radius: 5px;
-    color: white;
-    background: #4CAF50;
-    border: 1px solid #375534;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.update-button:hover {
-    background: #45a049;
-}
-
-.delete-button {
-    background: #f44336;
-}
-
-.delete-button:hover {
-    background: #d32f2f;
-}
-
 
 /* Action Button Styling */
 .update-button,

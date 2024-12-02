@@ -181,7 +181,9 @@
     width: 100%;
     border-collapse: collapse;
     color: #375534;
-    background-color: #375534;
+    background-color: #ffffff;
+    box-shadow: none;
+    border: none;
 }
 
 .staff-table th,
@@ -200,12 +202,14 @@
     z-index: 2;
 }
 
+/* Even Row Background Color */
 .staff-table tr:nth-child(even) {
     background-color: #E3EED4;
 }
 
+/* Hover Effect for Rows */
 .staff-table tr:hover {
-    background-color: #6B9071;
+    background-color: #98bb9d;
 }
 
 /* Action Button Styling */
