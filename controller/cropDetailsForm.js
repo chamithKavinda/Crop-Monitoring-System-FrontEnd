@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const tableBody = document.querySelector('.crop-details-table tbody');
     let currentLogId = null; 
 
+    // Title element for the form
+    const formTitle = document.getElementById('form-title');
+
     // Image input and preview mapping
     const imageHandler = {
         input: document.getElementById('crop-observed-image'),
@@ -38,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cropDetailsForm.reset();
         currentLogId = null;
         imageHandler.previewContainer.style.display = 'none';
+        formTitle.textContent = 'Add Crop Details'; // Reset the title when closing the form
     };
 
     // Initialize image preview and removal functionality
@@ -183,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         openForm();
         populateForm(log);
         currentLogId = log.logCode;
+        formTitle.textContent = 'Update Crop Details'; // Change the form title when updating
     };
 
     const populateForm = (log) => {
