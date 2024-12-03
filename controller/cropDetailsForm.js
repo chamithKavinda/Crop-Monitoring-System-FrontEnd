@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeButton = document.getElementById('crop-details-register-close');
     const cropDetailsForm = document.getElementById('crop-details-form');
     const tableBody = document.querySelector('.crop-details-table tbody');
-    let currentLogId = null; // To store the ID of the log being updated
+    let currentLogId = null; 
 
     // Image input and preview mapping
     const imageHandler = {

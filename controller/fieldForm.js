@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fieldForm = document.getElementById('field-form');
     const tableBody = document.querySelector('.field-table tbody');
     const formTitle = document.querySelector('.field-register-title');
-    const staffDropdown = document.getElementById('crop-field-code'); // Dropdown for staff IDs
+    const staffDropdown = document.getElementById('staff-codes'); // Dropdown for staff IDs
     let currentFieldId = null; // To store the ID of the field being updated
 
     const tags = document.querySelectorAll(".tag");
@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
             openForm();
             formTitle.textContent = 'Register Field';
             clearForm();
-            fetchStaff();
         });
     }
 
@@ -117,7 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const fetchStaff = async () => {
+    // Fetch staff members and populate the dropdown
+    (async () => {
         if (!isAuthenticated()) {
             alert('You must be logged in to view staff.');
             return;
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching staff:', error);
             alert('An error occurred while fetching staff.');
         }
-    };
+    })();
 
     const populateStaffDropdown = (staff) => {
         staffDropdown.innerHTML = '<option value="">Select Staff ID</option>';
@@ -171,7 +171,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const extendSize = document.getElementById('field-extent-size').value;
         const fieldImage1 = document.getElementById('field-image1');
         const fieldImage2 = document.getElementById('field-image2');
-        const staffIds = document.getElementById('crop-field-code').value;
+        const staffIds = document.getElementById('staff-codes');
+
+        const selectedIds = Array.from(staffIds.selectedOptions)
+        .map(option => option.value)
+        .join(',');
 
         const formData = new FormData();
         formData.append("fieldName", fieldName);
@@ -180,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append("extentSize", extendSize);
         formData.append("fieldImage1", fieldImage1.files[0], fieldImage1.files[0].name);
         formData.append("fieldImage2", fieldImage2.files[0], fieldImage2.files[0].name);
-        formData.append("staffIds", staffIds);
+        formData.append("staffIds", selectedIds);
 
         try {
             const token = localStorage.getItem('jwtToken');
@@ -244,10 +248,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('longitude').value = field.fieldLocation.y;
         document.getElementById('field-extent-size').value = field.extendSize;
 
-        const staffDropdown = document.getElementById('crop-field-code');
-        if (field.staffIds && Array.isArray(field.staffIds)) {
-            field.staffIds.forEach(staffId => {
-                const option = staffDropdown.querySelector(`option[value="${staffId}"]`);
+
+        const staffDropdown = document.getElementById('staff-codes');
+        if (field.staff && Array.isArray(field.staff)) {
+            field.staff.forEach(staff => {
+                console.log(staff.staffId);
+                const option = staffDropdown.querySelector(`option[value="${staff.staffId}"]`);
                 if (option) {
                     option.selected = true;
                 }

@@ -240,10 +240,10 @@
 /* Table Container */
 .table-container {
     width: 100%;
-    max-width: 95%;  /* You can adjust this to a fixed value like 900px if needed */
-    height: 500px;   /* Define a height for the vertical scroll */
-    overflow-x: auto; /* Enables horizontal scrolling */
-    overflow-y: auto; /* Enables vertical scrolling */
+    max-width: 95%;  
+    height: 500px;   
+    overflow-x: auto; 
+    overflow-y: auto;
     margin: 20px auto;
     border: 1px solid #0F2A1D;
     border-radius: 5px;
@@ -255,17 +255,17 @@
 /* Crop Details Table */
 .crop-details-table {
     width: 100%;
-    table-layout: fixed; /* Ensures the table is rendered with fixed column widths */
+    table-layout: fixed; 
     border-collapse: collapse;
     color: #375534;
     background-color: #fff;
-    table-layout: auto; /* Set this to auto if you want column widths to adjust dynamically */
+    table-layout: auto;
     border-spacing: 0;
     box-shadow: none;
     border: none;
 }
 
-/* Make sure you have the table layout correct, and that the table itself is wider than the container */
+
 .crop-details-table th,
 .crop-details-table td {
     padding: 10px;
@@ -345,7 +345,7 @@
 
 .update-button:hover,
 .delete-button:hover {
-    color: white; /* Or any color you prefer */
+    color: white;
 }
 
 .update-button i,
