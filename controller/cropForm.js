@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Open the registration form
     const openForm = () => {
+        console.log('currentCropId:', currentCropId); // Debug: Check the value of currentCropId
         cropRegisterForm?.classList.add('active');
-        formTitle.textContent = currentCropId ? 'Update Crop' : 'Register Crop';
+        formTitle.textContent = currentCropId ? 'Update Crop' : 'Register Crop'; // Set title based on currentCropId
         fetchFieldCodes(); // Fetch field codes when opening the form
     };
 
@@ -136,10 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            fields.forEach((field) => {
+            // Clear the dropdown before adding new options
+            fieldDropdown.innerHTML = '<option value="">Select Field Code</option>';
+
+            // Add unique field codes to the dropdown
+            const uniqueFieldCodes = new Set(fields.map(field => field.fieldCode));
+            uniqueFieldCodes.forEach(fieldCode => {
                 const option = document.createElement('option');
-                option.value = field.fieldCode;
-                option.textContent = field.fieldCode;
+                option.value = fieldCode;
+                option.textContent = fieldCode;
                 fieldDropdown.appendChild(option);
             });
         } catch (error) {
@@ -212,9 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Open the form to update a crop
     const openUpdateForm = (crop) => {
+        currentCropId = crop.cropCode; // Set the current crop ID for updating
         openForm();
         populateCropForm(crop);
-        currentCropId = crop.cropCode;
     };
 
     // Populate the crop form with the existing crop data
@@ -248,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     fetchCrops();
                 } else {
                     const errorText = await response.text();
-                    console.error('Failed to delete crop:', errorText);
+                    console.error('Failed to delete crop:', response.status, errorText);
                     alert('Failed to delete crop. Please try again later.');
                 }
             } catch (error) {
@@ -258,5 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    fetchCrops(); // Initial fetch of crops on page load
+    // Fetch initial crops when the page loads
+    fetchCrops();
 });
