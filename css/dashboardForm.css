@@ -251,7 +251,7 @@ body
 	position: relative;
 	background: var(--lightGray);
 	padding: 30px;
-	border-radius: 20px;
+	border-radius: 15px;
 	display: flex;
 	justify-content: space-between;
 	cursor: pointer;
@@ -309,7 +309,7 @@ body
 	padding: 25px;
 	box-sizing: border-box;
 	-webkit-column-break-inside: avoid;
-	border-radius: 10px;
+	border-radius: 15px;
 	box-shadow: 0 6px 7px -4px var(--DarkGreen);
 }
   
