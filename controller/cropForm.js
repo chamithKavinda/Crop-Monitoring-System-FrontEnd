@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Open the registration form
     const openForm = () => {
         cropRegisterForm?.classList.add('active');
-        formTitle.textContent = currentCropId ? 'Update Crop' : 'Register Crop'; // Set title based on currentCropId
-        fetchFieldCodes(); // Fetch field codes when opening the form
+        formTitle.textContent = currentCropId ? 'Update Crop' : 'Register Crop'; 
+        fetchFieldCodes();
     };
 
     // Close the registration form
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     preview.src = e.target.result;
-                    previewContainer.style.display = 'flex'; // Show the preview container
+                    previewContainer.style.display = 'flex';
                 };
                 reader.readAsDataURL(file);
             }

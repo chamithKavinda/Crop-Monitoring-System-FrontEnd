@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cropDetailsForm.reset();
         currentLogId = null;
         imageHandler.previewContainer.style.display = 'none';
-        formTitle.textContent = 'Add Crop Details'; // Reset the title when closing the form
+        formTitle.textContent = 'Add Crop Details'; 
     };
 
     // Initialize image preview and removal functionality
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         openForm();
         populateForm(log);
         currentLogId = log.logCode;
-        formTitle.textContent = 'Update Crop Details'; // Change the form title when updating
+        formTitle.textContent = 'Update Crop Details'; 
     };
 
     const populateForm = (log) => {
@@ -218,5 +218,5 @@ document.addEventListener('DOMContentLoaded', () => {
     addCropDetailsButton.addEventListener('click', openForm);
     closeButton.addEventListener('click', closeForm);
 
-    fetchLogs(); // Initial fetch
+    fetchLogs();
 });

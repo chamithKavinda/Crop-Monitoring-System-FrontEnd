@@ -42,7 +42,7 @@ loginBtn.addEventListener('click', async () => {
 
         // Store the JWT token in localStorage
         const token = data.token; 
-        localStorage.setItem('jwtToken', token);  // Store token as 'jwtToken'
+        localStorage.setItem('jwtToken', token); 
 
         // Redirect to the home page or dashboard
         showToast('Logged in successfully!', 'success');

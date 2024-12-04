@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners for opening and closing the form
     addStaffButton.addEventListener('click', () => {
         openForm();
-        formTitle.textContent = 'Register Staff Member';  // Reset title to "Register"
-        clearForm(); // Clear the form for new registration
+        formTitle.textContent = 'Register Staff Member';  
+        clearForm(); 
     });
 
     closeButton.addEventListener('click', closeForm);
@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const staff = await response.json();
-                tableBody.innerHTML = ''; // Clear the table
-                staff.forEach(addStaffToTable); // Add each staff to the table
+                tableBody.innerHTML = '';
+                staff.forEach(addStaffToTable); 
             } else if (response.status === 401) {
                 alert('Authentication failed. Please log in again.');
             } else {
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Get form data
-        const staffId = staffForm.dataset.staffId || null; // Retrieve staffId if updating
+        const staffId = staffForm.dataset.staffId || null; 
         const firstName = document.getElementById('first_name').value.trim();
         const lastName = document.getElementById('last_name').value.trim();
         const email = document.getElementById('email').value.trim();
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (response.ok || response.status === 201) {
-                await fetchStaff(); // Reload the staff table
+                await fetchStaff();
                 clearForm();
                 closeForm();
             } else {
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         row.querySelector('.update-button').addEventListener('click', () => {
             openForm();
-            formTitle.textContent = 'Update Staff Member'; // Change title to "Update"
+            formTitle.textContent = 'Update Staff Member'; 
             populateUpdateForm(staff);
         });
         row.querySelector('.delete-button').addEventListener('click', () => {
@@ -201,13 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('gender').value = staff.gender || '';
         document.getElementById('role').value = staff.role || '';
 
-        staffForm.dataset.staffId = staff.staffId; // Set the ID as a dataset attribute
+        staffForm.dataset.staffId = staff.staffId; 
     };
 
     // Function to clear the form fields
     const clearForm = () => {
         staffForm.reset();
-        delete staffForm.dataset.staffId; // Clear the dataset attribute
+        delete staffForm.dataset.staffId;
     };
 
     // Delete staff
@@ -223,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
         try {
             const token = localStorage.getItem('jwtToken');
-            console.log('Deleting staff with ID:', staffId); // Debugging
             const response = await fetch(`http://localhost:8080/api/v1/staff/${staffId}`, {
                 method: 'DELETE',
                 headers: {
@@ -244,8 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    
-
     // Fetch and display staff data when the page loads
     fetchStaff();
 });

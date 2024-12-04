@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const equipmentForm = document.getElementById('equipment-form');
     const tableBody = document.querySelector('.equipment-table tbody');
     const formTitle = document.querySelector('.equipment-register-title');
-    const staffDropdown = document.getElementById('equipment-staff-id'); // Staff ID dropdown
-    const fieldDropdown = document.getElementById('equipment-field-code'); // Field Code dropdown
+    const staffDropdown = document.getElementById('equipment-staff-id'); 
+    const fieldDropdown = document.getElementById('equipment-field-code'); 
 
-    let currentEquipmentId = null; // To store the ID of the equipment being updated
+    let currentEquipmentId = null; 
 
     // Function to open the registration form
     const openForm = () => {
@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (addEquipmentButton) {
         addEquipmentButton.addEventListener('click', () => {
             openForm();
-            formTitle.textContent = 'Register Equipment'; // Reset title to "Register"
-            clearForm(); // Clear the form for new registration
+            formTitle.textContent = 'Register Equipment'; 
+            clearForm(); 
         });
     }
 
@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const equipments = await response.json();
-                tableBody.innerHTML = ''; // Clear the table
-                equipments.forEach(addEquipmentToTable); // Add each equipment to the table
+                tableBody.innerHTML = ''; 
+                equipments.forEach(addEquipmentToTable);
             } else if (response.status === 401) {
                 alert('Authentication failed. Please log in again.');
             } else {
@@ -96,22 +96,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Fetch field codes
-            // const fieldResponse = await fetch('http://localhost:8080/api/v1/fields', {
-            //     headers: {
-            //         'Authorization': `Bearer ${token}`,
-            //     },
-            // });
-            // if (fieldResponse.ok) {
-            //     const fieldList = await fieldResponse.json();
-            //     fieldDropdown.innerHTML = `<option value="">Select Field Code</option>`;
-            //     fieldList.forEach(field => {
-            //         const option = document.createElement('option');
-            //         option.value = field.fieldCode;
-            //         option.textContent = field.fieldCode;
-            //         fieldDropdown.appendChild(option);
-            //     });
-            // }
+            //Fetch field codes
+            const fieldResponse = await fetch('http://localhost:8080/api/v1/field', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            if (fieldResponse.ok) {
+                const fieldList = await fieldResponse.json();
+                fieldDropdown.innerHTML = `<option value="">Select Field Code</option>`;
+                fieldList.forEach(field => {
+                    const option = document.createElement('option');
+                    option.value = field.fieldCode;
+                    option.textContent = field.fieldCode;
+                    fieldDropdown.appendChild(option);
+                });
+            }
         } catch (error) {
             console.error('Error populating dropdowns:', error);
         }

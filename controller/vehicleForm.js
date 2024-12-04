@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tableBody = document.querySelector('.vehicle-table tbody');
     const staffIdDropdown = document.getElementById('staff-id');
     const formTitle = document.querySelector('.vehicle-register-title');
-    let currentVehicleId = null; // To store the ID of the vehicle being updated
+    let currentVehicleId = null; 
 
     // Function to open the registration form
     const openForm = () => {
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (addVehicleButton) {
         addVehicleButton.addEventListener('click', () => {
             openForm();
-            formTitle.textContent = 'Register Vehicle'; // Reset title to "Register"
-            clearForm(); // Clear the form for new registration
+            formTitle.textContent = 'Register Vehicle'; 
+            clearForm();
         });
     }
 
@@ -83,15 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const staffList = await response.json();
-                staffIdDropdown.innerHTML = `<option value="">Select Staff ID</option>`; // Clear existing options
+                staffIdDropdown.innerHTML = `<option value="">Select Staff ID</option>`; options
 
                 // Filter out staff entries with undefined or null staffId
                 staffList
-                    .filter(staff => staff.staffId) // Exclude undefined or null staffId
+                    .filter(staff => staff.staffId) 
                     .forEach((staff) => {
                         const option = document.createElement('option');
                         option.value = staff.staffId;
-                        option.textContent = staff.staffId; // Only show staff ID
+                        option.textContent = staff.staffId; 
                         staffIdDropdown.appendChild(option);
                     });
             } else {
@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let response;
 
             if (currentVehicleId) {
-                // Update vehicle if an ID is present
                 response = await fetch(`http://localhost:8080/api/v1/vehicles/${currentVehicleId}`, {
                     method: 'PATCH',
                     headers: {
@@ -145,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(vehicleData),
                 });
             } else {
-                // Register a new vehicle
                 response = await fetch('http://localhost:8080/api/v1/vehicles', {
                     method: 'POST',
                     headers: {
@@ -160,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 await fetchVehicles();
                 clearForm();
                 closeForm();
-                currentVehicleId = null; // Reset the vehicle ID after submission
+                currentVehicleId = null;
             } else {
                 const errorText = await response.text();
                 console.error('Failed to save vehicle. Response text:', errorText);
@@ -188,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         row.querySelector('.update-button').addEventListener('click', () => {
             openForm();
-            formTitle.textContent = 'Update Vehicle'; // Change title to "Update"
+            formTitle.textContent = 'Update Vehicle'; 
             populateUpdateForm(vehicle);
         });
         row.querySelector('.delete-button').addEventListener('click', () => {
@@ -207,13 +205,13 @@ document.addEventListener('DOMContentLoaded', () => {
         staffIdDropdown.value = vehicle.staffId || '';
         document.getElementById('remarks').value = vehicle.remarks || '';
 
-        currentVehicleId = vehicle.vehicleCode; // Set the ID of the vehicle being updated
+        currentVehicleId = vehicle.vehicleCode; 
     };
 
     // Function to clear the form fields
     const clearForm = () => {
         vehicleForm.reset();
-        currentVehicleId = null; // Reset the vehicle ID after submission
+        currentVehicleId = null; 
     };
 
     // Function to delete vehicle with confirmation
@@ -237,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok) {
                     alert('Vehicle deleted successfully');
-                    await fetchVehicles(); // Re-fetch the vehicles after deletion
+                    await fetchVehicles(); 
                 } else {
                     const errorText = await response.text();
                     console.error('Failed to delete vehicle:', errorText);

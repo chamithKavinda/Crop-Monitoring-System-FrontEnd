@@ -8,14 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const togglePasswordIcon = document.getElementById('toggle-password');
     const passwordField = document.getElementById('user-password');
 
-    let currentUserEmail = null; // To store the email of the user being updated
+    let currentUserEmail = null; 
 
-    // Toggle password visibility with Font Awesome icons
+    // Toggle password visibility 
     if (togglePasswordIcon && passwordField) {
         togglePasswordIcon.addEventListener('click', () => {
             const type = passwordField.type === 'password' ? 'text' : 'password';
             passwordField.type = type;
-            // Change the icon based on the password type
             togglePasswordIcon.innerHTML = type === 'password' ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
         });
     }
@@ -107,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let response;
 
             if (currentUserEmail) {
-                // Update user
                 response = await fetch(`http://localhost:8080/api/v1/user/${currentUserEmail}`, {
                     method: 'PATCH',
                     headers: {
@@ -117,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(userData),
                 });
             } else {
-                // Register new user
                 response = await fetch('http://localhost:8080/api/v1/user', {
                     method: 'POST',
                     headers: {
@@ -196,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ask for confirmation before deleting the user
         const isConfirmed = confirm('Are you sure you want to delete this user?');
         if (!isConfirmed) {
-            return; // Stop if the user cancels the action
+            return; 
         }
 
         const token = localStorage.getItem('jwtToken');
@@ -210,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 alert('User deleted successfully');
-                await fetchUsers();  // Re-fetch the users after deletion
+                await fetchUsers();  
             } else {
                 const errorText = await response.text();
                 console.error('Failed to delete user:', errorText);

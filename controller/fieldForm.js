@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const selectedTags = document.querySelectorAll(".tag.selected");
             const selectedIds = Array.from(selectedTags).map(tag => tag.dataset.id);
-            selectedIdsInput.value = selectedIds.join(","); // Join selected IDs as a comma-separated string
+            selectedIdsInput.value = selectedIds.join(","); 
         });
     });
 
@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         removeButton.addEventListener('click', () => {
-            input.value = ''; // Clear the file input
-            preview.src = ''; // Clear the preview image
-            previewContainer.style.display = 'none'; // Hide the preview container
+            input.value = '';
+            preview.src = ''; 
+            previewContainer.style.display = 'none';
         });
     };
 
