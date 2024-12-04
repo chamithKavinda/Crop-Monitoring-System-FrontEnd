@@ -137,7 +137,16 @@ document.addEventListener('DOMContentLoaded', () => {
     cropDetailsForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // const logDetails = document. 
+
         const formData = new FormData(cropDetailsForm);
+
+        formdata.append("logDetails", "LogTest");
+        formdata.append("logDate", "2024-11-20");
+        formdata.append("observedImage", fileInput.files[0], "postman-cloud:///1ef81aa0-f8d5-4a00-aa92-f3449160ea2c");
+        formdata.append("fieldCodes", "F0001");
+        formdata.append("cropCodes", "C0002");
+        formdata.append("staffIds", "S001");
         const method = currentLogId ? 'PATCH' : 'POST';
         const url = `http://localhost:8080/api/v1/cropDetails${currentLogId ? `/${currentLogId}` : ''}`;
 
