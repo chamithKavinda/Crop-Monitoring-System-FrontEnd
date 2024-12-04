@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners for opening and closing the form
     addStaffButton.addEventListener('click', () => {
         openForm();
-        formTitle.textContent = 'Register Staff Member';  
-        clearForm(); 
+        formTitle.textContent = 'Register Staff Member';
+        clearForm();
     });
 
     closeButton.addEventListener('click', closeForm);
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 const staff = await response.json();
                 tableBody.innerHTML = '';
-                staff.forEach(addStaffToTable); 
+                staff.forEach(addStaffToTable);
             } else if (response.status === 401) {
                 alert('Authentication failed. Please log in again.');
             } else {
@@ -75,8 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Get form data
-        const staffId = staffForm.dataset.staffId || null; 
+        const staffId = staffForm.dataset.staffId || null;
         const firstName = document.getElementById('first_name').value.trim();
         const lastName = document.getElementById('last_name').value.trim();
         const email = document.getElementById('email').value.trim();
@@ -114,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let response;
 
             if (staffId) {
-                // Update staff if an ID is present
                 response = await fetch(`http://localhost:8080/api/v1/staff/${staffId}`, {
                     method: 'PATCH',
                     headers: {
@@ -124,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(staffData),
                 });
             } else {
-                // Register a new staff member
                 response = await fetch('http://localhost:8080/api/v1/staff', {
                     method: 'POST',
                     headers: {
@@ -141,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeForm();
             } else {
                 const errorText = await response.text();
-                console.error('Failed to save staff. Response text:', errorText);
+                console.error('Failed to save staff:', errorText);
                 alert(`Failed to save staff: ${errorText}`);
             }
         } catch (error) {
@@ -150,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Function to dynamically add staff to the table
     const addStaffToTable = (staff) => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -174,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         row.querySelector('.update-button').addEventListener('click', () => {
             openForm();
-            formTitle.textContent = 'Update Staff Member'; 
+            formTitle.textContent = 'Update Staff Member';
             populateUpdateForm(staff);
         });
         row.querySelector('.delete-button').addEventListener('click', () => {
@@ -184,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
         tableBody.appendChild(row);
     };
 
-    // Populate the form with staff data for update
     const populateUpdateForm = (staff) => {
         document.getElementById('first_name').value = staff.firstName || '';
         document.getElementById('last_name').value = staff.lastName || '';
@@ -201,26 +196,23 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('gender').value = staff.gender || '';
         document.getElementById('role').value = staff.role || '';
 
-        staffForm.dataset.staffId = staff.staffId; 
+        staffForm.dataset.staffId = staff.staffId;
     };
 
-    // Function to clear the form fields
     const clearForm = () => {
         staffForm.reset();
         delete staffForm.dataset.staffId;
     };
 
-    // Delete staff
     const deleteStaff = async (staffId) => {
         if (!isAuthenticated()) {
             alert('You must be logged in to delete staff');
             return;
         }
-    
-        // Show a confirmation dialog
+
         const isConfirmed = window.confirm('Are you sure you want to delete this staff member?');
         if (!isConfirmed) return;
-    
+
         try {
             const token = localStorage.getItem('jwtToken');
             const response = await fetch(`http://localhost:8080/api/v1/staff/${staffId}`, {
@@ -229,20 +221,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-    
+
             if (response.ok) {
                 await fetchStaff();
             } else {
                 const errorText = await response.text();
-                console.error('Failed to delete staff. Response:', errorText);
+                console.error('Failed to delete staff:', errorText);
                 alert(`Failed to delete staff: ${errorText}`);
             }
         } catch (error) {
             console.error('Error deleting staff:', error);
-            alert('An error occurred while deleting staff.');
+            alert(`An error occurred: ${error.message}`);
         }
     };
-    
-    // Fetch and display staff data when the page loads
+
     fetchStaff();
 });
