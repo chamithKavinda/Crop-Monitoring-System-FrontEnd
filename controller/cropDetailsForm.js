@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeButton = document.getElementById('crop-details-register-close');
     const cropDetailsForm = document.getElementById('crop-details-form');
     const tableBody = document.querySelector('.crop-details-table tbody');
-    let currentLogId = null; 
+    let currentLogId = null;
 
     // Title element for the form
     const formTitle = document.getElementById('form-title');
@@ -132,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
         row.querySelector('.delete-button').addEventListener('click', () => deleteLog(log.logCode));
         tableBody.appendChild(row);
     };
-    
 
     // Save or update a crop log
     cropDetailsForm.addEventListener('submit', async (e) => {

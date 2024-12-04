@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cropForm = document.getElementById('crop-form');
     const tableBody = document.querySelector('.crop-table tbody');
     const formTitle = document.querySelector('.crop-register-title');
-    const fieldDropdown = document.getElementById('crop-field-code-1'); // Field dropdown
-    let currentCropId = null; // To store the ID of the crop being updated
+    const fieldDropdown = document.getElementById('crop-field-code-1'); 
+    let currentCropId = null; 
 
     // Image input and preview mapping
     const imageHandlers = [
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Open the registration form
     const openForm = () => {
-        console.log('currentCropId:', currentCropId); // Debug: Check the value of currentCropId
         cropRegisterForm?.classList.add('active');
         formTitle.textContent = currentCropId ? 'Update Crop' : 'Register Crop'; // Set title based on currentCropId
         fetchFieldCodes(); // Fetch field codes when opening the form
@@ -163,7 +162,21 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const formData = new FormData(cropForm);
+        const cropCommonName = document.getElementById('crop-common-name').value;
+        const cropScientificName = document.getElementById('crop-scientific-name').value;
+        const cropImage = document.getElementById('crop-image1');
+        const category = document.getElementById('crop-category').value;
+        const cropSeason = document.getElementById('crop-season').value;
+        const fieldCode = document.getElementById('crop-field-code-1').value;
+
+        const formdata = new FormData();
+
+        formdata.append("cropCommonName", cropCommonName);
+        formdata.append("cropScientificName", cropScientificName);
+        formdata.append("cropImage", cropImage.files[0], cropImage.files[0].name);
+        formdata.append("category", category);
+        formdata.append("cropSeason", cropSeason);
+        formdata.append("filedCode", fieldCode);
 
         try {
             const token = localStorage.getItem('jwtToken');
@@ -172,12 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
-                body: formData,
+                body: formdata,
             });
 
             if (response.ok) {
                 fetchCrops();
                 closeForm();
+                currentCropId = null;
             } else {
                 const errorText = await response.text();
                 alert(`Failed to save crop: ${response.statusText} (${response.status})`);

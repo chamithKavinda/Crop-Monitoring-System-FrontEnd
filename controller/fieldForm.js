@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const fieldForm = document.getElementById('field-form');
     const tableBody = document.querySelector('.field-table tbody');
     const formTitle = document.querySelector('.field-register-title');
-    const staffDropdown = document.getElementById('staff-codes'); // Dropdown for staff IDs
-    let currentFieldId = null; // To store the ID of the field being updated
+    const staffDropdown = document.getElementById('staff-codes');
+    let currentFieldId = null; 
 
+    //selected staff Ids
     const tags = document.querySelectorAll(".tag");
     const selectedIdsInput = document.getElementById("selected-staff-ids");
 
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Initialize image preview and removal functionality
     const initializeImageHandlers = (inputId, previewContainerId, previewId, removeButtonId) => {
         const input = document.getElementById(inputId);
         const previewContainer = document.getElementById(previewContainerId);
