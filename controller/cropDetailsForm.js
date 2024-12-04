@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Dropdown Elements
-    const fieldCodesDropdown = document.getElementById('crop-field-codes');
-    const cropCodesDropdown = document.getElementById('crop-codes');
+    const fieldCodesDropdown = document.getElementById('crop-field-codes-001');
+    const cropCodesDropdown = document.getElementById('crop-codes-001');
     const staffIdsDropdown = document.getElementById('crop-staff-ids');
 
     // Open the registration form
@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const data = await response.json();
+                console.log(data);
                 populateDropdown(dropdownElement, data, placeholderText);
             } else {
                 alert('Failed to fetch data.');
@@ -90,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dropdownElement.innerHTML = `<option value="">${placeholderText}</option>`;
         data.forEach((item) => {
             const option = document.createElement('option');
-            option.value = item.code || item.staffId;
-            option.textContent = item.code || item.staffId;
+            option.value = item.cropCode || item.staffId || item.fieldCode;
+            option.textContent = item.cropCode || item.staffId || item.fieldCode;
             dropdownElement.appendChild(option);
         });
     };
@@ -137,16 +138,24 @@ document.addEventListener('DOMContentLoaded', () => {
     cropDetailsForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // const logDetails = document. 
+        const logDetails = document.getElementById('crop-log-details').value; 
+        const logDate = document.getElementById('crop-log-date').value;
+        const observedImage = document.getElementById('crop-observed-image').files[0];
+        const fieldCodes = document.getElementById('crop-field-codes-001').value;
+        const cropCodes = document.getElementById('crop-codes-001').value;
+        const staffIds = document.getElementById('crop-staff-ids').value;
 
         const formData = new FormData(cropDetailsForm);
 
-        formdata.append("logDetails", "LogTest");
-        formdata.append("logDate", "2024-11-20");
-        formdata.append("observedImage", fileInput.files[0], "postman-cloud:///1ef81aa0-f8d5-4a00-aa92-f3449160ea2c");
-        formdata.append("fieldCodes", "F0001");
-        formdata.append("cropCodes", "C0002");
-        formdata.append("staffIds", "S001");
+        formData.append("logDetails", logDetails);
+        formData.append("logDate", logDate);
+        if (observedImage) {
+            formData.append("observedImage", observedImage);
+        }
+        formData.append("fieldCodes", fieldCodes);
+        formData.append("cropCodes", cropCodes);
+        formData.append("staffIds", staffIds);
+
         const method = currentLogId ? 'PATCH' : 'POST';
         const url = `http://localhost:8080/api/v1/cropDetails${currentLogId ? `/${currentLogId}` : ''}`;
 
