@@ -45,30 +45,40 @@ loginBtn.addEventListener('click', async () => {
         localStorage.setItem('jwtToken', token);  // Store token as 'jwtToken'
 
         // Redirect to the home page or dashboard
+        showToast('Logged in successfully!', 'success');
         window.location.href = '/index.html';
     } else {
         // Show error message
-        const errorMsg = document.createElement('p');
-        errorMsg.textContent = 'Invalid email or password';
-        errorMsg.style.color = 'red';
-        errorMsg.id = 'error-message'; // Set an ID for the error message element
-        document.getElementById('login-form').appendChild(errorMsg);
+        showToast('Invalid email or password', 'error');
 
         // Clear the input fields
         document.getElementById('email-login').value = '';
         document.getElementById('password-login').value = '';
-
-        // Remove the error message after 2 seconds
-        setTimeout(() => {
-            const errorMsg = document.getElementById('error-message');
-            if (errorMsg) {
-                errorMsg.remove();
-            }
-        }, 2000); // 2 seconds
     }
 });
 
+// Notification message
+function showToast(message, type) {
+    const toast = document.createElement('div');
+    toast.classList.add('toast');
+    if (type === 'success') {
+        toast.classList.add('toast-success');
+    } else if (type === 'error') {
+        toast.classList.add('toast-error');
+    }
 
+    const toastMessage = document.createElement('p');
+    toastMessage.textContent = message;
+    toast.appendChild(toastMessage);
+    document.body.appendChild(toast);
 
+    // Show toast for 3 seconds
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 100);
 
-
+    setTimeout(() => {
+        toast.classList.remove('show');
+        document.body.removeChild(toast);
+    }, 3000);
+}
