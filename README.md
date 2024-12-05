@@ -20,73 +20,73 @@ This repository contains the frontend for the **Green Shadow Farm Management Sys
 This frontend project enables users to manage the farm's operations efficiently. The system includes functionalities to track field details, crop information, staff management, vehicle monitoring, and equipment maintenance. The interface is designed to be user-friendly, responsive, and suitable for both small and large-scale farming operations.
 
 ### Welcome Page
-![Screenshot 2024-12-04 133634](https://github.com/user-attachments/assets/e1870764-57c4-47ae-a1e3-ee3289c2be4d)
+![Screenshot 2024-12-04 133634](https://github.com/user-attachments/assets/2c64813e-13d8-4785-b1ec-93a9f7a4879c)
 
 ### SignIn Page
-![Screenshot 2024-12-04 133835](https://github.com/user-attachments/assets/6068dca5-1578-4b8b-9dfe-96378b97b8a6)
+![Screenshot 2024-12-04 133835](https://github.com/user-attachments/assets/f83c8c07-1246-488d-8c12-f25ac6b804d5)
 
 ### Dashboard Page
-![Screenshot 2024-12-04 134505](https://github.com/user-attachments/assets/3e342a55-2912-49bc-a2d6-d3b8c45a7a88)
+![Screenshot 2024-12-04 134505](https://github.com/user-attachments/assets/ca7f1433-3590-482b-baf5-d630e7863c9c)
 
 ### Staff Manage Section
-![Screenshot 2024-12-04 223056](https://github.com/user-attachments/assets/7ef309fc-c737-4a4a-9b6c-15bf8efb7cc5)
+![Screenshot 2024-12-04 223056](https://github.com/user-attachments/assets/cf1b135d-3f47-4d7d-be02-9fb8610baa8b)
 
 ### Staff Registration Form
-![Screenshot 2024-12-04 223347](https://github.com/user-attachments/assets/f065d26e-e372-4967-8c76-b672d4135726)
+![Screenshot 2024-12-04 223347](https://github.com/user-attachments/assets/e3af2a97-6d2c-4c3e-8c81-65af41338e70)
 
 ### Staff Update Form
-![Screenshot 2024-12-04 230643](https://github.com/user-attachments/assets/24a0d6e4-fa77-4232-a423-17b0236bc038)
+![Screenshot 2024-12-04 230643](https://github.com/user-attachments/assets/ddec73ce-487f-4978-8c06-b34323830ccd)
 
 ### Filed Manage Section
-![Screenshot 2024-12-04 235022](https://github.com/user-attachments/assets/5cd59b19-07cf-4de8-a477-53930ffd40fd)
+![Screenshot 2024-12-04 235022](https://github.com/user-attachments/assets/e57d1b36-0905-4309-8ab0-81ff28e6bcc0)
 
 ### Field Registration Form
-![Screenshot 2024-12-04 230915](https://github.com/user-attachments/assets/c3422b90-1636-4ac9-8d7e-f3ec4c00b32d)
+![Screenshot 2024-12-04 230915](https://github.com/user-attachments/assets/f85dd847-cc9f-4e90-917a-f4d473094b5d)
 
 ### Field Update Form
-![Screenshot 2024-12-04 231144](https://github.com/user-attachments/assets/4cb746e3-b4b0-47ff-a1d8-fbfc9dca4d60)
+![Screenshot 2024-12-04 231144](https://github.com/user-attachments/assets/ff57b403-e6e0-42bb-bee2-fb28eac728f4)
 
 ### Crop Manage Section
-![Screenshot 2024-12-04 235056](https://github.com/user-attachments/assets/3be38a68-d7f1-4ba8-a599-61ed82f774ab)
+![Screenshot 2024-12-04 235056](https://github.com/user-attachments/assets/bf0d2c62-0f33-4284-b1cc-9a1b95e0e782)
 
 ### Crop Registration Form
-![Screenshot 2024-12-04 234151](https://github.com/user-attachments/assets/1dca0191-cf0b-42bc-88c7-eee7d123750e)
+![Screenshot 2024-12-04 234151](https://github.com/user-attachments/assets/18eb6894-899e-421b-9655-ef8e78907f57)
 
 ### Crop Update Form
-![Screenshot 2024-12-04 232732](https://github.com/user-attachments/assets/b370eb85-7d46-487a-9e8b-901954a25aaf)
+![Screenshot 2024-12-04 232732](https://github.com/user-attachments/assets/9279b79f-e71a-4206-97e3-2cb0ba5acaa0)
 
 ### Crop Details Manage Form
-![Screenshot 2024-12-05 001332](https://github.com/user-attachments/assets/9793ec3f-a933-4901-a6db-af837ec4adad)
+![Screenshot 2024-12-05 001332](https://github.com/user-attachments/assets/f8f4f580-8bc0-4731-8e0e-2bc0a3af5d0d)
 
 ### Crop Details Registration Form
-![Screenshot 2024-12-05 000353](https://github.com/user-attachments/assets/fc36e8bb-ee21-4dbb-b6c4-056e672bf399)
+![Screenshot 2024-12-05 000353](https://github.com/user-attachments/assets/74f4e829-63b4-4cb0-a294-2b29e5f1b7f5)
 
 ### Vehicle Manage Section
-![Screenshot 2024-12-05 004416](https://github.com/user-attachments/assets/96f16e84-aa89-4f7e-8271-63d95a647b3a)
+![Screenshot 2024-12-05 004416](https://github.com/user-attachments/assets/ca3977f7-25bf-44b7-828d-420967f995f1)
 
 ### Vehicle Registration Form
-![Screenshot 2024-12-05 004529](https://github.com/user-attachments/assets/b1a569e6-72fb-4c2c-80d0-93e79accaf53)
+![Screenshot 2024-12-05 004529](https://github.com/user-attachments/assets/285b1201-2037-4295-bb0a-49dcced81c59)
 
 ### Vehicle Update Form
-![Screenshot 2024-12-05 004605](https://github.com/user-attachments/assets/a9b27a4b-0783-4c4e-933b-1f49bf800e9b)
+![Screenshot 2024-12-05 004605](https://github.com/user-attachments/assets/d8a5a05e-8c7e-430c-9d43-bd4f51625587)
 
 ### Equipment Manage Section
-![Screenshot 2024-12-05 005901](https://github.com/user-attachments/assets/46203b7d-f82f-421f-b1cf-4c2fefc3e6f0)
+![Screenshot 2024-12-05 005901](https://github.com/user-attachments/assets/610e3d52-332e-45b0-8871-1d250d966a93)
 
 ### Equipment Registration Form
-![Screenshot 2024-12-05 005833](https://github.com/user-attachments/assets/6a25ad7f-6ec0-4109-aa0a-08ca17894891)
+![Screenshot 2024-12-05 005833](https://github.com/user-attachments/assets/73113218-bb37-467b-b171-8d28925f8c74)
 
 ### Equipment Update Form
-![Screenshot 2024-12-05 005959](https://github.com/user-attachments/assets/bd4d39f3-f67f-4643-9beb-9a4c60ba477f)
+![Screenshot 2024-12-05 004605](https://github.com/user-attachments/assets/36a0e4d8-848f-4747-bb15-d022e5fe3cdd)
 
 ### User Manage Section
-![Screenshot 2024-12-05 010057](https://github.com/user-attachments/assets/f765b3da-b9f8-4402-a6c5-28e03c20b335)
+![Screenshot 2024-12-05 010057](https://github.com/user-attachments/assets/816eeed5-879a-4822-9128-5876b549d850)
 
 ### User Registration Form
-![Screenshot 2024-12-05 010144](https://github.com/user-attachments/assets/4b359b65-849c-4bf3-ba1d-8aa709a74210)
+![Screenshot 2024-12-05 010144](https://github.com/user-attachments/assets/fe44a0f8-68a6-43b9-93c5-b6277d694e4c)
 
 ### User Update Form
-![Screenshot 2024-12-05 010213](https://github.com/user-attachments/assets/40f20040-e09b-45a3-9604-d41ff996c08e)
+![Screenshot 2024-12-05 010213](https://github.com/user-attachments/assets/96fbbc25-a1d0-4d36-9ed5-e888493244d6)
 
 ---
 
